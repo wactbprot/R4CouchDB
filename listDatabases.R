@@ -3,7 +3,7 @@ listDatabases <- function(couchConConv){
 
   adrString <- paste("http://",
                      couchConConv$serverName,":",
-                     couchConConv$port, "/_all_dbs"
+                     couchConConv$port, "/_all_dbs",
                      sep="")
   res <- getURLContent(adrString)
   return( fromJSON(res))

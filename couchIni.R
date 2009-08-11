@@ -1,17 +1,20 @@
+## http://www.omegahat.org/RJSONIO/
+## thanx to Duncan Temple Lang
 rc <- library(RCurl, logical.return = TRUE)
-rj <- library(rjson, logical.return = TRUE)
+rj <- library(RJSONIO, logical.return = TRUE)
 
 if(rc && rj){
 
-  print("\nlibs loaded\n")
+   couchConConv <- list(
+                       serverName = "localhost",
+                       port = "5984",
+                       noOfUuids="1",
+                       newDatabaseName=""
+                       )
 
-        couchConConv <- list(
-                     serverName = "localhost",
-                     port = "5984",
-                     noOfUuids="1",
-                     )
-
-  source("getUuids.R")
+   source("getUuids.R")
+   source("listDatabases.R")
+   source("makeDatabase.R")
 
 }else{
 ## libs can be loaded online ...
