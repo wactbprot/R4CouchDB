@@ -15,16 +15,17 @@ if(rc && rj){
                        rev="",
                        postFile="",
                        putFile="",
-                       error=""
+                       error="",
+                       JsonStruct=""
                        )
-
-
-   source("getUuids.R")
-   source("listDatabases.R")
-   source("makeDatabase.R")
-   source("addDoc.R")
-
+  ## using source() as long as a package
+  ## much more work ...
+  source("getUuids.R")
+  source("listDatabases.R")
+  source("makeDatabase.R")
+  source("addDoc.R")
+  source("removeDatabase.R")
 
 }else{
-## libs can be loaded online ...
+  ## libs can be loaded online ...
 }
