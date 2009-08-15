@@ -7,34 +7,37 @@ addDoc <- function( couchConConv){
 
   if(couchConConv$databaseName ==""){
     couchConConv$error <- "no couchConConv$databaseName given"
-   return( couchConConv )
+    return( couchConConv )
   }
 
-  if(couchConConv$postFile ==""){
-    couchConConv$error <- "no couchConConv$postFile given"
-    return( couchConConv$error )
+  if((couchConConv$postFile == "") && (couchConConv$jsonStruct == "")){
+    couchConConv$error <- "no couchConConv$postFile  or couchConConv$jsonStruct given"
+    return( couchConConv )
   }else{
 
-  adrString <- paste("http://",
-                     couchConConv$serverName,":",
-                     couchConConv$port,"/",
-                     couchConConv$databaseName,"/",
-                     couchConConv$id,
-                     sep="")
+    adrString <- paste("http://",
+                       couchConConv$serverName,":",
+                       couchConConv$port,"/",
+                       couchConConv$databaseName,"/",
+                       couchConConv$id,
+                       sep="")
+    if(couchConConv$postFile != ""){
+      data <- paste(readLines(couchConConv$postFile), collapse = "\n")
+    }else{
+      data <- toJSON(couchConConv$jsonStruct)
+    }
 
-  fileData <- paste(readLines(couchConConv$postFile), collapse = "\n")
+    header <- list('Content-Type' = 'application/json')
+    reader <- basicTextGatherer()
 
-  header <- list('Content-Type' = 'application/json')
+    couchConConv$res <- curlPerform(customrequest = "POST",
+                          url = adrString,
+                          postfields = data,
+                          headerfunction = reader$update)
 
-  intRes <- curlPerform(customrequest = "PUT",
-            url = adrString,
-            postfields = fileData,
-            headerfunction = reader$update)
-
-
-  couchConConv$id <- ""
-## better returnig a list structure...
-  ## ... tomorrow ...
-  return( intRes)
-}
+    couchConConv$id <- ""
+    ## better returnig a list structure...
+    ## ... tomorrow ...
+    return( couchConConv )
+  }
 }

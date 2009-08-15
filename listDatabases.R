@@ -5,9 +5,11 @@ listDatabases <- function(couchConConv){
                        couchConConv$serverName,":",
                        couchConConv$port, "/_all_dbs",
                        sep="")
-    res <- getURLContent(adrString)
-    return( fromJSON(res))
+
+    res <- fromJSON(getURLContent(adrString))
+    couchConConv$res <- res
+    return( couchConConv )
   }else{
-    return(couchConConv$error)
+    return( couchConConv )
   }
 }

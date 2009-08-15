@@ -7,7 +7,7 @@ makeDatabase <- function(couchConConv){
 
       couchConConv$error <- "no couchConConv$newDatabaseName given"
 
-      return( couchConConv$error)
+      return( couchConConv)
 
     }else{
 
@@ -17,9 +17,10 @@ makeDatabase <- function(couchConConv){
                          couchConConv$newDatabaseName,
                          sep="")
       res <- getURLContent(adrString, .opts = list(customrequest = "PUT"))
+      couchConConv$res <- fromJSON(res)
 
-      return( fromJSON(res))
+      return( couchConConv )
     }
   }
-  else{return( couchConConv$error )}
+  else{return( couchConConv )}
 }
