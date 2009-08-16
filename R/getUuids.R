@@ -7,7 +7,7 @@ getUuids <- function(couchConConv){
                      couchConConv$noOfUuids,
                      sep="")
   res <- getURLContent(adrString)
-  couchConConv$res <- fromJSON(res)
+  couchConConv$id <- fromJSON(res)$uuids
 
   return(couchConConv)
 }

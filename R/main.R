@@ -1,4 +1,4 @@
-source("/home/tg/eig/couchdb/R4CouchDB/couchIni.R")
+source("/home/tg/eig/couchdb/R4CouchDB/R/couchIni.R")
 
 ## I'm lazy so lets make a copy to a shorter name
 cc <- couchConConv
@@ -21,4 +21,10 @@ if(j==0){
 ## lets add a doc; why not the cc
 cc$jsonStruct <- cc
 ## cc contains in cc$jsonStruct the cc list now
-addDoc(cc)
+cc <- addDoc(cc)
+
+## getting the doc back from couch
+## and placing the result to cc
+cc <- getDoc(cc)$res
+
+cc$'_rev' # is the revition I need 4 the update function

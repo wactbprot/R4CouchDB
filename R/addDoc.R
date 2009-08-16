@@ -2,7 +2,7 @@ addDoc <- function( couchConConv){
 
   if(couchConConv$id == ""){
     couchConConv$noOfUuids <- "1"
-    couchConConv$id <- getUuids(couchConConv)$uuids
+    couchConConv <- getUuids(couchConConv)
   }
 
   if(couchConConv$databaseName ==""){
@@ -30,14 +30,18 @@ addDoc <- function( couchConConv){
     header <- list('Content-Type' = 'application/json')
     reader <- basicTextGatherer()
 
-    couchConConv$res <- curlPerform(customrequest = "POST",
+
+
+
+    #couchConConv$res
+    res <- getURLContent(customrequest = "PUT",
                           url = adrString,
                           postfields = data,
                           headerfunction = reader$update)
 
-    couchConConv$id <- ""
-    ## better returnig a list structure...
-    ## ... tomorrow ...
+
+    couchConConv$res <- toString( res )
     return( couchConConv )
+
   }
 }

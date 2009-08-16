@@ -41,6 +41,7 @@ if(rc && rj){
   source("makeDatabase.R"      ,local = TRUE)
   source("addDoc.R"            ,local = TRUE)
   source("removeDatabase.R"    ,local = TRUE)
+  source("getDoc.R"            ,local = TRUE)
 
 }else{
   ## libs can be loaded online ...
