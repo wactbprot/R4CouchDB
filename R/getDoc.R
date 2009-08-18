@@ -4,6 +4,7 @@ print(couchConConv$id)
     couchConConv$error <- "no couchConConv$id given"
     return( couchConConv)
   }else{
+
     reader <- basicTextGatherer()
 
     adrString <- paste("http://",
@@ -13,12 +14,15 @@ print(couchConConv$id)
                        couchConConv$id,
                        sep="")
 
-    res <- getURLContent(adrString, .opts = list(customrequest = "GET"))
-      couchConConv$res <- fromJSON(res)
+    res <- getURLContent(adrString,
+                          .opts = list(customrequest = "GET"))
+
+    couchConConv$res <- fromJSON(res)
 
 
 
 
-    return( couchConConv)
-  }
+    return( couchConConv )
+
+         }
 }

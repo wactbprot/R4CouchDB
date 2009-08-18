@@ -16,9 +16,12 @@ makeDatabase <- function(couchConConv){
                          couchConConv$port,"/",
                          couchConConv$newDatabaseName,
                          sep="")
-      res <- getURLContent(adrString, .opts = list(customrequest = "PUT"))
-      couchConConv$res <- fromJSON(res)
 
+      res <- getURLContent(adrString, .opts = list(customrequest = "PUT"))
+      couchConConv$res <- fromJSON( res )
+
+      ## newDatabase is generated it's now no longer a new one
+      couchConConv$newDatabaseName <- ""
       return( couchConConv )
     }
   }

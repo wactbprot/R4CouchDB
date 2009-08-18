@@ -10,8 +10,8 @@ addDoc <- function( couchConConv){
     return( couchConConv )
   }
 
-  if((couchConConv$postFile == "") && (couchConConv$jsonStruct == "")){
-    couchConConv$error <- "no couchConConv$postFile  or couchConConv$jsonStruct given"
+  if((couchConConv$postFile == "") && (length(couchConConv$dataList) < 1)){
+    couchConConv$error <- "no couchConConv$postFile  or couchConConv$dataList given"
     return( couchConConv )
   }else{
 
@@ -21,10 +21,11 @@ addDoc <- function( couchConConv){
                        couchConConv$databaseName,"/",
                        couchConConv$id,
                        sep="")
+
     if(couchConConv$postFile != ""){
       data <- paste(readLines(couchConConv$postFile), collapse = "\n")
     }else{
-      data <- toJSON(couchConConv$jsonStruct)
+      data <- toJSON(couchConConv$dataList)
     }
 
     header <- list('Content-Type' = 'application/json')

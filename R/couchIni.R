@@ -16,7 +16,7 @@ if(rc && rj){
                        rev="",
                        postFile="",
                        putFile="",
-                       jsonStruct="",
+                       dataList=list(),
                        date=toString( Sys.Date()),
                        error="",
                        res=""
@@ -36,12 +36,15 @@ if(rc && rj){
   ##
   ## forget loging for the moment
   ## its just has to run ...
+
+  ## renaming jsonStruct to dataList
   source("getUuids.R"          ,local = TRUE)
   source("listDatabases.R"     ,local = TRUE)
   source("makeDatabase.R"      ,local = TRUE)
   source("addDoc.R"            ,local = TRUE)
   source("removeDatabase.R"    ,local = TRUE)
   source("getDoc.R"            ,local = TRUE)
+  source("updateDoc.R"            ,local = TRUE)
 
 }else{
   ## libs can be loaded online ...
