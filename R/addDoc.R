@@ -10,7 +10,7 @@ addDoc <- function( couchConConv){
     return( couchConConv )
   }
 
-  if((couchConConv$postFile == "") && (length(couchConConv$dataList) < 1)){
+  if( (length(couchConConv$dataList) < 1)){
     couchConConv$error <- "no couchConConv$postFile  or couchConConv$dataList given"
     return( couchConConv )
   }else{
@@ -22,11 +22,8 @@ addDoc <- function( couchConConv){
                        couchConConv$id,
                        sep="")
 
-    if(couchConConv$postFile != ""){
-      data <- paste(readLines(couchConConv$postFile), collapse = "\n")
-    }else{
-      data <- toJSON(couchConConv$dataList)
-    }
+    data <- toJSON(couchConConv$dataList)
+
 
     header <- list('Content-Type' = 'application/json')
     reader <- basicTextGatherer()
@@ -34,14 +31,14 @@ addDoc <- function( couchConConv){
 
 
 
-    #couchConConv$res
+                                        ## couchConConv$res
     res <- getURLContent(customrequest = "PUT",
-                          url = adrString,
-                          postfields = data,
-                          headerfunction = reader$update)
+                         url = adrString,
+                         postfields = data,
+                         headerfunction = reader$update)
 
 
-    couchConConv$res <- toString( res )
+    couchConConv$res <- toJSON( res )
     return( couchConConv )
 
   }

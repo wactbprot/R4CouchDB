@@ -27,6 +27,9 @@ updateDoc <- function( couchConConv){
 
   }else{
 
+    cc <- getDoc(cc)
+    cc$rev <- cc$res$'_rev'
+
     data <- toJSON(list('_id'=cc$id,
                         '_rev'=cc$rev,
                         couchConConv$dataList))
