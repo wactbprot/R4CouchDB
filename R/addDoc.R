@@ -32,13 +32,13 @@ addDoc <- function( couchConConv){
 
 
                                         ## couchConConv$res
-    res <- getURLContent(customrequest = "PUT",
+    res <- getURLContent(customrequest = "POST",
                          url = adrString,
                          postfields = data,
                          headerfunction = reader$update)
 
 
-    couchConConv$res <- toJSON( res )
+    couchConConv$res <- fromJSON( res )
     return( couchConConv )
 
   }

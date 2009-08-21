@@ -17,6 +17,8 @@ if(rc && rj){
                        postFile="",
                        putFile="",
                        dataList=list(),
+                       design="",
+                       view="",
                        date=toString( Sys.Date()),
                        error="",
                        res=""
@@ -44,7 +46,8 @@ if(rc && rj){
   source("addDoc.R"            ,local = TRUE)
   source("removeDatabase.R"    ,local = TRUE)
   source("getDoc.R"            ,local = TRUE)
-  source("updateDoc.R"            ,local = TRUE)
+  source("updateDoc.R"         ,local = TRUE)
+  source("getViewRes.R"        ,local = TRUE)
 
 }else{
   ## libs can be loaded online ...
