@@ -1,0 +1,5 @@
+- function for view requests
+-- done, but without params as ..?group=true
+- post and update files
+- replication?
+- writing Tests -> RUnit package provides infrastructure
