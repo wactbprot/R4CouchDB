@@ -1,5 +1,6 @@
 - function for view requests
 -- done, but without params as ..?group=true
 - post and update files
+++ after this is done I make a R package structure!
 - replication?
 - writing Tests -> RUnit package provides infrastructure
