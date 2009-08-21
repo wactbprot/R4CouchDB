@@ -19,6 +19,7 @@ if(rc && rj){
                        dataList=list(),
                        design="",
                        view="",
+                       queryParam="",
                        date=toString( Sys.Date()),
                        error="",
                        res=""

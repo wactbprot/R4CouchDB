@@ -8,7 +8,11 @@ getViewRes <- function( couchConConv ){
     couchConConv$error <- paste(couchConConv$error,
                                 "no couchConConv$design given", sep=" ")
   }
-
+  if(couchConConv$queryParam == ""){
+    queryString <- ""
+  }else{
+    queryString <- paste("/?",couchConConv$queryParam, sep="")
+  }
 
 
     adrString <- paste("http://",
@@ -19,6 +23,7 @@ getViewRes <- function( couchConConv ){
                        couchConConv$design,
                        "/_view/",
                        couchConConv$view,
+                       queryString,
                        sep="")
 
     res <- getURLContent(adrString,

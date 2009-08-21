@@ -29,10 +29,7 @@ addDoc <- function( couchConConv){
     reader <- basicTextGatherer()
 
 
-
-
-                                        ## couchConConv$res
-    res <- getURLContent(customrequest = "POST",
+    res <- getURLContent(customrequest = "PUT",
                          url = adrString,
                          postfields = data,
                          headerfunction = reader$update)
