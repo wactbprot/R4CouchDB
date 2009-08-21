@@ -21,7 +21,7 @@ makeDatabase <- function(couchConConv){
       couchConConv$res <- fromJSON( res )
 
       ## newDatabase is generated it's now no longer a new one
-      couchConConv$newDatabaseName <- ""
+      couchConConv$databaseName <- couchConConv$newDatabaseName
       return( couchConConv )
     }
   }

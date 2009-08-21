@@ -1,5 +1,3 @@
-##
-
 source("/home/tg/eig/couchdb/R4CouchDB/R/couchIni.R")
 
 ## I'm lazy so lets make a copy to a shorter name
@@ -13,12 +11,14 @@ cc <- listDatabases(cc)
 j <- match( cc$newDatabaseName, cc$res, nomatch=0)
 
 if(j==0){
+
   cc <- makeDatabase( cc )
   cc$databaseName <- cc$newDatabaseName
 
-} else{getDoc(cc)
+} else{
 
   cc$databaseName <- cc$newDatabaseName
+  cc$newDatabaseName <- ""
 }
 
 ## lets add a doc; why not the cc
@@ -43,6 +43,7 @@ cc <- getDoc(cc)
 
 ## we need the revition for updating the doc
 cc$rev <- cc$res$'_rev'
+cc <- updateDoc( cc )
 
 ## forget the remaining stuff
 cc$res <- ""
