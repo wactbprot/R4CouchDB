@@ -5,8 +5,6 @@ getDoc <- function( couchConConv){
     return( couchConConv)
   }else{
 
-
-
     adrString <- paste("http://",
                        couchConConv$serverName,":",
                        couchConConv$port,"/",
@@ -15,14 +13,11 @@ getDoc <- function( couchConConv){
                        sep="")
 
     res <- getURLContent(adrString,
-                          .opts = list(customrequest = "GET"))
+                         .opts = list(customrequest = "GET"))
 
     couchConConv$res <- fromJSON(res)
 
-
-
-
     return( couchConConv )
 
-         }
+  }
 }

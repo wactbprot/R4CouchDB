@@ -1,9 +1,9 @@
 addDoc <- function( couchConConv){
 
-  if(couchConConv$id == ""){
+  ## always fresh id!
     couchConConv$noOfUuids <- "1"
     couchConConv <- getUuids(couchConConv)
-  }
+
 
   if(couchConConv$databaseName ==""){
     couchConConv$error <- "no couchConConv$databaseName given"
@@ -11,7 +11,7 @@ addDoc <- function( couchConConv){
   }
 
   if( (length(couchConConv$dataList) < 1)){
-    couchConConv$error <- "no couchConConv$postFile  or couchConConv$dataList given"
+    couchConConv$error <- "no couchConConv$dataList given"
     return( couchConConv )
   }else{
 

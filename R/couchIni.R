@@ -49,6 +49,7 @@ if(rc && rj){
   source("getDoc.R"            ,local = TRUE)
   source("updateDoc.R"         ,local = TRUE)
   source("getViewRes.R"        ,local = TRUE)
+  source("postFile.R"          ,local = TRUE)
 
 }else{
   ## libs can be loaded online ...
