@@ -1,6 +1,6 @@
 source("/home/tg/eig/couchdb/R4CouchDB/R/cdbIni.R")
 
-cdb$newDatabaseName <- "db4r"#!! #cdb$res[1]
+cdb$newDatabaseName <- "db5r"#!! #cdb$res[1]
 
 cdb <- cdbListDB(cdb)
 
@@ -45,8 +45,17 @@ cdb <- cdbUpdateDoc( cdb )
 ## forget the remaining stuff
 cdb$res <- ""
 
+## update date
 cdb$dataList <- list(a=1:40,
                     e = 31:40)
-
+## update doc
 cdb <- cdbUpdateDoc( cdb )
 
+x <- cdb$dataList
+save(x, file= cdb$postFile <- cdb$id )
+
+
+
+## at least we remove the test CDB
+cdb$databaseName
+cdb <- cdbRemoveDB(cdb)

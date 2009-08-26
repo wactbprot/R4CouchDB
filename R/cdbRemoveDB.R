@@ -14,7 +14,8 @@ cdbRemoveDB <- function(cdb){
                          sep="")
 
       res <- getURLContent(adrString, .opts = list(customrequest = "DELETE"))
-      return( fromJSON(res))
+      cdb$res <- fromJSON(res)
+      return( cdb )
 
     }
   }else{
