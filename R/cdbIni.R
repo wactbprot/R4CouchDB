@@ -14,8 +14,6 @@ if(rc && rj){
                        newDatabaseName="",
                        id="",
                        rev="",
-                       postFile="",
-                       putFile="",
                        dataList=list(),
                        design="",
                        view="",
@@ -45,7 +43,7 @@ if(rc && rj){
   source("cdbListDB.R"         ,local = TRUE)
   source("cdbMakeDB.R"         ,local = TRUE)
   source("cdbAddDoc.R"         ,local = TRUE)
-  source("cdbRemoveDB.R" ,local = TRUE)
+  source("cdbRemoveDB.R"       ,local = TRUE)
   source("cdbGetDoc.R"         ,local = TRUE)
   source("cdbUpdateDoc.R"      ,local = TRUE)
   source("cdbGetView.R"        ,local = TRUE)
