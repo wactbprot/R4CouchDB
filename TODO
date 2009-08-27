@@ -7,7 +7,7 @@
 -- skip postFile and updateFile out; this makes no sense
    since everyone knows best (better) how to handle with specific
    files resp. file structures ...
-- give more consequent names to cdb list entry's, i.g. $noOfUuids is
+- give more consequent names to cdb list entry's, e.g. $noOfUuids is
   at least a $queryParam
 
 ++ after this is done I make a R package structure!
