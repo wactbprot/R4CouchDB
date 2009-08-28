@@ -3,9 +3,9 @@ cdbMakeDB <- function(cdb){
   ## write test functions!
   if( cdb$error == ""){
 
-    if(cdb$newDatabaseName == ""){
+    if(cdb$newDBName == ""){
 
-      cdb$error <- "no cdb$newDatabaseName given"
+      cdb$error <- "no cdb$newDBName given"
 
       return( cdb)
 
@@ -14,16 +14,19 @@ cdbMakeDB <- function(cdb){
       adrString <- paste("http://",
                          cdb$serverName,":",
                          cdb$port,"/",
-                         cdb$newDatabaseName,
+                         cdb$newDBName,
                          sep="")
 
       res <- getURLContent(adrString, .opts = list(customrequest = "PUT"))
       cdb$res <- fromJSON( res )
 
-      ## newDatabase is generated it's now no longer a new one
-      cdb$databaseName <- cdb$newDatabaseName
+      ## newDB is generated it's now no longer a new one
+      cdb$DBName <- cdb$newDBName
       return( cdb )
     }
   }
-  else{return( cdb )}
+  else{
+    print( cdb$error )
+    return( cdb )
+  }
 }

@@ -1,16 +1,16 @@
 cdbRemoveDB <- function(cdb){
   if( cdb$error == ""){
 
-    if(cdb$databaseName == ""){
+    if(cdb$DBName == ""){
 
-      cdb$error <- "no  cdb$databaseName to remove"
+      cdb$error <- "no  cdb$DBName to remove"
       return(cdb)
     }else{
 
       adrString <- paste("http://",
                          cdb$serverName,":",
                          cdb$port,"/",
-                         cdb$databaseName,
+                         cdb$DBName,
                          sep="")
 
       res <- getURLContent(adrString, .opts = list(customrequest = "DELETE"))

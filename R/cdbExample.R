@@ -1,21 +1,23 @@
 source("/home/tg/eig/couchdb/R4CouchDB/R/cdbIni.R")
 
-cdb$newDatabaseName <- "db5r"#!! #cdb$res[1]
+
+cdb <- cdbIni()
+cdb$newDBName <- "db5r"#!! #cdb$res[1]
 
 cdb <- cdbListDB(cdb)
 
+j <- match( cdb$newDBName, cdb$res, nomatch=0)
 
-j <- match( cdb$newDatabaseName, cdb$res, nomatch=0)
-
-if(j==0){
+if( j == 0 ){
 
   cdb <- cdbMakeDB( cdb )
-  cdb$databaseName <- cdb$newDatabaseName
+  cdb$DBName <- cdb$newDBName
 
 } else{
 
-  cdb$databaseName <- cdb$newDatabaseName
-  cdb$newDatabaseName <- ""
+  cdb$DBName <- cdb$newDBName
+  cdb$newDBName <- ""
+
 }
 
 ## lets add a doc; why not the cdb
@@ -31,6 +33,7 @@ if(j==0){
 
 ## so simply a list:
 cdb$dataList <- list(a=1:10, b=11:20,d=21:30)
+
 ## cdb contains in cdb$dataList the cdb list now
 cdb <- cdbAddDoc(cdb)
 
@@ -51,11 +54,6 @@ cdb$dataList <- list(a=1:40,
 ## update doc
 cdb <- cdbUpdateDoc( cdb )
 
-x <- cdb$dataList
-save(x, file= cdb$postFile <- cdb$id )
-
-
-
 ## at least we remove the test CDB
-cdb$databaseName
-cdb <- cdbRemoveDB(cdb)
+cdb$DBName
+## cdb <- cdbRemoveDB(cdb)

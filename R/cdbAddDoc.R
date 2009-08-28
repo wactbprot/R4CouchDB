@@ -1,29 +1,30 @@
 cdbAddDoc <- function( cdb){
 
   ## always fresh id!
-    cdb$noOfUuids <- "1"
-    cdb <- cdbGetUuids(cdb)
+  ## (because this function is called addDoc)
 
-
-  if(cdb$databaseName ==""){
-    cdb$error <- "no cdb$databaseName given"
-    return( cdb )
+  if(cdb$DBName ==""){
+    cdb$error <- paste(cdb$error, " no cdb$DBName given ", sep=" ")
   }
 
   if( (length(cdb$dataList) < 1)){
-    cdb$error <- "no cdb$dataList given"
-    return( cdb )
-  }else{
+    cdb$error <- paste(cdb$error, " no cdb$dataList given ", sep=" ")
+  }
+
+    cdb$queryParam <- "count=1"
+    cdb <- cdbGetUuids(cdb)
+
+
+  if( cdb$error =="" ){
 
     adrString <- paste("http://",
                        cdb$serverName,":",
                        cdb$port,"/",
-                       cdb$databaseName,"/",
+                       cdb$DBName,"/",
                        cdb$id,
                        sep="")
 
     data <- toJSON(cdb$dataList)
-
 
     header <- list('Content-Type' = 'application/json')
     reader <- basicTextGatherer()
@@ -38,5 +39,8 @@ cdbAddDoc <- function( cdb){
     cdb$res <- fromJSON( res )
     return( cdb )
 
+  }else{
+    print( cdb$error )
+    return( cdb )
   }
 }

@@ -8,7 +8,7 @@ cdbGetDoc <- function( cdb){
     adrString <- paste("http://",
                        cdb$serverName,":",
                        cdb$port,"/",
-                       cdb$databaseName,"/",
+                       cdb$DBName,"/",
                        cdb$id,
                        sep="")
 

@@ -1,13 +1,26 @@
 cdbGetUuids <- function(cdb){
-# write test functions!
+  ## write test functions!
 
-  adrString <- paste("http://",
-                     cdb$serverName,":",
-                     cdb$port, "/_uuids?count=",
-                     cdb$noOfUuids,
-                     sep="")
-  res <- getURLContent(adrString)
-  cdb$id <- fromJSON(res)$uuids
+  if (cdb$error ==""){
 
-  return( cdb )
+    if(cdb$queryParam == ""){
+      queryString <- ""
+    }else{
+      queryString <- paste("?",cdb$queryParam, sep="")
+    }
+
+    adrString <- paste("http://",
+                       cdb$serverName,":",
+                       cdb$port, "/_uuids",
+                       queryString,
+                       sep="")
+
+    res <- getURLContent(adrString)
+    cdb$id <- fromJSON(res)$uuids
+
+    return( cdb )
+  }else{
+    print(cdb$error)
+    return( cdb )
+  }
 }

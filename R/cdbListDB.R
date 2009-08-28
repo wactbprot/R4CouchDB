@@ -10,6 +10,7 @@ cdbListDB <- function(cdb){
     cdb$res <- res
     return( cdb )
   }else{
+    print(cdb$error)
     return( cdb )
   }
 }
