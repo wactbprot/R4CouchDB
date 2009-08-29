@@ -25,7 +25,7 @@ if( j == 0 ){
 ## cdb$dataList <- cdb
 ## _not_ cdb because the resulting structure is not ...
 ## $res$res  and so on ...
-## it seems furthermore that the >id< tag auses
+## it seems furthermore that the >id< tag causes
 ## problems; I can't query >id< in the a tempview
 ## at futon ...
 ## ... maybe here bis the source for the
@@ -57,3 +57,5 @@ cdb <- cdbUpdateDoc( cdb )
 ## at least we remove the test CDB
 cdb$DBName
 ## cdb <- cdbRemoveDB(cdb)
+
+
