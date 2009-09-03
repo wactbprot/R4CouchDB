@@ -1,89 +1,74 @@
 \name{cdbUpdateDoc}
 \Rdversion{1.1}
 \alias{cdbUpdateDoc}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-%%  ~~function to do ... ~~
+cdbUpdateDoc update an existing doc at an existing CouchDB.
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Updating a doc at couchdb means executing a http "PUT" request. The cdb
+list must contain the \code{cdb$serverName}, \code{cdb$port},
+    \code{cdb$DBName}, \code{cdb$id}. If
+the \code{cdb$rev} is not given the function uses \code{cdbGetDoc()} to receive the
+latest revision number.
 }
 \usage{
 cdbUpdateDoc(cdb)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{cdb}{
-%%     ~~Describe \code{cdb} here~~
+the cdb connection config list must contain the \code{cdb$serverName},
+  \code{cdb$port},  \code{cdb$DBName} and  \code{cdb$id}. The data which
+  updates the data stored in the doc is provided in \code{cdb$dataList}
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+  getURLContent() with customrequest = "PUT" makes the work.
+
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  \item{cdb }{The result of the request is stored in cdb$res after
+    converting the json answer into a list using fromJSON(). If a needed
+    cdb list entry was not provided cdb$error says somthing about the R
+    side
+  }
+
+
 }
 \references{
-%% ~put references to the literature/web site here ~
+\link{  http://www.omegahat.org/RCurl/   }
+\link{  http://www.omegahat.org/RJSONIO/ }
+\link{  http://couchdb.apache.org/       }
+
 }
 \author{
-%%  ~~who you are~~
+  wact.b.prot
+  thsteinbock@web.de
 }
 \note{
-%%  ~~further notes~~
+
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{cdbInit()}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+cdb <- cdbIni()
+cdb$newDBName <- "db5r"#!! #cdb$res[1]
 
-## The function is currently defined as
-function (cdb) 
-{
-    if (cdb$id == "") {
-        cdb$error <- paste(cdb$error, " no cdb$id given ", sep = " ")
-    }
-    if (cdb$rev == "") {
-        cdb <- cdbGetDoc(cdb)
-        cdb$rev <- cdb$res$"_rev"
-    }
-    if (length(cdb$dataList) < 1) {
-        cdb$error <- paste(cdb$error, " no cdb$dataList given", 
-            sep = " ")
-    }
-    if (cdb$error == "") {
-        cdb <- cdbGetDoc(cdb)
-        cdb$rev <- cdb$res$"_rev"
-        data <- toJSON(list(`_id` = cdb$id, `_rev` = cdb$rev, 
-            cdb$dataList))
-        adrString <- paste("http://", cdb$serverName, ":", cdb$port, 
-            "/", cdb$DBName, "/", cdb$id, sep = "")
-        header <- list(`Content-Type` = "application/json")
-        reader <- basicTextGatherer()
-        res <- getURLContent(customrequest = "PUT", url = adrString, 
-            postfields = data, headerfunction = reader$update)
-        cdb$res <- fromJSON(res)
-        cdb <- cdbGetDoc(cdb)
-        cdb$rev <- cdb$res$"_rev"
-        return(cdb)
-    }
-    else {
-        print(cdb$error)
-        return(cdb)
-    }
-  }
+  cdb <- cdbMakeDB( cdb )
+  cdb$DBName <- cdb$newDBName
+cdb$dataList <- list(a=1:10, b=11:20,d=21:30)
+
+
+cdb <- cdbAddDoc(cdb)
+
+cdb$rev <- cdb$res$'_rev'
+cdb <- cdbUpdateDoc( cdb )
+
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ misc }
+

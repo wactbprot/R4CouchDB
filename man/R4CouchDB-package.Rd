@@ -4,41 +4,45 @@
 \alias{R4CouchDB}
 \docType{package}
 \title{
-What the package does (short line)
-~~ package title ~~
+Collection of R functions for CouchDB access
 }
-\description{
-More about what it does (maybe more than one line)
-~~ A concise (1-5 lines) description of the package ~~
+\description{The R4CouchDB package provides a collection of functions for
+basic database and document management operations such as add and
+delete.
 }
 \details{
 \tabular{ll}{
 Package: \tab R4CouchDB\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
+Version: \tab 0.1\cr
 Date: \tab 2009-08-29\cr
-License: \tab What license is it under?\cr
+License: \tab BSD\cr
 LazyLoad: \tab yes\cr
 }
-~~ An overview of how to use the package, including the most important ~~
-~~ functions ~~
+Every \code{cdbFunction()} gets and emits a list containing the connection
+set up. The result of the request is stored in the \code{lists$res} This list is initialy provided using the cdbIni() function.
+The http connection and the json transformations are done with Duncan
+Temple Langs RCurl and RJSON.
 }
 \author{
-Who wrote it
+wact.b.prot
 
-Maintainer: Who to complain to <yourfault@somewhere.net>
-~~ The author and/or maintainer of the package ~~
+Maintainer: thsteinbock@web.de
 }
 \references{
-~~ Literature or other references for background information ~~
+  http://www.omegahat.org/RCurl/
+  http://www.omegahat.org/RJSONIO/
+  http://couchdb.apache.org/
 }
-~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
-~~ the R documentation directory ~~
 \keyword{ package }
 \seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
 }
 \examples{
-~~ simple examples of the most important functions ~~
+## get the default setup
+cdb <- cdbIni()
+## it includes:
+cdb
+cdb <- cdbListDB(cdb)
+## localhost contains the following DB(s)
+cdb$res
 }

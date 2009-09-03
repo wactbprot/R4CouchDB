@@ -1,69 +1,53 @@
 \name{cdbListDB}
 \Rdversion{1.1}
 \alias{cdbListDB}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-%%  ~~function to do ... ~~
+Returns all databases
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Gives a list of all databases
 }
 \usage{
 cdbListDB(cdb)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
-  \item{cdb}{
-%%     ~~Describe \code{cdb} here~~
+   \item{cdb}{ Only the  connection settings \code{cdb$port} and
+     \code{cdb$serverName} is needed.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Simple CouchDB API end point: http://serverName:port/_all_dbs
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+
+  \item{cdb }{The result of the request is stored in cdb$res after
+    converting the json answer into a list using fromJSON().
 }
 \references{
-%% ~put references to the literature/web site here ~
+
+  \link{  http://www.omegahat.org/RCurl/        }
+  \link{  http://www.omegahat.org/RJSONIO/      }
+  \link{  http://couchdb.apache.org/            }
+
 }
 \author{
-%%  ~~who you are~~
+  wact.b.prot
+  thsteinbock@web.de
 }
 \note{
-%%  ~~further notes~~
+
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{cdbMakeDB}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (cdb) 
-{
-    if (cdb$error == "") {
-        adrString <- paste("http://", cdb$serverName, ":", cdb$port, 
-            "/_all_dbs", sep = "")
-        res <- fromJSON(getURLContent(adrString))
-        cdb$res <- res
-        return(cdb)
-    }
-    else {
-        print(cdb$error)
-        return(cdb)
-    }
-  }
+cdb <- cdbIni()
+cdbListDB(cdb)$res
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ misc }
+

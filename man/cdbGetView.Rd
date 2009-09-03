@@ -1,84 +1,70 @@
 \name{cdbGetView}
 \Rdversion{1.1}
 \alias{cdbGetView}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-%%  ~~function to do ... ~~
+Receive view results from CouchDB
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+The function provides accesses to CouchDB views.
 }
 \usage{
 cdbGetView(cdb)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
-  \item{cdb}{
-%%     ~~Describe \code{cdb} here~~
+  \item{cdb}{ Beside the connection details
+  (\code{cdb$port},\code{cdb$DAName} ...) the \code{cdb$design} and
+  \code{cdb$view} is needed.
+
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Querry params e.g. \code{"reduce=false"} or  \code{"group_level=1"} can
+be provided in \code{cdb$queryParam}
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+
+  \item{cdb }{The result of the request is stored in cdb$res after
+    converting the json answer into a list using fromJSON(). If a needed
+    cdb list entry was not provided cdb$error says somthing about the R
+    side
+
 }
 \references{
-%% ~put references to the literature/web site here ~
+
+\link{  http://www.omegahat.org/RCurl/        }
+\link{  http://www.omegahat.org/RJSONIO/      }
+\link{  http://couchdb.apache.org/            }
+\link{  http://www.omegahat.org/RJavaScript/  }
 }
 \author{
-%%  ~~who you are~~
+  wact.b.prot
+  thsteinbock@web.de
 }
 \note{
-%%  ~~further notes~~
+For the moment only one \code{cdb$queryParam} is possible. In the future
+maybe Duncans \code{RJavaScript} package can be used to generate views
+without leaving R.
 }
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (cdb) 
-{
-    if (cdb$design == "") {
-        cdb$error <- paste(cdb$error, "no cdb$design given", 
-            sep = " ")
-    }
-    if (cdb$view == "") {
-        cdb$error <- paste(cdb$error, "no cdb$design given", 
-            sep = " ")
-    }
-    if (cdb$error == "") {
-        if (cdb$queryParam == "") {
-            queryString <- ""
-        }
-        else {
-            queryString <- paste("?", cdb$queryParam, sep = "")
-        }
-        adrString <- paste("http://", cdb$serverName, ":", cdb$port, 
-            "/", cdb$DBName, "/_design/", cdb$design, "/_view/", 
-            cdb$view, queryString, sep = "")
-        res <- getURLContent(adrString, .opts = list(customrequest = "GET"))
-        cdb$res <- fromJSON(res)
-        return(cdb)
-    }
-    else {
-        print(cdb$error)
-        return(cdb)
-    }
-  }
+## If:
+## function(doc) {
+##  emit(null, doc._id);
+## }
+## is stored under design: test, view: id
+## in the database db5r
+cdb <- cdbIni()
+cdb$DBName <- "db5r"
+cdb$design <- "test"
+cdb$view <- "id"
+
+cdbGetView(cdb)$res
+
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ misc }

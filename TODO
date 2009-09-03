@@ -9,7 +9,13 @@
    files resp. file structures ...
 - give more consequent names to cdb list entry's, e.g. $noOfUuids is
   at least a $queryParam
+-- done
 
-++ after this is done I make a R package structure!
+
++++ after this is done I make a R package structure!
+
+- a function cdbDelDoc is missing
+- before returning the list the answer should be more evaluated
+
 - replication?
 - writing Tests -> RUnit package provides infrastructure

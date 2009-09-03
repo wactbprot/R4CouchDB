@@ -27,8 +27,8 @@ cdbAddDoc <- function( cdb){
     data <- toJSON(cdb$dataList)
 
     header <- list('Content-Type' = 'application/json')
-    reader <- basicTextGatherer()
 
+    reader <- basicTextGatherer()
 
     res <- getURLContent(customrequest = "PUT",
                          url = adrString,
@@ -37,6 +37,9 @@ cdbAddDoc <- function( cdb){
 
 
     cdb$res <- fromJSON( res )
+
+    reader$reset()
+
     return( cdb )
 
   }else{

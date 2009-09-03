@@ -4,6 +4,7 @@ cdbGetDoc <- function( cdb){
     cdb$error <- "no cdb$id given"
     return( cdb)
   }else{
+    reader <- basicTextGatherer()
 
     adrString <- paste("http://",
                        cdb$serverName,":",
@@ -13,9 +14,12 @@ cdbGetDoc <- function( cdb){
                        sep="")
 
     res <- getURLContent(adrString,
-                         .opts = list(customrequest = "GET"))
+                         .opts = list(customrequest = "GET",
+                           headerfunction = reader$update))
 
     cdb$res <- fromJSON(res)
+
+    reader$reset()
 
     return( cdb )
 

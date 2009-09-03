@@ -1,5 +1,6 @@
 source("/home/tg/eig/couchdb/R4CouchDB/R/cdbIni.R")
 
+
 cdb <- cdbIni()
 cdb$newDBName <- "db5r"#!! #cdb$res[1]
 
@@ -18,6 +19,7 @@ if( j == 0 ){
   cdb$newDBName <- ""
 
 }
+
 
 ## lets add a doc; why not the cdb
 ## cdb contains in cdb$dataList cdb

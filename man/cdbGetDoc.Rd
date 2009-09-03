@@ -1,69 +1,60 @@
 \name{cdbGetDoc}
 \Rdversion{1.1}
 \alias{cdbGetDoc}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-%%  ~~function to do ... ~~
+Get a doc from CouchDB
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+  With a given \code{cdb$id} this function requests the document.
 }
 \usage{
 cdbGetDoc(cdb)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{cdb}{
-%%     ~~Describe \code{cdb} here~~
+  \item{cdb}{Beside \code{cdb$serverName}, \code{cdb$port} and
+    \code{cdb$DBName} the \code{cdb$id} must be given. R errors are
+    reported
+
+    in cdb$errors
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+
+  \item{cdb }{The result of the request is stored in \code{cdb$res}. after
+    converting the answer into a list using \code{fromJSON()}. If a list
+    entry  needed in \code{cdb} is not provided \code{cdb$error}
+    gives some information.
+
 }
 \references{
-%% ~put references to the literature/web site here ~
+
+\link{  http://couchdb.apache.org/            }
+\link{  http://www.omegahat.org/  }
+
 }
 \author{
-%%  ~~who you are~~
+  wact.b.prot
+  thsteinbock@web.de
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{cdbAddDoc()}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (cdb) 
-{
-    if (cdb$id == "") {
-        cdb$error <- "no cdb$id given"
-        return(cdb)
-    }
-    else {
-        adrString <- paste("http://", cdb$serverName, ":", cdb$port, 
-            "/", cdb$DBName, "/", cdb$id, sep = "")
-        res <- getURLContent(adrString, .opts = list(customrequest = "GET"))
-        cdb$res <- fromJSON(res)
-        return(cdb)
-    }
-  }
+## If:
+## function(doc) {
+##  emit(null, doc._id);
+## is stored under design: test, view: id
+## in the database db5r
+cdb <- cdbIni()
+cdb$newDBName <- "db5r"
+cdb <- cdbMakeDB(cdb)
+cdb <- cdbAddDoc(cdb)
+cdb$id
+cdbGetDoc( cdb )
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ misc }
+

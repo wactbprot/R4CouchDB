@@ -1,76 +1,65 @@
 \name{cdbMakeDB}
 \Rdversion{1.1}
 \alias{cdbMakeDB}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-%%  ~~function to do ... ~~
+Creates a new database
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+  The name of the new database is taken from \code{cdb$newDBName}.
 }
 \usage{
 cdbMakeDB(cdb)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
-  \item{cdb}{
-%%     ~~Describe \code{cdb} here~~
+  \item{cdb}{The \code{cdb} have to provide \code{cdb$serverName},
+  \code{cdb$port} and  \code{cdb$newDBName}
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+The work is done by \code{getURLContent()}. After creating the new DB
+one should short cut \code{cdb$DBName <- cdb$newDBName} so that further
+operations happen on the new created database.
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  \item{cdb}{The CouchDB answer is stored in \code{cdb$res}. Any
+  problems on the R side are reportet in \code{cdb$error}
 }
 \references{
-%% ~put references to the literature/web site here ~
+
 }
 \author{
-%%  ~~who you are~~
+  wact.b.prot
+  thsteinbock@web.de
 }
 \note{
-%%  ~~further notes~~
+The convention for database naming should be implemented
 }
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{cdbRemoveDB}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (cdb) 
-{
-    if (cdb$error == "") {
-        if (cdb$newDBName == "") {
-            cdb$error <- "no cdb$newDBName given"
-            return(cdb)
-        }
-        else {
-            adrString <- paste("http://", cdb$serverName, ":", 
-                cdb$port, "/", cdb$newDBName, sep = "")
-            res <- getURLContent(adrString, .opts = list(customrequest = "PUT"))
-            cdb$res <- fromJSON(res)
-            cdb$DBName <- cdb$newDBName
-            return(cdb)
-        }
-    }
-    else {
-        print(cdb$error)
-        return(cdb)
-    }
-  }
+cdb <- cdbIni()
+cdb$newDBName <- "db5r"#!! #cdb$res[1]
+
+cdb <- cdbListDB(cdb)
+
+j <- match( cdb$newDBName, cdb$res, nomatch=0)
+
+if( j == 0 ){
+
+  cdb <- cdbMakeDB( cdb )
+  cdb$DBName <- cdb$newDBName
+
+} else{
+
+  cdb$DBName <- cdb$newDBName
+  cdb$newDBName <- ""
+
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+cdbListDB(cdb)$res
+}
+\keyword{ misc }
