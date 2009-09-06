@@ -1,57 +1,53 @@
-\name{cdbIni}
+\name{cdbGetUuids}
 \Rdversion{1.1}
-\alias{cdbIni}
+\alias{cdbGetUuids}
 
 \title{
-Ini function
+Function for id generation
 }
 \description{
-Function returns a list with some default settings
-}
-\usage{
-cdbIni()
+Function returns a 128bit uuid requested from CouchDB
 }
 
 \arguments{
-  \item{NULL}{ No arguments}
+   \item{cdb}{ Only the  connection settings \code{cdb$port} and
+     \code{cdb$serverName} is needed.
+}
 }
 \details{
-  The list:
-  \code{     cdb <- list(
-                serverName = "localhost",
-                port = "5984",
-                DBName="",
-                newDBName="",
-                id="",
-                rev="",
-                dataList=list(),
-                design="",
-                view="",
-                queryParam="",
-                date=toString( Sys.Date()),
-                error="",
-                res=""
-                )
-} is returned if the packages \code{library(RCurl)} and
-\code{library(RJSONIO)} are successfully loaded.
+Simple CouchDB API end point to http://serverName:port/_uuids. The
+   number N of ids received from a CouchDB can be increased by
+   \code{cdb$queryParam <- paste("count=", N, sep="")}.
+   For the moment the functions using ids can handle only N=1!
 }
 \value{
 
-  \item{cdb}{see details for the default settings of this function
+  \item{cdb }{The result of the request is stored in \code{cdb$id} after
+    converting the answer into a list using \code{fromJSON()}.
 }
+\references{
 
+  \link{  http://www.omegahat.org/RCurl/        }
+  \link{  http://www.omegahat.org/RJSONIO/      }
+  \link{  http://couchdb.apache.org/            }
+
+}
 \author{
-
   wact.b.prot
   thsteinbock@web.de
 }
-
-\seealso{
+\note{
 
 }
+
+
+
+\seealso{
+\code{cdbMakeDB}
+}
 \examples{
-d <- cdbIni()
-cdbListDB(d)$res
+cdb <- cdbIni()
+cdbGetUuids(cdb)$id
 }
 \keyword{ misc }
 
