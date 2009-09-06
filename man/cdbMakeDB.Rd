@@ -27,7 +27,7 @@ operations happen on the new created database.
   problems on the R side are reportet in \code{cdb$error}
 }
 \references{
-
+\link{  http://couchdb.apache.org/       }
 }
 \author{
   wact.b.prot
@@ -38,11 +38,12 @@ The convention for database naming should be implemented
 }
 
 \seealso{
-\code{cdbRemoveDB}, ~~~
+\code{cdbRemoveDB}
 }
 \examples{
 
 cdb <- cdbIni()
+
 cdb$newDBName <- "db5r"#!! #cdb$res[1]
 
 cdb <- cdbListDB(cdb)

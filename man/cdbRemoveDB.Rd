@@ -1,74 +1,71 @@
 \name{cdbRemoveDB}
 \Rdversion{1.1}
 \alias{cdbRemoveDB}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-%%  ~~function to do ... ~~
+Function removes a database
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Removing a database means sending a http "DELETE" request.
 }
 \usage{
 cdbRemoveDB(cdb)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
-  \item{cdb}{
-%%     ~~Describe \code{cdb} here~~
+
+  \item{cdb}{The \code{cdb} have to provide \code{cdb$serverName},
+  \code{cdb$port} and  \code{cdb$DBName}
 }
+
 }
+
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+  In \code{cdb} maybe a entry \code{cdb$delDBName} should be provided
+  for more explicit deleting respectively more secure removing.
+  }
+  \value{
+     \item{cdb}{The CouchDB answer is stored in \code{cdb$res}. Any
+  problems on the R side are reportet in \code{cdb$error}
+
 }
 \references{
-%% ~put references to the literature/web site here ~
+\link{  http://couchdb.apache.org/       }
 }
 \author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
+  wact.b.prot
+  thsteinbock@web.de
+  }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+  \seealso{
+\code{cdbMakeDB}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+cdb <- cdbIni()
 
-## The function is currently defined as
-function (cdb) 
-{
-    if (cdb$error == "") {
-        if (cdb$DBName == "") {
-            cdb$error <- "no  cdb$DBName to remove"
-            return(cdb)
-        }
-        else {
-            adrString <- paste("http://", cdb$serverName, ":", 
-                cdb$port, "/", cdb$DBName, sep = "")
-            res <- getURLContent(adrString, .opts = list(customrequest = "DELETE"))
-            cdb$res <- fromJSON(res)
-            return(cdb)
-        }
-    }
-    else {
-        return(cdb)
-    }
-  }
+cdb$newDBName <- "db5r"#!! #cdb$res[1]
+
+cdb <- cdbListDB(cdb)
+
+j <- match( cdb$newDBName, cdb$res, nomatch=0)
+
+if( j == 0 ){
+
+  cdb <- cdbMakeDB( cdb )
+  cdb$DBName <- cdb$newDBName
+
+} else{
+
+  cdb$DBName <- cdb$newDBName
+  cdb$newDBName <- ""
+
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+
+cdbListDB(cdb)$res
+
+## GTFO:
+cdbRemoveDB(cdb)
+
+
+}
+\keyword{ misc }
