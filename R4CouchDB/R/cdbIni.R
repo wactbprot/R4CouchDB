@@ -6,12 +6,11 @@ cdbIni <- function(){
 
   if(rc && rj){
 
-    ##  ccc would be better need a shorter name ...^-^
     cdb <- list(
                 serverName = "localhost",
                 port = "5984",
-                DBName="",
-                newDBName="",
+                DBName="r4couch_test_db",
+                newDBName="r4couch_test_db",
                 id="",
                 rev="",
                 dataList=list(),
@@ -22,42 +21,18 @@ cdbIni <- function(){
                 error="",
                 res=""
                 )
-
-    ##
-    ## using source() as long as a package
-    ## much more work ...
-    ## problem: only the structure named 'cdb'
-    ## is updated while calling the functions ...
-    ## solve: make local=TRUE and give always the
-    ## 'cdb' as return
-    ##
-    ## at this state I think it could be more ...
-    ## it is easy possible to _log_  calls and retuns of function calls
-    ## in a special couch !!!
-    ##
-    ##
-    ## forget loging for the moment
-    ## its just has to run ...
-
-    ## renaming jsonStruct to dataList
-
-    ## noOfUuids="1" can be replaced by ?count=1
-    ## it is a queryParam
-
-## source("cdbGetUuids.R"       ,local = TRUE)
-## source("cdbListDB.R"         ,local = TRUE)
-## source("cdbMakeDB.R"         ,local = TRUE)
-## source("cdbAddDoc.R"         ,local = TRUE)
-## source("cdbRemoveDB.R"       ,local = TRUE)
-## source("cdbGetDoc.R"         ,local = TRUE)
-## source("cdbUpdateDoc.R"      ,local = TRUE)
-## source("cdbGetView.R"        ,local = TRUE)
-
-    return( cdb )
-
+    cdb <- cdbRemoveDB( cdb )
+    cdb <- cdbMakeDB( cdb )
+    cdb$res <- ""
+    if(cdb$error == ""){
+      return( cdb )
+    } else {
+      cdb$error <- " can not make r4cuoch_test_db "
+      return( cdb )
+    }
   }else{
     eTxt <- paste("RCurl loaded: ",rc,"\n",
-                "RJSONIO loaded: ",rj)
+                  "RJSONIO loaded: ",rj)
     print( eTxt )
 
     cdb$error <- eTxt

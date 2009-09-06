@@ -18,7 +18,7 @@ cdbListDB(cdb)
 }
 }
 \details{
-Simple CouchDB API end point: \url{http://localhost:5984/_all_dbs}
+Simple CouchDB API end point: \link{http://serverName:port/_all_dbs}
 }
 \value{
 
@@ -28,9 +28,9 @@ Simple CouchDB API end point: \url{http://localhost:5984/_all_dbs}
   }
 \references{
 
-  \url{  http://www.omegahat.org/RCurl/        }
-  \url{  http://www.omegahat.org/RJSONIO/      }
-  \url{  http://couchdb.apache.org/            }
+  \link{  http://www.omegahat.org/RCurl/        }
+  \link{  http://www.omegahat.org/RJSONIO/      }
+  \link{  http://couchdb.apache.org/            }
 
 }
 \author{

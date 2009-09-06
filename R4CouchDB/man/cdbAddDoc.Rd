@@ -39,9 +39,11 @@ This function is called addDoc (which means add a new
 \examples{
 
 cdb <- cdbIni()
-cdb$newDBName <- "db5r"
-cdb <- cdbMakeDB(cdb)
-cdbAddDoc(cdb)$res
+
+## a simple list:
+cdb$dataList <- list(a=rnorm(10))
+
+cdb <- cdbAddDoc(cdb)
 
 }
 \keyword{ misc }

@@ -27,10 +27,10 @@ cdbRemoveDB(cdb)
   \value{
      \item{cdb}{The CouchDB answer is stored in \code{cdb$res}. Any
   problems on the R side are reportet in \code{cdb$error}
-}
+
 }
 \references{
-\url{  http://couchdb.apache.org/       }
+\link{  http://couchdb.apache.org/       }
 }
 \author{
   wact.b.prot
@@ -43,7 +43,7 @@ cdbRemoveDB(cdb)
 \examples{
 cdb <- cdbIni()
 
-cdb$newDBName <- "db4r"
+cdb$newDBName <- "db5r"#!! #cdb$res[1]
 
 cdb <- cdbListDB(cdb)
 

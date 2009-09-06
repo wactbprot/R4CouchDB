@@ -6,8 +6,8 @@ cdbListDB <- function(cdb){
                        cdb$port, "/_all_dbs",
                        sep="")
 
-    res <- fromJSON(getURLContent(adrString))
-    cdb$res <- res
+    res <- getURLContent(adrString)
+    cdb$res <- fromJSON(res)
     return( cdb )
   }else{
     print(cdb$error)

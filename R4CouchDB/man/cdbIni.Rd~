@@ -12,13 +12,16 @@ Function returns a list with some default settings
 cdbIni()
 }
 
+\arguments{
+  \item{NULL}{ No arguments}
+}
 \details{
   The list:
   \code{     cdb <- list(
                 serverName = "localhost",
                 port = "5984",
                 DBName="",
-                newDBName="r4couch_test_db",
+                newDBName="",
                 id="",
                 rev="",
                 dataList=list(),
@@ -36,7 +39,7 @@ cdbIni()
 
   \item{cdb}{see details for the default settings of this function
 }
-}
+
 \author{
 
   wact.b.prot

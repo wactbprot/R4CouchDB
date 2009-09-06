@@ -1,0 +1,13 @@
+Package: R4CouchDB
+Type: Package
+Title: Collection of R functions for CouchDB access
+Version: 0.1
+Date: 2009/08/29
+Author: wact.b.prot
+Maintainer: <thsteinbock@web.de>
+Description: The R4CouchDB package provides a collection of functions for
+             basic database and document management operations such as add  and
+             delete. Every cdbFunction gets and emits a list containing the
+             connection set up.
+License: BSD
+LazyLoad: yes

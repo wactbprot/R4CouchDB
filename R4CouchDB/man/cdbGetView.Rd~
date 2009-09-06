@@ -34,10 +34,10 @@ be provided in \code{cdb$queryParam}
 }
 \references{
 
-\url{  http://www.omegahat.org/RCurl/        }
-\url{  http://www.omegahat.org/RJSONIO/      }
-\url{  http://couchdb.apache.org/            }
-\url{  http://www.omegahat.org/RJavaScript/  }
+\link{  http://www.omegahat.org/RCurl/        }
+\link{  http://www.omegahat.org/RJSONIO/      }
+\link{  http://couchdb.apache.org/            }
+\link{  http://www.omegahat.org/RJavaScript/  }
 }
 \author{
   wact.b.prot
@@ -53,14 +53,13 @@ without leaving R.
 
 }
 \examples{
-## Not run:
+
 ## If:
 ## function(doc) {
 ##  emit(null, doc._id);
 ## }
 ## is stored under design: test, view: id
 ## in the database db5r
-
 cdb <- cdbIni()
 cdb$DBName <- "db5r"
 cdb$design <- "test"

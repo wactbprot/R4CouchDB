@@ -31,8 +31,8 @@ cdbGetDoc(cdb)
   }
 \references{
 
-\url{  http://couchdb.apache.org/            }
-\url{  http://www.omegahat.org/  }
+\link{  http://couchdb.apache.org/            }
+\link{  http://www.omegahat.org/  }
 
 }
 \author{
@@ -44,8 +44,16 @@ cdbGetDoc(cdb)
 \code{cdbAddDoc()}
 }
 \examples{
-cdb <- cdbIni()
 
+## If:
+## function(doc)
+##  emit(null, doc._id);
+## is stored under design: test, view: id
+## in the database db5r
+
+cdb <- cdbIni()
+cdb$newDBName <- "db5r"
+cdb <- cdbMakeDB(cdb)
 cdb <- cdbAddDoc(cdb)
 cdb$id
 cdbGetDoc( cdb )

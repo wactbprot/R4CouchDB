@@ -28,7 +28,7 @@ operations happen on the new created database.
 }
 }
 \references{
-\url{  http://couchdb.apache.org/       }
+\link{  http://couchdb.apache.org/       }
 }
 \author{
   wact.b.prot
@@ -45,10 +45,23 @@ The convention for database naming should be implemented
 
 cdb <- cdbIni()
 
-cdb$newDBName <- cdbGetUuids( cdb )$id
-cdb <- cdbMakeDB(cdb)
-cdbListDB(cdb)
-cdbRemoveDB(cdb)
+cdb$newDBName <- "db5r"#!! #cdb$res[1]
 
+cdb <- cdbListDB(cdb)
+
+j <- match( cdb$newDBName, cdb$res, nomatch=0)
+
+if( j == 0 ){
+
+  cdb <- cdbMakeDB( cdb )
+  cdb$DBName <- cdb$newDBName
+
+} else{
+
+  cdb$DBName <- cdb$newDBName
+  cdb$newDBName <- ""
+
+}
+cdbListDB(cdb)$res
 }
 \keyword{ misc }
