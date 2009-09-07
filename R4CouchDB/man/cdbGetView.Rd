@@ -66,7 +66,7 @@ cdb$DBName <- "db5r"
 cdb$design <- "test"
 cdb$view <- "id"
 
-cdbGetView(cdb)$res
+## cdbGetView(cdb)$res
 
 }
 \keyword{ misc }
