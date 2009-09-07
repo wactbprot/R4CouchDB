@@ -15,7 +15,7 @@ cdbAddDoc(cdb)
 
 \arguments{
   \item{cdb}{The list \code{cdb} only has to contain a
-  \code{cdb$dataList} which is not an empty string.
+  \code{cdb$dataList} which is not an empty \code{list()}.
 }
 }
 \details{
