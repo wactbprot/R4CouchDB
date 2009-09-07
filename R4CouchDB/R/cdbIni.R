@@ -27,7 +27,7 @@ cdbIni <- function(){
     if(cdb$error == ""){
       return( cdb )
     } else {
-      cdb$error <- " can not make r4cuoch_test_db "
+      cdb$error <- " can not make r4couch_test_db "
       return( cdb )
     }
   }else{
