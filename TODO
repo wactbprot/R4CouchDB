@@ -11,6 +11,8 @@
   at least a $queryParam
 -- done
 
+- localhost is mostly not the right server; maybe it's a good idea to set a
+  enviroment var
 
 +++ after this is done I make a R package structure!
 
