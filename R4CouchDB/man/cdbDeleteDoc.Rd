@@ -1,15 +1,15 @@
-\name{cdbGetDoc}
+\name{cdbDeleteDoc}
 \Rdversion{1.1}
-\alias{cdbGetDoc}
+\alias{cdbDeleteDoc}
 
 \title{
-Get a doc from CouchDB
+Delete a doc from CouchDB
 }
 \description{
   With a given \code{cdb$id} this function requests the document.
 }
 \usage{
-cdbGetDoc(cdb)
+cdbDeleteDoc(cdb)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -22,11 +22,8 @@ cdbGetDoc(cdb)
 }
 \value{
 
-  \item{cdb }{The result of the request is stored in \code{cdb$res} after
-    converting the answer into a list using \code{fromJSON()}. If a list
-    entry  needed in \code{cdb} is not provided \code{cdb$error}
-    gives some information.
-
+  \item{cdb }{The result of the delete request is stored in
+    \code{cdb$res}.
   }
   }
 \references{
@@ -48,7 +45,7 @@ cdb <- cdbIni()
 
 cdb <- cdbAddDoc(cdb)
 cdb$id
-cdbGetDoc( cdb )
+cdbDeleteDoc( cdb )
 
 }
 \keyword{ misc }
