@@ -15,7 +15,7 @@ cdbGetUuids <- function(cdb){
                        queryString,
                        sep="")
 
-    res <- getURLContent(adrString)
+    res <- getURL(adrString)
     cdb$id <- fromJSON(res)$uuids
 
     return( cdb )
