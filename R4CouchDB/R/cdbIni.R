@@ -7,10 +7,10 @@ cdbIni <- function(){
   if(rc && rj){
 
     cdb <- list(
-                serverName = "localhost",
+                serverName = "",
                 port = "5984",
-                DBName="r4couch_test_db",
-                newDBName="r4couch_test_db",
+                DBName="",
+                newDBName="",
                 id="",
                 rev="",
                 dataList=list(),
@@ -21,9 +21,6 @@ cdbIni <- function(){
                 error="",
                 res=""
                 )
-    cdb <- cdbRemoveDB( cdb )
-    cdb <- cdbMakeDB( cdb )
-    cdb$res <- ""
     if(cdb$error == ""){
       return( cdb )
     } else {
