@@ -6,6 +6,12 @@ cdbUpdateDoc <- function( cdb){
                        sep=" ")
   }
 
+  if( cdb$serverName == ""){
+    cdb$error <- paste(cdb$error,
+                       " no cdb$serverName given ",
+                       sep=" ")
+  }
+
   if( cdb$rev == ""){
     cdb <- cdbGetDoc(cdb)
     cdb$rev <- cdb$res$'_rev'
