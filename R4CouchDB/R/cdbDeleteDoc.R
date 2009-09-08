@@ -1,4 +1,4 @@
-cdbGetDoc <- function( cdb){
+cdbDeleteDoc <- function( cdb){
 
   if( cdb$id == ""){
     cdb$error <- "no cdb$id given"
