@@ -3,6 +3,10 @@ cdbAddDoc <- function( cdb){
   ## always fresh id!
   ## (because this function is called addDoc)
 
+  if(cdb$serverName == ""){
+    cdb$error <- paste(cdb$error," no cdb$serverName given")
+  }
+
   if(cdb$DBName ==""){
     cdb$error <- paste(cdb$error, " no cdb$DBName given ", sep=" ")
   }
