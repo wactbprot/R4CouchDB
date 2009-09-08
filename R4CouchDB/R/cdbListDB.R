@@ -1,7 +1,7 @@
 cdbListDB <- function(cdb){
  
  if(cdb$serverName == ""){
-    cdb$error <- " no cdb$serverName given"
+    cdb$error <- paste(cdb$error," no cdb$serverName given")
   }
   if(cdb$error == ""){
     adrString <- paste("http://",
