@@ -20,8 +20,21 @@ License: \tab BSD\cr
 LazyLoad: \tab yes\cr
 }
 Every \code{cdbFunction()} gets and emits a list containing the connection
-set up. The result of the request is stored in the \code{lists$res} This list is initialy provided using the cdbIni() function.
-The http connection and the json transformations are done with Duncan
+set up. Internally this \code{list()} is called \code{cdb}. The result
+of  requests, the CouchDB answers are stored in the
+\code{cdb$res}.
+
+The function \code{cdbIni()} initially provides
+\code{cdb}. However \code{a <- list(serverName="localhost",
+  port="5984")} is sufficient for calling \code{cdbGetUuids(a)}.
+
+The Rd-\code{\examples{}} in this package are a kind of fake. Every
+function tests the needed list entries before request execution. Since
+it is not possible to provide a default \code{cdb$serverName} all
+function calls in the example- sections set a \code{cdb$error <- "no
+  cdb$serverName"}, no http- request is executed.
+
+  The http connection and the json transformations are done with Duncan
 Temple Langs RCurl and RJSON.
 }
 \author{
@@ -38,11 +51,12 @@ Maintainer: thsteinbock@web.de
 \seealso{
 }
 \examples{
-## get the default setup
+## get the list structure
 cdb <- cdbIni()
-## it includes:
+## this structure includes:
 cdb
+## the command
 cdb <- cdbListDB(cdb)
-## localhost contains the following DB(s)
-cdb$res
+## yields
+cdb$error
 }
