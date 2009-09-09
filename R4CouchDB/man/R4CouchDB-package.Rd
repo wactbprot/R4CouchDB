@@ -28,7 +28,7 @@ The function \code{cdbIni()} initially provides
 \code{cdb}. However \code{a <- list(serverName="localhost",
   port="5984")} is sufficient for calling \code{cdbGetUuids(a)}.
 
-The Rd-\code{\examples{}} in this package are a kind of fake. Every
+The Rd-examples in this package are a kind of fake. Every
 function tests the needed list entries before request execution. Since
 it is not possible to provide a default \code{cdb$serverName} all
 function calls in the example- sections set a \code{cdb$error <- "no

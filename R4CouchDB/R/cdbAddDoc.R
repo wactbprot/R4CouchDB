@@ -1,7 +1,5 @@
 cdbAddDoc <- function( cdb){
 
-  ## always fresh id!
-  ## (because this function is called addDoc)
 
   if(cdb$serverName == ""){
     cdb$error <- paste(cdb$error," no cdb$serverName given")
@@ -15,24 +13,41 @@ cdbAddDoc <- function( cdb){
     cdb$error <- paste(cdb$error, " no cdb$dataList given ", sep=" ")
   }
 
+  if(cdb$id == ""){
+
     cdb$queryParam <- "count=1"
     cdb <- cdbGetUuids(cdb)
 
+  }else{
+
+
+
+    if(is.null(cdbGetDoc( cdb )$res$'_id')){
+
+      cdb$error <- paste(cdb$error, " doc with cdb$id ",
+                         cdb$id,
+                         " in revision ",
+                         alreadyExists$'_rev',
+                         " already exists ",
+                         sep=" ")
+      return(cdb)
+    }
+  }
 
   if( cdb$error =="" ){
 
     adrString <- paste("http://",
                        cdb$serverName,":",
                        cdb$port,"/",
-                       cdb$DBName,"/",
-                       cdb$id,
-                       sep="")
+                         cdb$DBName,"/",
+                         cdb$id,
+                         sep="")
 
     data <- toJSON(cdb$dataList)
 
-    header <- list('Content-Type' = 'application/json')
+      header <- list('Content-Type' = 'application/json')
 
-    reader <- basicTextGatherer()
+      reader <- basicTextGatherer()
 
     res <- getURLContent(customrequest = "PUT",
                          url = adrString,
