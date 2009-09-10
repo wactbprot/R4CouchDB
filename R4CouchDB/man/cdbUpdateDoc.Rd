@@ -3,10 +3,12 @@
 \alias{cdbUpdateDoc}
 
 \title{
-cdbUpdateDoc update an existing doc at an existing CouchDB.
+This function  updates an existing doc. This
+essentially means that a revision, corresponding to the '_id'
+has to be provided (in what way ever).
 }
 \description{
-Updating a doc at couchdb means executing a http "PUT" request. The cdb
+Updating a doc at couchdb means executing a http "PUT" request. The  \code{cdb}
 list must contain the \code{cdb$serverName}, \code{cdb$port},
     \code{cdb$DBName}, \code{cdb$id}. If
 the \code{cdb$rev} is not given the function uses \code{cdbGetDoc()} to receive the
@@ -18,20 +20,20 @@ cdbUpdateDoc(cdb)
 
 \arguments{
   \item{cdb}{
-the cdb connection config list must contain the \code{cdb$serverName},
+the cdb connection configuration list must contain the \code{cdb$serverName},
   \code{cdb$port},  \code{cdb$DBName} and  \code{cdb$id}. The data which
   updates the data stored in the doc is provided in \code{cdb$dataList}
 }
 }
 \details{
-  getURLContent() with customrequest = "PUT" makes the work.
+  \code{getURLContent()} with \code{customrequest = "PUT"} does the work.
 
 }
 \value{
-  \item{cdb }{The result of the request is stored in cdb$res after
-    converting the json answer into a list using fromJSON(). If a needed
-    cdb list entry was not provided cdb$error says somthing about the R
-    side
+  \item{cdb }{The result of the request is stored in \code{cdb$res} after
+    converting the answer by means of  \code{fromJSON()}. If a needed
+    \code{cdb$} list entry is not provided \code{cdb$error} maybe says
+    something about the R  side.
   }
 
 

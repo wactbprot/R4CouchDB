@@ -18,8 +18,8 @@ cdbMakeDB(cdb)
 }
 }
 \details{
-The work is done by \code{getURLContent()}. After creating the new DB
-one should short cut \code{cdb$DBName <- cdb$newDBName} so that further
+The work is done by \code{getURLContent()}. After creating the new database
+the function makes the shortcut \code{cdb$DBName <- cdb$newDBName} so that further
 operations happen on the new created database.
 }
 \value{
@@ -35,7 +35,7 @@ operations happen on the new created database.
   thsteinbock@web.de
 }
 \note{
-The convention for database naming should be implemented
+The convention for database naming should be implemented.
 }
 
 \seealso{

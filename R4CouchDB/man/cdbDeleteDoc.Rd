@@ -3,7 +3,7 @@
 \alias{cdbDeleteDoc}
 
 \title{
-Delete a doc from CouchDB
+Deletes a document from a database
 }
 \description{
   With a given \code{cdb$id} this function requests the document.
@@ -15,9 +15,7 @@ cdbDeleteDoc(cdb)
 \arguments{
   \item{cdb}{Beside \code{cdb$serverName}, \code{cdb$port} and
     \code{cdb$DBName} the \code{cdb$id} must be given. R errors are
-    reported
-
-    in cdb$errors
+    reported    in \code{cdb$errors}
 }
 }
 \value{

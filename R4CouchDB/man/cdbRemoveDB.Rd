@@ -3,10 +3,11 @@
 \alias{cdbRemoveDB}
 
 \title{
-Function removes a database
+Function to remove a database.
 }
 \description{
-Removing a database means sending a http "DELETE" request.
+Removing a database means sending a http- "DELETE"- request to
+\code{http://cdb$serverName:cdb$port/ ...}
 }
 \usage{
 cdbRemoveDB(cdb)
@@ -14,7 +15,7 @@ cdbRemoveDB(cdb)
 
 \arguments{
 
-  \item{cdb}{The \code{cdb} have to provide \code{cdb$serverName},
+  \item{cdb}{The \code{cdb} has to provide \code{cdb$serverName},
   \code{cdb$port} and  \code{cdb$DBName}
 }
 
@@ -63,7 +64,7 @@ if( j == 0 ){
 
 cdbListDB(cdb)$res
 
-## GTFO:
+## GTFO  "db4r":
 cdbRemoveDB(cdb)
 
 

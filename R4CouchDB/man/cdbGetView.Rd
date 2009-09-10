@@ -20,14 +20,14 @@ cdbGetView(cdb)
 }
 }
 \details{
-Querry params e.g. \code{"reduce=false"} or  \code{"group_level=1"} can
+Query params e.g. \code{"reduce=false"} or  \code{"group_level=1"} can
 be provided in \code{cdb$queryParam}
 }
 \value{
 
   \item{cdb }{The result of the request is stored in cdb$res after
     converting the json answer into a list using fromJSON(). If a needed
-    cdb list entry was not provided cdb$error says somthing about the R
+    cdb list entry was not provided cdb$error says something about the R
     side
 
     }

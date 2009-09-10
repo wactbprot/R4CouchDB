@@ -15,10 +15,10 @@ cdbIni()
 \details{
   The list:
   \code{     cdb <- list(
-                serverName = "localhost",
+                serverName = "",
                 port = "5984",
                 DBName="",
-                newDBName="r4couch_test_db",
+                newDBName="",
                 id="",
                 rev="",
                 dataList=list(),
