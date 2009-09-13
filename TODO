@@ -13,11 +13,20 @@
 
 - localhost is mostly not the right server; maybe it's a good idea to set a
   enviroment var
+-- bypass all functions by giving no serverName
+--- done
+
+- before returning the list the answer should be more evaluated
+- try/catch for all curl calls
 
 +++ after this is done I make a R package structure!
+++++ done
 
 - a function cdbDelDoc is missing
-- before returning the list the answer should be more evaluated
+-- the function is called cdbDeletDoc
+--- done
 
 - replication?
 - writing Tests -> RUnit package provides infrastructure
+- sending _design/_/_view/_ by means of Duncans RJavascript 
+   http://www.omegahat.org/RJavaScript/outline.html
