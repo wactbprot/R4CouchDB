@@ -7,6 +7,9 @@
 -- done, but without params as ..?group=true
 --- done
 
+- sending _design/_/_view/_ by means of Duncans RJavascript
+   http://www.omegahat.org/RJavaScript/outline.html
+
 - post and update files
 -- postFile done
 
@@ -22,17 +25,21 @@
   environment var
 -- I think a better idea is to use the R CMD check procedure as a kind of unit
   test (see package notes in package Rd file)
+--- bypass all functions by giving no serverName
+---- done
 
 - The convention for database naming should be implemented.
 -- any API convention should be implemented
+
+- before returning the list the answer should be more evaluated
+-- try/catch for all curl calls
+
 
 +++ after this is done I make a R package structure!
 ++++ done
 
 - a function cdbDelDoc is missing
--- done (but not  testet well)
-
-
+-- the function is called cdbDeletDoc
+--- done (but not  testet well)
 
 - replication?
-
