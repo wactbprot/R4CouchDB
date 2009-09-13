@@ -1,23 +1,38 @@
+- writing Tests -> RUnit package provides infrastructure
+-- thist should be the next step
+
+- before returning the list the answer should be more evaluated
+
 - function for view requests
 -- done, but without params as ..?group=true
 --- done
 
 - post and update files
 -- postFile done
+
 -- skip postFile and updateFile out; this makes no sense
    since everyone knows best (better) how to handle with specific
    files resp. file structures ...
+
 - give more consequent names to cdb list entry's, e.g. $noOfUuids is
   at least a $queryParam
 -- done
 
 - localhost is mostly not the right server; maybe it's a good idea to set a
-  enviroment var
+  environment var
+-- I think a better idea is to use the R CMD check procedure as a kind of unit
+  test (see package notes in package Rd file)
+
+- The convention for database naming should be implemented.
+-- any API convention should be implemented
 
 +++ after this is done I make a R package structure!
+++++ done
 
 - a function cdbDelDoc is missing
-- before returning the list the answer should be more evaluated
+-- done (but not  testet well)
+
+
 
 - replication?
-- writing Tests -> RUnit package provides infrastructure
+
