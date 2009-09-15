@@ -5,15 +5,22 @@ cdbDeleteDoc <- function( cdb){
     return( cdb)
   }else{
 
+    cdb <- cdbGetDoc(cdb)
+    cdb$rev <- cdb$res$'_rev'
+
+
     adrString <- paste("http://",
                        cdb$serverName,":",
                        cdb$port,"/",
                        cdb$DBName,"/",
                        cdb$id,
+                       "?rev=",
+                       cdb$rev,
                        sep="")
 
-    res <- getURLContent(customrequest = "DELETE",
-                         url = adrString)
+    res <-  getURL(
+                   adrString ,.opts = list(customrequest = "DELETE")
+                   )
 
     cdb$res <- fromJSON(res)
 
