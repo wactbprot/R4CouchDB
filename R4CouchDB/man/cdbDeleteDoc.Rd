@@ -6,7 +6,8 @@
 Deletes a document from a database
 }
 \description{
-  With a given \code{cdb$id} this function requests the document.
+  With a given \code{cdb$id} this function sends a http \code{"DELETE"}
+  request to the url \code{.../cdb$id?rev=cdb$rev}.
 }
 \usage{
 cdbDeleteDoc(cdb)
@@ -21,7 +22,7 @@ cdbDeleteDoc(cdb)
 \value{
 
   \item{cdb }{The result of the delete request is stored in
-    \code{cdb$res}.
+    \code{cdb$res}(whatever this means).
   }
   }
 \references{

@@ -1,9 +1,19 @@
 cdbDeleteDoc <- function( cdb){
 
+  if(cdb$serverName == ""){
+    cdb$error <- paste(cdb$error," no cdb$serverName given")
+  }
+
+  if(cdb$DBName ==""){
+    cdb$error <- paste(cdb$error, " no cdb$DBName given ", sep=" ")
+  }
+
   if( cdb$id == ""){
     cdb$error <- "no cdb$id given"
     return( cdb)
-  }else{
+  }
+
+  if(cdb$error == ""){
 
     cdb <- cdbGetDoc(cdb)
     cdb$rev <- cdb$res$'_rev'
