@@ -1,0 +1,5 @@
+test.cdbDeleteDoc <- function(){
+
+
+
+}
