@@ -1,8 +1,12 @@
 library(RUnit)
-library(R4CouchDB)
+## library(R4CouchDB)
+
+srcPath <- "../R4CouchDB/R/"
+fn <- list.files(srcPath, pattern="R$")
+for (k in 1:length(fn)) source(paste(srcPath,fn[k],sep=""))
 
 logPath <- "../log/"
-if(FALSE){
+if(TRUE){
 testSuite.cdb <- defineTestSuite("R4CouchDB test suite", dirs=".",
                                  testFileRegexp="^runit.+\.[rR]$",
                                  testFuncRegexp="^test.+",
@@ -42,15 +46,15 @@ ccc <- inspect(
                , track = track)
 ccc$res
 
-ccc$queryParam <- "count=2"
+ccc$queryParam <- "count=1"
 ccc <- inspect(
                cdbGetUuids(ccc)
                ,track = track)
 ## ccc has got the uuid in ccc$id
 ## make a test DB named saveId
 
-ccc$newDBName <- ccc$id[1]
-ccc$id <- ccc$id[2]
+ccc$newDBName <- "runit_test_db"
+
 
 ccc <- inspect(
                cdbMakeDB(ccc)
@@ -64,6 +68,15 @@ ccc <- inspect(
                cdbAddDoc(ccc)
                ,track = track)
 
+ccc$dataList <- list(ccc$dataList, normalDistRand =  rnorm(20))
+
+ccc <- inspect(
+               cdbUpdateDoc(ccc)
+               ,track = track)
+
+ccc <- inspect(
+               cdbRemoveDB(ccc)
+               ,track = track)
 
 
 

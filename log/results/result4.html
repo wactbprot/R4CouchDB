@@ -27,57 +27,57 @@ Runs: <b>1</b>
 <td bgcolor="#D00000">0</td>
 </tr>
 <tr><td bgcolor="#00D000">2</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;if (cdb$error == "") {</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;if (cdb$serverName == "") {</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#00D000">3</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;if (cdb$newDBName == "") {</td>
-<td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0</td>
+<tr><td bgcolor="#D00000">3</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$error <- paste(cdb$error, " no cdb$serverName given")</td>
+<td bgcolor="#D00000">0</td>
+<td bgcolor="#D00000">0</td>
 </tr>
 <tr><td bgcolor="#D00000">4</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$error <- "no cdb$newDBName given"</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">5</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
+<tr><td bgcolor="#00D000">5</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;if (cdb$newDBName == "") {</td>
+<td bgcolor="#00D000">1</td>
+<td bgcolor="#00D000">0</td>
 </tr>
 <tr><td bgcolor="#D00000">6</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$error <- paste(cdb$error, " no cdb$newDBName given ")</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
 <tr><td bgcolor="#D00000">7</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;else {</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#00D000">8</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;adrString <- paste("http://", cdb$serverName, ":", cdb$port, "/", cdb$newDBName, sep = "")</td>
-<td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0</td>
+<tr><td bgcolor="#D00000">8</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;else {</td>
+<td bgcolor="#D00000">0</td>
+<td bgcolor="#D00000">0</td>
 </tr>
 <tr><td bgcolor="#00D000">9</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;res <- getURLContent(adrString, .opts = list(customrequest = "PUT"))</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;DBNames <- cdbListDB(cdb)$res</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
 <tr><td bgcolor="#00D000">10</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$res <- fromJSON(res)</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;DBexists <- which(DBNames == cdb$newDBName)</td>
 <td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0.03</td>
+<td bgcolor="#00D000">0.02</td>
 </tr>
 <tr><td bgcolor="#00D000">11</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$DBName <- cdb$newDBName</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;if (length(DBexists) > 0) {</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
 <tr><td bgcolor="#00D000">12</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$error <- paste(cdb$error, " cdb$newDBName already exists ")</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
@@ -91,27 +91,62 @@ Runs: <b>1</b>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">15</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;else {</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
+<tr><td bgcolor="#00D000">15</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;if (cdb$error == "") {</td>
+<td bgcolor="#00D000">1</td>
+<td bgcolor="#00D000">0</td>
 </tr>
 <tr><td bgcolor="#D00000">16</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;print(cdb$error)</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;adrString <- paste("http://", cdb$serverName, ":", cdb$port, "/", cdb$newDBName, sep = "")</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
 <tr><td bgcolor="#D00000">17</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;res <- getURLContent(adrString, .opts = list(customrequest = "PUT"))</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
 <tr><td bgcolor="#D00000">18</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$res <- fromJSON(res)</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
 <tr><td bgcolor="#D00000">19</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$DBName <- cdb$newDBName</td>
+<td bgcolor="#D00000">0</td>
+<td bgcolor="#D00000">0</td>
+</tr>
+<tr><td bgcolor="#D00000">20</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
+<td bgcolor="#D00000">0</td>
+<td bgcolor="#D00000">0</td>
+</tr>
+<tr><td bgcolor="#D00000">21</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
+<td bgcolor="#D00000">0</td>
+<td bgcolor="#D00000">0</td>
+</tr>
+<tr><td bgcolor="#D00000">22</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;else {</td>
+<td bgcolor="#D00000">0</td>
+<td bgcolor="#D00000">0</td>
+</tr>
+<tr><td bgcolor="#00D000">23</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;print(cdb$error)</td>
+<td bgcolor="#00D000">1</td>
+<td bgcolor="#00D000">0</td>
+</tr>
+<tr><td bgcolor="#00D000">24</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
+<td bgcolor="#00D000">1</td>
+<td bgcolor="#00D000">0</td>
+</tr>
+<tr><td bgcolor="#D00000">25</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
+<td bgcolor="#D00000">0</td>
+<td bgcolor="#D00000">0</td>
+</tr>
+<tr><td bgcolor="#D00000">26</td>
 <td bgcolor="#D00000">}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
@@ -127,5 +162,5 @@ Runs: <b>1</b>
 <td align="right"><a href="./con4.html">graph</a></td></tr>
 </table>
 <hr>
-RUnit  0.4.19 2009-09-20 12:59:00</body>
+RUnit  0.4.19 2009-09-20 17:15:04</body>
 </html>

@@ -1,0 +1,44 @@
+library(RUnit)
+library(R4CouchDB)
+
+logPath <- "../log/"
+
+testSuite.cdb <- defineTestSuite("R4CouchDB test suite", dirs=".",
+                                 testFileRegexp="^runit.+\.[rR]$",
+                                 testFuncRegexp="^test.+", rngKind="Marsaglia-Multicarry", rngNormalKind="Kinderman-Ramage")
+testResults <- runTestSuite(
+                            testSuite.cdb
+                            )
+printHTMLProtocol(testResults,
+                  fileName=paste(logPath,"cdb.check.html", sep="")
+                  )
+
+## initialize code inspection:
+
+track <- tracker()
+track$init()
+
+
+## example section with code inspection
+###  as an example session for R4CouchDB ---> marked lines
+### between inspect(
+### --->             cdbIni()
+###                ,track = track)
+### can be taken. the Result of the inspect function should be the
+### normal cdbFunction output
+
+
+
+ccc <- inspect(
+               cdbIni()
+               , track = track)
+
+ccc$serverName <- "localhost"
+
+ccc <- inspect(
+               cdbListDB(ccc)
+               , track = track)
+ccc$res
+
+resTrack <- track$getTrackInfo()
+printHTML.trackInfo(resTrack, baseDir=logPath)

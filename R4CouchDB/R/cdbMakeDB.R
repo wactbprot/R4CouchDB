@@ -1,15 +1,25 @@
 cdbMakeDB <- function(cdb){
 
   ## write test functions!
-  if( cdb$error == ""){
+  if(cdb$serverName == ""){
+    cdb$error <- paste(cdb$error," no cdb$serverName given")
+  }
 
-    if(cdb$newDBName == ""){
+  if(cdb$newDBName == ""){
+    cdb$error <- paste(cdb$error," no cdb$newDBName given ")
+  }else{
 
-      cdb$error <- "no cdb$newDBName given"
+    DBNames <- cdbListDB(cdb)$res
+    DBexists <- which(DBNames == cdb$newDBName)
 
-      return( cdb)
+    if(length(DBexists) > 0){
 
-    }else{
+      cdb$error <- paste(cdb$error," cdb$newDBName already exists ")
+
+    }
+  }
+
+  if(cdb$error == ""){
 
       adrString <- paste("http://",
                          cdb$serverName,":",
@@ -23,10 +33,10 @@ cdbMakeDB <- function(cdb){
       ## newDB is generated it's now no longer a new one
       cdb$DBName <- cdb$newDBName
       return( cdb )
+
+    }else{
+      print( cdb$error )
+      return( cdb )
     }
-  }
-  else{
-    print( cdb$error )
-    return( cdb )
-  }
+
 }
