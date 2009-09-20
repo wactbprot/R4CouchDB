@@ -20,15 +20,10 @@ cdbAddDoc <- function( cdb){
 
   }else{
 
+    if(!(is.null(cdbGetDoc( cdb )$res$'_id'))){
 
-
-    if(is.null(cdbGetDoc( cdb )$res$'_id')){
-
-      cdb$error <- paste(cdb$error, " doc with cdb$id ",
-                         cdb$id,
-                         " in revision ",
-                         alreadyExists$'_rev',
-                         " already exists ",
+      cdb$error <- paste(cdb$error, " doc with cdb$id: ",
+                         cdb$id, " already exists ",
                          sep=" ")
       return(cdb)
     }

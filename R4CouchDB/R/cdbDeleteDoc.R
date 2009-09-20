@@ -18,6 +18,8 @@ cdbDeleteDoc <- function( cdb){
     cdb <- cdbGetDoc(cdb)
     cdb$rev <- cdb$res$'_rev'
 
+    ## it's important to say which
+    ## revision should be deleted
 
     adrString <- paste("http://",
                        cdb$serverName,":",
