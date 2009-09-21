@@ -1,25 +1,45 @@
 cdbRemoveDB <- function(cdb){
-  if( cdb$error == ""){
 
-    if(cdb$DBName == ""){
+  if(cdb$serverName == ""){
+    cdb$error <- paste(cdb$error," no cdb$serverName given")
+  }
 
-      cdb$error <- "no  cdb$DBName to remove"
-      return(cdb)
-    }else{
+  if(cdb$removeDBName == ""){
+    cdb$error <- paste(cdb$error, "no cdb$removeDBName given")
+  }else{
 
-      adrString <- paste("http://",
-                         cdb$serverName,":",
-                         cdb$port,"/",
-                         cdb$DBName,
-                         sep="")
+    DBNames <- cdbListDB(cdb)$res
+    DBexists <- which(DBNames == cdb$removeDBName)
 
-      res <- getURLContent(adrString, .opts = list(customrequest = "DELETE"))
-      cdb$res <- fromJSON(res)
-      cdb$DBName <- ""
-      return( cdb )
+    if(length(DBexists) == 0){
+
+      cdb$error <- paste(cdb$error,
+                         " there is no cdb$removeDBName  to delete")
 
     }
-  }else{
-    return(cdb)
   }
+
+  if( cdb$error == ""){
+
+    adrString <- paste("http://",
+                       cdb$serverName,":",
+                       cdb$port,"/",
+                       cdb$removeDBName,
+                       sep="")
+
+    res <- getURLContent(adrString,
+                         .opts = list(customrequest = "DELETE")
+                         )
+
+    cdb$res <- fromJSON(res)
+
+    ## the DB should be history
+    cdb$removeDBName <- ""
+      return( cdb )
+
+
+  }else{
+      print(cdb$error)
+      return(cdb)
+    }
 }

@@ -11,6 +11,7 @@ cdbIni <- function(){
                 port = "5984",
                 DBName="",
                 newDBName="",
+                removeDBName="",
                 id="",
                 rev="",
                 dataList=list(),
