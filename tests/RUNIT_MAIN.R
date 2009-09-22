@@ -1,9 +1,11 @@
 library(RUnit)
 ## library(R4CouchDB)
 
+## loading the src files here ...
 srcPath <- "../R4CouchDB/R/"
 fn <- list.files(srcPath, pattern="R$")
 for (k in 1:length(fn)) source(paste(srcPath,fn[k],sep=""))
+##... no need to build packages
 
 logPath <- "../log/"
 if(TRUE){
@@ -40,6 +42,14 @@ ccc <- inspect(
                , track = track)
 
 ccc$serverName <- "localhost"
+
+ccc$newDBName <- "runit_test_db"
+ccc$removeDBName <- ccc$newDBName
+
+ccc <- inspect(
+               cdbRemoveDB(ccc)
+               , track = track)
+ccc$error <- ""
 
 ccc <- inspect(
                cdbListDB(ccc)
