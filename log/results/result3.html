@@ -12,7 +12,7 @@
 </table>
 <hr>
 <h2 TRUE>Result</h2>
-Function: <b>cdbGetUuids</b>
+Function: <b>cdbListDB</b>
 Runs: <b>1</b>
 
 <table border="1" width="100%" >
@@ -47,81 +47,51 @@ Runs: <b>1</b>
 <td bgcolor="#00D000">0</td>
 </tr>
 <tr><td bgcolor="#00D000">6</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;if (cdb$queryParam == "") {</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;adrString <- paste("http://", cdb$serverName, ":", cdb$port, "/_all_dbs", sep = "")</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">7</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;queryString <- ""</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
-</tr>
-<tr><td bgcolor="#D00000">8</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
-</tr>
-<tr><td bgcolor="#D00000">9</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;else {</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
-</tr>
-<tr><td bgcolor="#00D000">10</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;queryString <- paste("?", cdb$queryParam, sep = "")</td>
-<td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0</td>
-</tr>
-<tr><td bgcolor="#D00000">11</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
-</tr>
-<tr><td bgcolor="#00D000">12</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;adrString <- paste("http://", cdb$serverName, ":", cdb$port, "/_uuids", queryString, sep = "")</td>
-<td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0</td>
-</tr>
-<tr><td bgcolor="#00D000">13</td>
+<tr><td bgcolor="#00D000">7</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;res <- getURL(adrString)</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#00D000">14</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$id <- fromJSON(res)$uuids</td>
+<tr><td bgcolor="#00D000">8</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$res <- fromJSON(res)</td>
 <td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0.01</td>
+<td bgcolor="#00D000">0.02</td>
 </tr>
-<tr><td bgcolor="#00D000">15</td>
+<tr><td bgcolor="#00D000">9</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">16</td>
+<tr><td bgcolor="#D00000">10</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">17</td>
+<tr><td bgcolor="#D00000">11</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;else {</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">18</td>
+<tr><td bgcolor="#D00000">12</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;print(cdb$error)</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">19</td>
+<tr><td bgcolor="#D00000">13</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">20</td>
+<tr><td bgcolor="#D00000">14</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">21</td>
+<tr><td bgcolor="#D00000">15</td>
 <td bgcolor="#D00000">}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
@@ -137,5 +107,5 @@ Runs: <b>1</b>
 <td align="right"><a href="./con3.html">graph</a></td></tr>
 </table>
 <hr>
-RUnit  0.4.19 2009-09-20 17:15:04</body>
+RUnit  0.4.19 2009-09-24 17:22:13</body>
 </html>

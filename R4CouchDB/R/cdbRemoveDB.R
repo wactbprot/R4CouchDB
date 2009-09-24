@@ -14,7 +14,9 @@ cdbRemoveDB <- function(cdb){
     if(length(DBexists) == 0){
 
       cdb$error <- paste(cdb$error,
-                         " there is no cdb$removeDBName  to delete")
+                         " there is no DB called >",
+                         cdb$removeDBName, "< on >",
+                         cdb$serverName ,"<")
 
     }
   }

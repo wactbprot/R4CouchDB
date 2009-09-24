@@ -4,22 +4,35 @@ library(RUnit)
 ## loading the src files here ...
 srcPath <- "../R4CouchDB/R/"
 fn <- list.files(srcPath, pattern="R$")
+## ... means ...
 for (k in 1:length(fn)) source(paste(srcPath,fn[k],sep=""))
 ##... no need to build packages
 
 logPath <- "../log/"
+
 if(TRUE){
-testSuite.cdb <- defineTestSuite("R4CouchDB test suite", dirs=".",
-                                 testFileRegexp="^runit.+\.[rR]$",
-                                 testFuncRegexp="^test.+",
-                                 rngKind="Marsaglia-Multicarry",
-                                 rngNormalKind="Kinderman-Ramage")
-testResults <- runTestSuite(
-                            testSuite.cdb
-                            )
-printHTMLProtocol(testResults,
-                  fileName=paste(logPath,"cdb.check.html", sep="")
-                  )
+
+  testSuite.cdb <- defineTestSuite("R4CouchDB test suite", dirs=".",
+                                   testFileRegexp="^runit.+\.[rR]$",
+                                   testFuncRegexp="^test.+",
+                                   rngKind="Marsaglia-Multicarry",
+                                   rngNormalKind="Kinderman-Ramage")
+  testResults <- runTestSuite(
+                              testSuite.cdb
+                              )
+
+  testFileToSFLinkMap <- function(testFileName, testDir="tests") {
+    ##  get unit test file name
+    bname <- basename(testFileName)
+
+    return(paste("../tests/", bname, sep=""))
+  }
+
+
+  printHTMLProtocol(testResults,
+                    fileName=paste(logPath,"cdb.check.html", sep=""),
+                    testFileToLinkMap=testFileToSFLinkMap
+                    )
 }
 ## initialize code inspection:
 
@@ -28,18 +41,10 @@ track$init()
 
 
 ## example section with code inspection
-###  as an example session for R4CouchDB ---> marked lines
-### between inspect(
-### --->             cdbIni()
-###                ,track = track)
-### can be taken. the Result of the inspect function should be the
-### normal cdbFunction output
-
-
 
 ccc <- inspect(
-               cdbIni()
-               , track = track)
+               cdbIni(),
+               track = track)
 
 ccc$serverName <- "localhost"
 
@@ -69,6 +74,7 @@ ccc$newDBName <- "runit_test_db"
 ccc <- inspect(
                cdbMakeDB(ccc)
                ,track = track)
+
 ## the function short cuts the ccc$newDBName
 ## with ccc$DBName
 
