@@ -13,7 +13,7 @@ logPath <- "../log/"
 if(TRUE){
 
   testSuite.cdb <- defineTestSuite("R4CouchDB test suite", dirs=".",
-                                   testFileRegexp="^runit.+\.[rR]$",
+                                   testFileRegexp="^runit.+R$",
                                    testFuncRegexp="^test.+",
                                    rngKind="Marsaglia-Multicarry",
                                    rngNormalKind="Kinderman-Ramage")

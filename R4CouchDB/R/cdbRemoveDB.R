@@ -17,7 +17,6 @@ cdbRemoveDB <- function(cdb){
                          " there is no DB called >",
                          cdb$removeDBName, "< on >",
                          cdb$serverName ,"<")
-
     }
   }
 
@@ -37,8 +36,7 @@ cdbRemoveDB <- function(cdb){
 
     ## the DB should be history
     cdb$removeDBName <- ""
-      return( cdb )
-
+    return( cdb )
 
   }else{
       print(cdb$error)
