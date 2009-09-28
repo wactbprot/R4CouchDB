@@ -1,10 +1,15 @@
 cdbGetDoc <- function( cdb){
 
+  if(cdb$serverName == ""){
+    cdb$error <- paste(cdb$error," no cdb$serverName given")
+  }
+
   if( cdb$id == ""){
-    cdb$error <- "no cdb$id given"
+    cdb$error <- paste(cdb$error,"no cdb$id given")
     return( cdb)
+
   }else{
-   
+
     adrString <- paste("http://",
                        cdb$serverName,":",
                        cdb$port,"/",
