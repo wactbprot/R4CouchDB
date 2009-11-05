@@ -46,6 +46,7 @@ cdbUpdateDoc <- function( cdb){
   reader <- basicTextGatherer()
 
   res <- getURLContent(customrequest = "PUT",
+                       curl=cdb$curl,
                        url = adrString,
                        postfields = data,
                        headerfunction = reader$update)

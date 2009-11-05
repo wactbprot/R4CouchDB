@@ -1,6 +1,5 @@
 cdbAddDoc <- function( cdb){
 
-
   if(cdb$serverName == ""){
     cdb$error <- paste(cdb$error," no cdb$serverName given")
   }
@@ -18,15 +17,6 @@ cdbAddDoc <- function( cdb){
     cdb$queryParam <- "count=1"
     cdb <- cdbGetUuids(cdb)
 
-  }else{
-
-    if(!(is.null(cdbGetDoc( cdb )$res$'_id'))){
-
-      cdb$error <- paste(cdb$error, " doc with cdb$id: ",
-                         cdb$id, " already exists ",
-                         sep=" ")
-      return(cdb)
-    }
   }
 
   if( cdb$error =="" ){
@@ -34,30 +24,25 @@ cdbAddDoc <- function( cdb){
     adrString <- paste("http://",
                        cdb$serverName,":",
                        cdb$port,"/",
-                         cdb$DBName,"/",
-                         cdb$id,
-                         sep="")
+                       cdb$DBName,"/",
+                       cdb$id,
+                       sep="")
 
     data <- toJSON(cdb$dataList)
 
-      header <- list('Content-Type' = 'application/json')
-
-      reader <- basicTextGatherer()
-
-    res <- getURLContent(customrequest = "PUT",
-                         url = adrString,
-                         postfields = data,
-                         headerfunction = reader$update)
-
+    res <- getURLContent(adrString,
+                         customrequest = "PUT",
+                         curl=cdb$curl,
+                         postfields = data
+                         )
 
     cdb$res <- fromJSON( res )
-
-    reader$reset()
 
     return( cdb )
 
   }else{
-    print( cdb$error )
+
     return( cdb )
+
   }
 }

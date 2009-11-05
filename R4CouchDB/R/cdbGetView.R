@@ -29,7 +29,9 @@ cdbGetView <- function( cdb ){
                        queryString,
                        sep="")
 
-    res <- getURLContent(adrString  )
+    res <- getURLContent(adrString,
+                         curl=cdb$curl
+                         )
 
     cdb$res <- fromJSON( res )
 

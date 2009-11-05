@@ -5,21 +5,22 @@ cdbDeleteDoc <- function( cdb){
   }
 
   if(cdb$DBName ==""){
-    cdb$error <- paste(cdb$error, " no cdb$DBName given ", sep=" ")
+    cdb$error <- paste(cdb$error, " no cdb$DBName given ")
   }
 
-  if( cdb$id == ""){
-    cdb$error <- "no cdb$id given"
-    return( cdb)
+  if(cdb$id ==""){
+    cdb$error <- paste(cdb$error, " no cdb$id given ")
   }
 
   if(cdb$error == ""){
 
+    ## it's important to say which
+    ## revision should be deleted
+    ## brutforce at the moment
+
     cdb <- cdbGetDoc(cdb)
     cdb$rev <- cdb$res$'_rev'
 
-    ## it's important to say which
-    ## revision should be deleted
 
     adrString <- paste("http://",
                        cdb$serverName,":",
@@ -30,13 +31,18 @@ cdbDeleteDoc <- function( cdb){
                        cdb$rev,
                        sep="")
 
-    res <-  getURL(
-                   adrString ,.opts = list(customrequest = "DELETE")
-                   )
+    res <- getURLContent(customrequest = "DELETE",
+                         curl=cdb$curl,
+                         url = adrString
+                         )
 
     cdb$res <- fromJSON(res)
 
     return( cdb )
 
+  }else{
+
+    return( cdb)
   }
+
 }

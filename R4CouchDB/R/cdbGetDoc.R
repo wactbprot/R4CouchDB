@@ -5,10 +5,10 @@ cdbGetDoc <- function( cdb){
   }
 
   if( cdb$id == ""){
-    cdb$error <- paste(cdb$error,"no cdb$id given")
-    return( cdb)
+    cdb$error <- paste( cdb$error, " no cdb$id given ")
+  }
 
-  }else{
+  if(cdb$error == ""){
 
     adrString <- paste("http://",
                        cdb$serverName,":",
@@ -17,11 +17,18 @@ cdbGetDoc <- function( cdb){
                        cdb$id,
                        sep="")
 
-    res <- getURL( adrString )
+
+    res <- getURLContent(adrString,
+                         customrequest = "GET",
+                         curl=cdb$curl
+                         )
 
     cdb$res <- fromJSON(res)
 
     return( cdb )
 
+  }else{
+
+    return( cdb)
   }
 }

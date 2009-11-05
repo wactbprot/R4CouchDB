@@ -27,7 +27,11 @@ cdbMakeDB <- function(cdb){
                          cdb$newDBName,
                          sep="")
 
-      res <- getURLContent(adrString, .opts = list(customrequest = "PUT"))
+
+      res <- getURLContent(adrString,
+                           #curl=cdb$curl,
+                           customrequest = "PUT")
+
       cdb$res <- fromJSON( res )
 
       ## newDB is generated it's now no longer a new one

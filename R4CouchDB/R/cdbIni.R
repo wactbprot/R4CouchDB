@@ -7,6 +7,7 @@ cdbIni <- function(){
   if(rc && rj){
 
     cdb <- list(
+                curl=getCurlHandle(),
                 serverName = "",
                 port = "5984",
                 DBName="",
@@ -18,20 +19,15 @@ cdbIni <- function(){
                 design="",
                 view="",
                 queryParam="",
-                date=toString( Sys.Date()),
+                date=toString(Sys.Date()),
                 error="",
                 res=""
                 )
-    if(cdb$error == ""){
       return( cdb )
-    } else {
-      cdb$error <- " can not make r4couch_test_db "
-      return( cdb )
-    }
-  }else{
+    }else{
+
     eTxt <- paste("RCurl loaded: ",rc,"\n",
                   "RJSONIO loaded: ",rj)
-    print( eTxt )
 
     cdb$error <- eTxt
     return( cdb )

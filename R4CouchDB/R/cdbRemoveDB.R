@@ -29,7 +29,8 @@ cdbRemoveDB <- function(cdb){
                        sep="")
 
     res <- getURLContent(adrString,
-                         .opts = list(customrequest = "DELETE")
+                         curl=cdb$curl,
+                         customrequest = "DELETE"
                          )
 
     cdb$res <- fromJSON(res)
