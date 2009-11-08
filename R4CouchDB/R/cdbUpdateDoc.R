@@ -12,18 +12,11 @@ cdbUpdateDoc <- function( cdb){
                        sep=" ")
   }
 
-  if( cdb$rev == ""){
-    cdb <- cdbGetDoc(cdb)
-    cdb$rev <- cdb$res$'_rev'
-      }
-
   if(length(cdb$dataList) < 1){
     cdb$error <- paste(cdb$error,
                        " no cdb$dataList given",
                        sep=" ")
-
   }
-
 
   if( cdb$error ==""){
 
@@ -35,31 +28,28 @@ cdbUpdateDoc <- function( cdb){
                         cdb$dataList)
                    )
 
-  adrString <- paste("http://",
-                     cdb$serverName,":",
-                     cdb$port,"/",
-                     cdb$DBName,"/",
-                     cdb$id,
-                     sep="")
+    adrString <- paste("http://",
+                       cdb$serverName,":",
+                       cdb$port,"/",
+                       cdb$DBName,"/",
+                       cdb$id,
+                       sep="")
 
-  header <- list('Content-Type' = 'application/json')
-  reader <- basicTextGatherer()
+    res <- getURL(customrequest = "PUT",
+                  curl=cdb$curl,
+                  url = adrString,
+                       postfields = data
+                  )
 
-  res <- getURLContent(customrequest = "PUT",
-                       curl=cdb$curl,
-                       url = adrString,
-                       postfields = data,
-                       headerfunction = reader$update)
+    cdb$res <- fromJSON( res )
+    ## update revision
+    cdb <- cdbGetDoc(cdb)
+    cdb$rev <- cdb$res$'_rev'
 
-  cdb$res <- fromJSON( res )
-  ## update revision
-  cdb <- cdbGetDoc(cdb)
-  cdb$rev <- cdb$res$'_rev'
-
-  return( cdb )
+    return( cdb )
 
   }else{
-    print( cdb$error )
-    return( cdb )
+
+    stop( cdb$error )
   }
 }

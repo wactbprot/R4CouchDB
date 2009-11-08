@@ -18,10 +18,10 @@ cdbGetDoc <- function( cdb){
                        sep="")
 
 
-    res <- getURLContent(adrString,
-                         customrequest = "GET",
-                         curl=cdb$curl
-                         )
+    res <- getURL(adrString,
+                  customrequest = "GET",
+                  curl=cdb$curl
+                  )
 
     cdb$res <- fromJSON(res)
 
@@ -29,6 +29,6 @@ cdbGetDoc <- function( cdb){
 
   }else{
 
-    return( cdb)
+    stop( cdb$error )
   }
 }

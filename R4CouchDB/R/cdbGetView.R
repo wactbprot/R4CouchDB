@@ -29,16 +29,16 @@ cdbGetView <- function( cdb ){
                        queryString,
                        sep="")
 
-    res <- getURLContent(adrString,
-                         curl=cdb$curl
-                         )
+    res <- getURL(adrString,
+                  curl=cdb$curl
+                  )
 
     cdb$res <- fromJSON( res )
 
     return( cdb )
 
   }else{
-    print(cdb$error)
-    return( cdb )
+
+    stop( cdb$error )
   }
 }

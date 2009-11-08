@@ -7,9 +7,9 @@ cdbIni <- function(){
   if(rc && rj){
 
     cdb <- list(
-                curl=getCurlHandle(),
-                serverName = "",
+                serverName = "localhost",
                 port = "5984",
+                curl=getCurlHandle(),
                 DBName="",
                 newDBName="",
                 removeDBName="",

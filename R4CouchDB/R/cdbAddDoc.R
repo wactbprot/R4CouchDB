@@ -30,11 +30,11 @@ cdbAddDoc <- function( cdb){
 
     data <- toJSON(cdb$dataList)
 
-    res <- getURLContent(adrString,
-                         customrequest = "PUT",
-                         curl=cdb$curl,
-                         postfields = data
-                         )
+    res <- getURL(adrString,
+                  customrequest = "PUT",
+                  curl=cdb$curl,
+                  postfields = data
+                  )
 
     cdb$res <- fromJSON( res )
 
@@ -42,7 +42,7 @@ cdbAddDoc <- function( cdb){
 
   }else{
 
-    return( cdb )
+    stop( cdb$error )
 
   }
 }

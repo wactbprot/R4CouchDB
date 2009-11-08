@@ -11,10 +11,10 @@ cdbListDB <- function(cdb){
                       cdb$port, "/_all_dbs",
                       sep="")
 
-   res <- getURLContent(adrString,
-                        customrequest = "GET",
-                        curl=cdb$curl
-                        )
+   res <- getURL(adrString,
+                 customrequest = "GET",
+                 curl=cdb$curl
+                 )
 
    cdb$res <- fromJSON(res)
 
@@ -22,6 +22,6 @@ cdbListDB <- function(cdb){
 
  }else{
 
-    return( cdb )
+    stop( cdb$error )
   }
 }

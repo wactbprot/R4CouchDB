@@ -28,10 +28,10 @@ cdbRemoveDB <- function(cdb){
                        cdb$removeDBName,
                        sep="")
 
-    res <- getURLContent(adrString,
-                         curl=cdb$curl,
-                         customrequest = "DELETE"
-                         )
+    res <- getURL(adrString,
+                  curl=cdb$curl,
+                  customrequest = "DELETE"
+                  )
 
     cdb$res <- fromJSON(res)
 
@@ -40,7 +40,7 @@ cdbRemoveDB <- function(cdb){
     return( cdb )
 
   }else{
-      print(cdb$error)
-      return(cdb)
+
+      stop( cdb$error )
     }
 }

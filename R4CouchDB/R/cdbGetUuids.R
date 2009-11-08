@@ -20,15 +20,15 @@ cdbGetUuids <- function(cdb){
                        sep="")
 
 
-    res <- getURLContent(adrString,
-                         customrequest = "GET",
-                         curl=cdb$curl
-                        )
+    res <- getURL(adrString,
+                  customrequest = "GET",
+                  curl=cdb$curl
+                  )
 
     cdb$id <- fromJSON(res)$uuids
 
     return( cdb )
   }else{
-    return( cdb )
+    stop( cdb$error )
   }
 }

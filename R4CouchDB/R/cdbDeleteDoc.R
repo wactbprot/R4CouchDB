@@ -1,4 +1,4 @@
-cdbDeleteDoc <- function( cdb){
+cdbDeleteDoc <- function( cdb ){
 
   if(cdb$serverName == ""){
     cdb$error <- paste(cdb$error," no cdb$serverName given")
@@ -21,7 +21,6 @@ cdbDeleteDoc <- function( cdb){
     cdb <- cdbGetDoc(cdb)
     cdb$rev <- cdb$res$'_rev'
 
-
     adrString <- paste("http://",
                        cdb$serverName,":",
                        cdb$port,"/",
@@ -31,10 +30,10 @@ cdbDeleteDoc <- function( cdb){
                        cdb$rev,
                        sep="")
 
-    res <- getURLContent(customrequest = "DELETE",
-                         curl=cdb$curl,
-                         url = adrString
-                         )
+    res <- getURL(adrString,
+                  customrequest = "DELETE",
+                  curl=cdb$curl
+                  )
 
     cdb$res <- fromJSON(res)
 
@@ -42,7 +41,6 @@ cdbDeleteDoc <- function( cdb){
 
   }else{
 
-    return( cdb)
+    stop( cdb$error )
   }
-
 }
