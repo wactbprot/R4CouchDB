@@ -43,13 +43,6 @@ cdbGetDoc(cdb)
 \seealso{
 \code{cdbAddDoc()}
 }
-\examples{
-cdb <- cdbIni()
 
-cdb <- cdbAddDoc(cdb)
-cdb$id
-cdbGetDoc( cdb )
-
-}
 \keyword{ misc }
 

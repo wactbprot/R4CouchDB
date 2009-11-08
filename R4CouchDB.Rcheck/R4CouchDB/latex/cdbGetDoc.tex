@@ -1,0 +1,42 @@
+\HeaderA{cdbGetDoc}{Get a doc from CouchDB}{cdbGetDoc}
+\keyword{misc}{cdbGetDoc}
+\begin{Description}\relax
+With a given \code{cdb\$id} this function requests the document.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+cdbGetDoc(cdb)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{cdb}] Beside \code{cdb\$serverName}, \code{cdb\$port} and
+\code{cdb\$DBName} the \code{cdb\$id} must be given. R errors are
+reported
+
+in cdb\$errors
+
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+\begin{ldescription}
+\item[\code{cdb }] The result of the request is stored in \code{cdb\$res} after
+converting the answer into a list using \code{fromJSON()}. If a list
+entry  needed in \code{cdb} is not provided \code{cdb\$error}
+gives some information.
+
+
+\end{ldescription}
+\end{Value}
+\begin{Author}\relax
+wact.b.prot
+thsteinbock@web.de
+\end{Author}
+\begin{References}\relax
+\url{  http://couchdb.apache.org/            }
+\url{  http://www.omegahat.org/  }
+\end{References}
+\begin{SeeAlso}\relax
+\code{cdbAddDoc()}
+\end{SeeAlso}
+

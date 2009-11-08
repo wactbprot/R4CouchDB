@@ -1,0 +1,65 @@
+Entry: R4CouchDB-package
+Aliases: R4CouchDB-package R4CouchDB
+Keywords: package
+Description: Collection of R functions for CouchDB access
+URL: ../../../library/R4CouchDB/html/R4CouchDB-package.html
+
+Entry: cdbAddDoc
+Aliases: cdbAddDoc
+Keywords: misc
+Description: Generates a new document
+URL: ../../../library/R4CouchDB/html/cdbAddDoc.html
+
+Entry: cdbDeleteDoc
+Aliases: cdbDeleteDoc
+Keywords: misc
+Description: Deletes a document from a database
+URL: ../../../library/R4CouchDB/html/cdbDeleteDoc.html
+
+Entry: cdbGetDoc
+Aliases: cdbGetDoc
+Keywords: misc
+Description: Get a doc from CouchDB
+URL: ../../../library/R4CouchDB/html/cdbGetDoc.html
+
+Entry: cdbGetUuids
+Aliases: cdbGetUuids
+Keywords: misc
+Description: Function for id generation
+URL: ../../../library/R4CouchDB/html/cdbGetUuids.html
+
+Entry: cdbGetView
+Aliases: cdbGetView
+Keywords: misc
+Description: Receive view results from CouchDB
+URL: ../../../library/R4CouchDB/html/cdbGetView.html
+
+Entry: cdbIni
+Aliases: cdbIni
+Keywords: misc
+Description: Ini function
+URL: ../../../library/R4CouchDB/html/cdbIni.html
+
+Entry: cdbListDB
+Aliases: cdbListDB
+Keywords: misc
+Description: Returns all databases
+URL: ../../../library/R4CouchDB/html/cdbListDB.html
+
+Entry: cdbMakeDB
+Aliases: cdbMakeDB
+Keywords: misc
+Description: Creates a new database
+URL: ../../../library/R4CouchDB/html/cdbMakeDB.html
+
+Entry: cdbRemoveDB
+Aliases: cdbRemoveDB
+Keywords: misc
+Description: Function to remove a database.
+URL: ../../../library/R4CouchDB/html/cdbRemoveDB.html
+
+Entry: cdbUpdateDoc
+Aliases: cdbUpdateDoc
+Keywords: misc
+Description: This function updates an existing doc. This essentially means that a revision, corresponding to the '_id' has to be provided (in what way ever).
+URL: ../../../library/R4CouchDB/html/cdbUpdateDoc.html

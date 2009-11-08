@@ -1,14 +1,20 @@
 Package: R4CouchDB
 Type: Package
 Title: Collection of R functions for CouchDB access
-Version: 0.02
-Date: 2009/09/20
-Author: wact.b.prot
+Version: 0.03
+Date: 2009/11/08
+Author: wactbprot
 Maintainer: <thsteinbock@web.de>
 Description: The R4CouchDB package provides a collection of functions for
              basic database and document management operations such as add  and
-             delete. Every cdbFunction gets and emits a list containing the
-             connection set up. At the moment I try to implement a unit test
-             structure using the RUnit package.
+             delete. Every cdbFunction() gets and emits a list containing the
+             connection set up. A unit test structure using the RUnit
+             package is preliminary prepared.
+             With the cdbIni() function the cdb$serverName is set to
+             "localhost" as a default. This means that localhost should provide a CouchDB.
+             All (former) example sections in the man pages are
+             removed; the unit test structure is intended to cover the example
+             task with more and easier control.
 License: BSD
 LazyLoad: no
+Depends: R (>= 2.7.0), RCurl, RJSONIO

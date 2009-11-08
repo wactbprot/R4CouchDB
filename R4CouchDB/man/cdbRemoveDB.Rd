@@ -41,32 +41,5 @@ cdbRemoveDB(cdb)
   \seealso{
 \code{cdbMakeDB}
 }
-\examples{
-cdb <- cdbIni()
 
-cdb$newDBName <- "db4r"
-
-cdb <- cdbListDB(cdb)
-
-j <- match( cdb$newDBName, cdb$res, nomatch=0)
-
-if( j == 0 ){
-
-  cdb <- cdbMakeDB( cdb )
-  cdb$DBName <- cdb$newDBName
-
-} else{
-
-  cdb$DBName <- cdb$newDBName
-  cdb$newDBName <- ""
-
-}
-
-cdbListDB(cdb)$res
-
-## GTFO  "db4r":
-cdbRemoveDB(cdb)
-
-
-}
 \keyword{ misc }

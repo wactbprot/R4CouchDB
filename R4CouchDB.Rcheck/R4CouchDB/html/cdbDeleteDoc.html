@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Deletes a document from a database</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for cdbDeleteDoc {R4CouchDB}"><tr><td>cdbDeleteDoc {R4CouchDB}</td><td align="right">R Documentation</td></tr></table>
+<h2>Deletes a document from a database</h2>
+
+
+<h3>Description</h3>
+
+<p>
+With a given <code>cdb$id</code> this function sends a http <code>"DELETE"</code>
+request to the url <code>.../cdb$id?rev=cdb$rev</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+cdbDeleteDoc(cdb)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cdb</code></td>
+<td>
+Beside <code>cdb$serverName</code>, <code>cdb$port</code> and
+<code>cdb$DBName</code> the <code>cdb$id</code> must be given. R errors are
+reported    in <code>cdb$errors</code>
+</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cdb </code></td>
+<td>
+The result of the delete request is stored in
+<code>cdb$res</code>(whatever this means).
+</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+wact.b.prot
+thsteinbock@web.de
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="  http://couchdb.apache.org/            ">  http://couchdb.apache.org/            </a>
+<a href="  http://www.omegahat.org/  ">  http://www.omegahat.org/  </a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code>cdbAddDoc()</code>
+</p>
+
+
+
+<hr><div align="center">[Package <em>R4CouchDB</em> version 0.03 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

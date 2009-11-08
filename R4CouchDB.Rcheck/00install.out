@@ -1,0 +1,24 @@
+* Installing *source* package ‘R4CouchDB’ ...
+** R
+** help
+*** installing help indices
+ >>> Building/Updating help pages for package 'R4CouchDB'
+     Formats: text html latex example 
+Note: removing empty section \seealso in file 'R4CouchDB-package.Rd'
+  R4CouchDB-package                 text    html    latex   example
+  cdbAddDoc                         text    html    latex
+  cdbDeleteDoc                      text    html    latex
+  cdbGetDoc                         text    html    latex
+Note: removing empty section \note in file 'cdbGetUuids.Rd'
+  cdbGetUuids                       text    html    latex   example
+Note: removing empty section \seealso in file 'cdbGetView.Rd'
+  cdbGetView                        text    html    latex   example
+Note: removing empty section \seealso in file 'cdbIni.Rd'
+  cdbIni                            text    html    latex   example
+  cdbListDB                         text    html    latex   example
+  cdbMakeDB                         text    html    latex
+  cdbRemoveDB                       text    html    latex
+Note: removing empty section \note in file 'cdbUpdateDoc.Rd'
+  cdbUpdateDoc                      text    html    latex
+** building package indices ...
+* DONE (R4CouchDB)

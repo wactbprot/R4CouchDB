@@ -1,0 +1,35 @@
+cdbAddDoc             package:R4CouchDB             R Documentation
+
+_G_e_n_e_r_a_t_e_s _a _n_e_w _d_o_c_u_m_e_n_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     This function adds a new document to an already existing database
+
+_U_s_a_g_e:
+
+     cdbAddDoc(cdb)
+
+_A_r_g_u_m_e_n_t_s:
+
+     cdb: The list 'cdb' only has to contain a 'cdb$dataList' which is
+          not an empty 'list()'. 
+
+_D_e_t_a_i_l_s:
+
+     This function is called addDoc (which means add a new document).
+     Therefore the 'cdb$id' is requested fresh for every document to
+     add.
+
+_V_a_l_u_e:
+
+     cdb: The result is stored in 'cdb$res' 
+
+_A_u_t_h_o_r(_s):
+
+     wact.b.prot thsteinbock@web.de
+
+_S_e_e _A_l_s_o:
+
+     'cdbGetDoc()'
+

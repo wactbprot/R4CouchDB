@@ -1,0 +1,49 @@
+\HeaderA{cdbUpdateDoc}{This function  updates an existing doc. This
+essentially means that a revision, corresponding to the '\_id'
+has to be provided (in what way ever).}{cdbUpdateDoc}
+\keyword{misc}{cdbUpdateDoc}
+\begin{Description}\relax
+Updating a doc at couchdb means executing a http "PUT" request. The  \code{cdb}
+list must contain the \code{cdb\$serverName}, \code{cdb\$port},
+\code{cdb\$DBName}, \code{cdb\$id}. If
+the \code{cdb\$rev} is not given the function uses \code{cdbGetDoc()} to receive the
+latest revision number.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+cdbUpdateDoc(cdb)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{cdb}] the cdb connection configuration list must contain the \code{cdb\$serverName},
+\code{cdb\$port},  \code{cdb\$DBName} and  \code{cdb\$id}. The data which
+updates the data stored in the doc is provided in \code{cdb\$dataList}
+
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\code{getURLContent()} with \code{customrequest = "PUT"} does the work.
+\end{Details}
+\begin{Value}
+\begin{ldescription}
+\item[\code{cdb }] The result of the request is stored in \code{cdb\$res} after
+converting the answer by means of  \code{fromJSON()}. If a needed
+\code{cdb\$} list entry is not provided \code{cdb\$error} maybe says
+something about the R  side.
+
+\end{ldescription}
+\end{Value}
+\begin{Author}\relax
+wact.b.prot
+thsteinbock@web.de
+\end{Author}
+\begin{References}\relax
+\url{  http://www.omegahat.org/RCurl/   }
+\url{  http://www.omegahat.org/RJSONIO/ }
+\url{  http://couchdb.apache.org/       }
+\end{References}
+\begin{SeeAlso}\relax
+\code{cdbInit()}
+\end{SeeAlso}
+

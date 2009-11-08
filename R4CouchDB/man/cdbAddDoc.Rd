@@ -36,15 +36,6 @@ This function is called addDoc (which means add a new
 \seealso{
 \code{cdbGetDoc()}
 }
-\examples{
 
-cdb <- cdbIni()
-
-## a simple list:
-cdb$dataList <- list(a=rnorm(10))
-
-cdb <- cdbAddDoc(cdb)
-
-}
 \keyword{ misc }
 

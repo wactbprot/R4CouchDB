@@ -57,16 +57,5 @@ the cdb connection configuration list must contain the \code{cdb$serverName},
 \seealso{
 \code{cdbInit()}
 }
-\examples{
-cdb <- cdbIni()
-
-cdb$dataList <- list(a=1:10, b=11:20,d=21:30)
-
-cdb <- cdbAddDoc(cdb)
-if(cdb$error == ""){
-cdb$rev <- cdb$res$rev
-cdb <- cdbUpdateDoc( cdb )
-}
-}
 \keyword{ misc }
 

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: This function  updates an existing doc. This
+essentially means that a revision, corresponding to the '_id'
+has to be provided (in what way ever).</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for cdbUpdateDoc {R4CouchDB}"><tr><td>cdbUpdateDoc {R4CouchDB}</td><td align="right">R Documentation</td></tr></table>
+<h2>This function  updates an existing doc. This
+essentially means that a revision, corresponding to the '_id'
+has to be provided (in what way ever).</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Updating a doc at couchdb means executing a http "PUT" request. The  <code>cdb</code>
+list must contain the <code>cdb$serverName</code>, <code>cdb$port</code>,
+<code>cdb$DBName</code>, <code>cdb$id</code>. If
+the <code>cdb$rev</code> is not given the function uses <code>cdbGetDoc()</code> to receive the
+latest revision number.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+cdbUpdateDoc(cdb)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cdb</code></td>
+<td>
+the cdb connection configuration list must contain the <code>cdb$serverName</code>,
+<code>cdb$port</code>,  <code>cdb$DBName</code> and  <code>cdb$id</code>. The data which
+updates the data stored in the doc is provided in <code>cdb$dataList</code>
+</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code>getURLContent()</code> with <code>customrequest = "PUT"</code> does the work.
+</p>
+
+
+<h3>Value</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cdb </code></td>
+<td>
+The result of the request is stored in <code>cdb$res</code> after
+converting the answer by means of  <code>fromJSON()</code>. If a needed
+<code>cdb$</code> list entry is not provided <code>cdb$error</code> maybe says
+something about the R  side.
+</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+wact.b.prot
+thsteinbock@web.de
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="  http://www.omegahat.org/RCurl/   ">  http://www.omegahat.org/RCurl/   </a>
+<a href="  http://www.omegahat.org/RJSONIO/ ">  http://www.omegahat.org/RJSONIO/ </a>
+<a href="  http://couchdb.apache.org/       ">  http://couchdb.apache.org/       </a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code>cdbInit()</code>
+</p>
+
+
+
+<hr><div align="center">[Package <em>R4CouchDB</em> version 0.03 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

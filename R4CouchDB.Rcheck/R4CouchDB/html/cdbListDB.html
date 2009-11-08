@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Returns all databases</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for cdbListDB {R4CouchDB}"><tr><td>cdbListDB {R4CouchDB}</td><td align="right">R Documentation</td></tr></table>
+<h2>Returns all databases</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Gives a list of all databases
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+cdbListDB(cdb)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cdb</code></td>
+<td>
+Only the  connection settings <code>cdb$port</code> and
+<code>cdb$serverName</code> is needed.
+</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Simple CouchDB API end point: <a href="http://localhost:5984/_all_dbs">http://localhost:5984/_all_dbs</a>
+</p>
+
+
+<h3>Value</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cdb </code></td>
+<td>
+The result of the request is stored in cdb$res after
+converting the json answer into a list using <code>fromJSON()</code>.
+</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+wact.b.prot
+thsteinbock@web.de
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="  http://www.omegahat.org/RCurl/        ">  http://www.omegahat.org/RCurl/        </a>
+<a href="  http://www.omegahat.org/RJSONIO/      ">  http://www.omegahat.org/RJSONIO/      </a>
+<a href="  http://couchdb.apache.org/            ">  http://couchdb.apache.org/            </a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code>cdbMakeDB</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+cdb &lt;- cdbIni()
+cdbListDB(cdb)$res
+</pre>
+
+
+
+<hr><div align="center">[Package <em>R4CouchDB</em> version 0.03 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

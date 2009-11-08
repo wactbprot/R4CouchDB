@@ -1,0 +1,61 @@
+R4CouchDB-package         package:R4CouchDB         R Documentation
+
+_C_o_l_l_e_c_t_i_o_n _o_f _R _f_u_n_c_t_i_o_n_s _f_o_r _C_o_u_c_h_D_B _a_c_c_e_s_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     The R4CouchDB package provides a collection of functions for basic
+     database and document management operations such as add and
+     delete.
+
+_D_e_t_a_i_l_s:
+
+
+       Package:   R4CouchDB
+       Type:      Package
+       Version:   0.1
+       Date:      2009-08-29
+       License:   BSD
+       LazyLoad:  yes
+
+     Every 'cdbFunction()' gets and emits a list containing the
+     connection set up. Internally this 'list()' is called 'cdb'. The
+     result of  requests, the CouchDB answers are stored in the
+     'cdb$res'.
+
+     The function 'cdbIni()' initially provides 'cdb'. However 'a <-
+     list(serverName="localhost", port="5984")' is sufficient for
+     calling 'cdbGetUuids(a)'.
+
+     The Rd-examples in this package are a kind of fake. Every function
+     tests the needed list entries before request execution. Since it
+     is not possible to provide a default 'cdb$serverName' all function
+     calls in the example- sections set a 'cdb$error <- "no
+     cdb$serverName"', no http- request is executed.
+
+     The http connection and the json transformations are done with
+     Duncan Temple Langs RCurl and RJSON.
+
+_A_u_t_h_o_r(_s):
+
+     wact.b.prot
+
+     Maintainer: thsteinbock@web.de
+
+_R_e_f_e_r_e_n_c_e_s:
+
+     <URL:   http://www.omegahat.org/RCurl/> <URL:  
+     http://www.omegahat.org/RJSONIO/> <URL:  
+     http://couchdb.apache.org/>
+
+_E_x_a_m_p_l_e_s:
+
+     ## get the list structure
+     cdb <- cdbIni()
+     ## this structure includes:
+     cdb
+     ## the command
+     cdb <- cdbListDB(cdb)
+     ## yields
+     cdb$error
+

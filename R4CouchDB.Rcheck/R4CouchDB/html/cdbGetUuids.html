@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Function for id generation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for cdbGetUuids {R4CouchDB}"><tr><td>cdbGetUuids {R4CouchDB}</td><td align="right">R Documentation</td></tr></table>
+<h2>Function for id generation</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Function returns a 128bit uuid requested from CouchDB
+</p>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cdb</code></td>
+<td>
+Only the  connection settings <code>cdb$port</code> and
+<code>cdb$serverName</code> is needed.
+</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Simple CouchDB API end point to http://serverName:port/_uuids. The
+number N of ids received from a CouchDB can be increased by
+<code>cdb$queryParam &lt;- paste("count=", N, sep="")</code>.
+For the moment the functions using ids can handle only N=1!
+</p>
+
+
+<h3>Value</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>cdb </code></td>
+<td>
+The result of the request is stored in <code>cdb$id</code> after
+converting the answer into a list using <code>fromJSON()</code>.
+</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+wact.b.prot
+thsteinbock@web.de
+</p>
+
+
+<h3>References</h3>
+
+<p>
+<a href="  http://www.omegahat.org/RCurl/        ">  http://www.omegahat.org/RCurl/        </a>
+<a href="  http://www.omegahat.org/RJSONIO/      ">  http://www.omegahat.org/RJSONIO/      </a>
+<a href="  http://couchdb.apache.org/            ">  http://couchdb.apache.org/            </a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code>cdbMakeDB</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+cdb &lt;- cdbIni()
+cdbGetUuids(cdb)$id
+</pre>
+
+
+
+<hr><div align="center">[Package <em>R4CouchDB</em> version 0.03 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

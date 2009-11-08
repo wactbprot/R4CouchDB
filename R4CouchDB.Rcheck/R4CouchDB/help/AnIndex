@@ -1,0 +1,12 @@
+R4CouchDB-package	R4CouchDB-package
+cdbAddDoc	cdbAddDoc
+cdbDeleteDoc	cdbDeleteDoc
+cdbGetDoc	cdbGetDoc
+cdbGetUuids	cdbGetUuids
+cdbGetView	cdbGetView
+cdbIni	cdbIni
+cdbListDB	cdbListDB
+cdbMakeDB	cdbMakeDB
+cdbRemoveDB	cdbRemoveDB
+cdbUpdateDoc	cdbUpdateDoc
+R4CouchDB	R4CouchDB-package

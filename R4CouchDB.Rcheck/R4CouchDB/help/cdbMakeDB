@@ -1,0 +1,45 @@
+cdbMakeDB             package:R4CouchDB             R Documentation
+
+_C_r_e_a_t_e_s _a _n_e_w _d_a_t_a_b_a_s_e
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     The name of the new database is taken from 'cdb$newDBName'.
+
+_U_s_a_g_e:
+
+     cdbMakeDB(cdb)
+
+_A_r_g_u_m_e_n_t_s:
+
+     cdb: The 'cdb' have to provide 'cdb$serverName', 'cdb$port' and 
+          'cdb$newDBName' 
+
+_D_e_t_a_i_l_s:
+
+     The work is done by 'getURLContent()'. After creating the new
+     database the function makes the shortcut 'cdb$DBName <-
+     cdb$newDBName' so that further operations happen on the new
+     created database.
+
+_V_a_l_u_e:
+
+     cdb: The CouchDB answer is stored in 'cdb$res'. Any problems on
+          the R side are reportet in 'cdb$error' 
+
+_N_o_t_e:
+
+     The convention for database naming should be implemented.
+
+_A_u_t_h_o_r(_s):
+
+     wact.b.prot thsteinbock@web.de
+
+_R_e_f_e_r_e_n_c_e_s:
+
+     <URL:   http://couchdb.apache.org/       >
+
+_S_e_e _A_l_s_o:
+
+     'cdbRemoveDB'
+

@@ -41,14 +41,4 @@ The convention for database naming should be implemented.
 \seealso{
 \code{cdbRemoveDB}
 }
-\examples{
-
-cdb <- cdbIni()
-
-cdb$newDBName <- cdbGetUuids( cdb )$id
-cdb <- cdbMakeDB(cdb)
-cdbListDB(cdb)
-cdbRemoveDB(cdb)
-
-}
 \keyword{ misc }
