@@ -48,14 +48,7 @@ the cdb connection configuration list must contain the \code{cdb$serverName},
   wact.b.prot
   thsteinbock@web.de
 }
-\note{
-
-}
-
-
-
 \seealso{
 \code{cdbInit()}
 }
 \keyword{ misc }
-

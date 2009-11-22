@@ -17,6 +17,7 @@ cdbIni()
   \code{     cdb <- list(
                 serverName = "",
                 port = "5984",
+                curl=getCurlHandle(),
                 DBName="",
                 newDBName="",
                 id="",
@@ -41,14 +42,6 @@ cdbIni()
 
   wact.b.prot
   thsteinbock@web.de
-}
-
-\seealso{
-
-}
-\examples{
-d <- cdbIni()
-cdbListDB(d)$res
 }
 \keyword{ misc }
 

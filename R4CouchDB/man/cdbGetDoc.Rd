@@ -31,7 +31,7 @@ cdbGetDoc(cdb)
   }
 \references{
 
-\url{  http://couchdb.apache.org/            }
+\url{  http://couchdb.apache.org/  }
 \url{  http://www.omegahat.org/  }
 
 }
@@ -45,4 +45,3 @@ cdbGetDoc(cdb)
 }
 
 \keyword{ misc }
-

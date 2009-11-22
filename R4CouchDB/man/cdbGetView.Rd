@@ -48,25 +48,4 @@ For the moment only one \code{cdb$queryParam} is possible. In the future
 maybe Duncans \code{RJavaScript} package can be used to generate views
 without leaving R.
 }
-
-\seealso{
-
-}
-\examples{
-## Not run:
-## If:
-## function(doc) {
-##  emit(null, doc._id);
-## }
-## is stored under design: test, view: id
-## in the database db5r
-
-cdb <- cdbIni()
-cdb$DBName <- "db5r"
-cdb$design <- "test"
-cdb$view <- "id"
-
-## cdbGetView(cdb)$res
-
-}
 \keyword{ misc }

@@ -37,18 +37,9 @@ Simple CouchDB API end point to http://serverName:port/_uuids. The
   wact.b.prot
   thsteinbock@web.de
 }
-\note{
-
-}
-
-
 
 \seealso{
 \code{cdbMakeDB}
-}
-\examples{
-cdb <- cdbIni()
-cdbGetUuids(cdb)$id
 }
 \keyword{ misc }
 

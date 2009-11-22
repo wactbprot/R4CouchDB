@@ -41,9 +41,5 @@ Simple CouchDB API end point: \url{http://localhost:5984/_all_dbs}
 \seealso{
 \code{cdbMakeDB}
 }
-\examples{
-cdb <- cdbIni()
-cdbListDB(cdb)$res
-}
-\keyword{ misc }
 
+\keyword{ misc }

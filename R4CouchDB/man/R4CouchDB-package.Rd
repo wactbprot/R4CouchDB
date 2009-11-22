@@ -28,13 +28,11 @@ The function \code{cdbIni()} initially provides
 \code{cdb}. However \code{a <- list(serverName="localhost",
   port="5984")} is sufficient for calling \code{cdbGetUuids(a)}.
 
-The Rd-examples in this package are a kind of fake. Every
-function tests the needed list entries before request execution. Since
-it is not possible to provide a default \code{cdb$serverName} all
-function calls in the example- sections set a \code{cdb$error <- "no
-  cdb$serverName"}, no http- request is executed.
+Since
+it is not possible to provide a meaningful default \code{cdb$serverName}
+all example sections are removed.
 
-  The http connection and the json transformations are done with Duncan
+ The http connection and the json transformations are done with Duncan
 Temple Langs RCurl and RJSON.
 }
 \author{
@@ -49,14 +47,4 @@ Maintainer: thsteinbock@web.de
 }
 \keyword{ package }
 \seealso{
-}
-\examples{
-## get the list structure
-cdb <- cdbIni()
-## this structure includes:
-cdb
-## the command
-cdb <- cdbListDB(cdb)
-## yields
-cdb$error
 }

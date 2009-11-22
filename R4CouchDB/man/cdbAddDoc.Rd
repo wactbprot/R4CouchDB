@@ -20,8 +20,11 @@ cdbAddDoc(cdb)
 }
 \details{
 This function is called addDoc (which means add a new
-  document). Therefore the
-  \code{cdb$id} is requested fresh for every document to add.
+ document). Therefore the
+ \code{cdb$id} is requested using \code{cdbGetUuid()} for every document
+  to add if no \code{cdb$id} is provided. If a \code{cdb$id} is provided
+  the function fails when a document with the given id already
+  exists. In this case one should use  \code{cdbUpdateDoc()}.
 }
 
 \value{

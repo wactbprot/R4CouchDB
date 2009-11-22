@@ -12,7 +12,7 @@ Deletes a document from a database
 \usage{
 cdbDeleteDoc(cdb)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{cdb}{Beside \code{cdb$serverName}, \code{cdb$port} and
     \code{cdb$DBName} the \code{cdb$id} must be given. R errors are
