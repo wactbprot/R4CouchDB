@@ -30,6 +30,7 @@ cdbGetView <- function( cdb ){
                        sep="")
 
     res <- getURL(adrString,
+                  customrequest = "GET",
                   curl=cdb$curl
                   )
 
