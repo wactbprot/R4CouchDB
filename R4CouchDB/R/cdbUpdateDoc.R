@@ -20,13 +20,12 @@ cdbUpdateDoc <- function( cdb){
 
   if( cdb$error ==""){
 
-    cdb <- cdbGetDoc(cdb)
-    cdb$rev <- cdb$res$'_rev'
+    ## go for the latest revition
+    cdb$rev <- cdbGetDoc(cdb)$res$'_rev'
+    cdb$dataList$'_id' <- cdb$id ## not needed
+    cdb$dataList$'_rev' <- cdb$rev
 
-    data <- toJSON(list('_id'=cdb$id,
-                        '_rev'=cdb$rev,
-                        cdb$dataList)
-                   )
+    data <- toJSON(cdb$dataList)
 
     adrString <- paste("http://",
                        cdb$serverName,":",
