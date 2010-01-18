@@ -1,5 +1,6 @@
 - writing Tests -> RUnit package provides infrastructure
--- thist should be the next step
+-- this should be the next step
+--- test structure implemented; some test available; results go to the log-folder
 
 - before returning the list the answer should be more evaluated
 
@@ -12,8 +13,7 @@
 
 - post and update files
 -- postFile done
-
--- skip postFile and updateFile out; this makes no sense
+--- skip postFile and updateFile out; this makes no sense
    since everyone knows best (better) how to handle with specific
    files resp. file structures ...
 
@@ -40,6 +40,88 @@
 
 - a function cdbDelDoc is missing
 -- the function is called cdbDeletDoc
---- done (but not  testet well)
+--- done (but not  tested well)
 
 - replication?
+
+-> mail Duncan:
+-><Hi Thomas
+-><
+-><  Sorry for the long delay in responding to your mail.
+-><I have just started teaching again, so there were many
+-><things to deal with.
+-><
+->< I took a look through the code for your R4CouchDB package.
+-><Looks good and reasonably clear and straightforward which is good.
+-><
+-><Here are some remarks/suggestions. Let me know if they are not clear.
+-><
+-><cdbIni()
+-><
+-><Put the dependency on RCurl and RJSONIO in the Description file
+-><under Depends: or Imports:
+
+done
+
+-><
+-><Make the port, server name, db name, etc. arguments
+-><with defaults for the cdbIni() function.
+
+ok for port, maybe cdb$serverName <- "localhost", but DBName ...?
+
+-><
+-><Let the function fail by not being able to load the packages,
+-><i.e. use the built-in error mechanism or else use
+-><try() and handle the errors by loading the packages.
+todo
+-><I.e. don't print the error messages but use stop()
+done
+-><with the error message  and R's own mechanism will handle
+-><it and people know how to deal with that, e.g. options(error = recover),
+-><suppress output, etc.
+-><
+-><cdbListDB() uses getURL().
+-><You may want to use getURLContent() for everything, although probably
+-><fine.
+-><
+-><cdbAddDoc()
+-><What do you use the reader  for in the headerfunction.
+-><Doesn't look like you use it. So in that case, getURLContent()
+-><will handle the header for you. Even if you do want it, you can get
+-><the information about the header from getURLContent()
+-><by passing it a dynamic curl reader, e.g.
+-><   curl = getCurlHandle()
+-><or
+-><    curl = cdb$curl
+-><
+-><  reader = dynCurlReader(curl)
+-><  getURLContent(..., header = reader)
+-><
+-><  reader$header()  # to get what was in the header of the HTTP response.
+-><
+-><You may want to allow the cdb connection object (returned by cdbIni())
+-><hava curl object and allow reusing that curl handle each time so as to
+-><improve "reconnection" latency, i.e. HTTP 1.1 and keep alive connections.
+-><
+-><
+-><
+-><thbo wrote:
+-><> > Hi Duncan,
+-><> >
+-><> > I've introduce unit test using the (really nice) Runit package. This
+-><> > leads to some modifications in R4CouchDB.
+-><> >
+-><> > To have a look on the package you can use
+-><> >
+-><> > http://github.com/wactbprot/R4CouchDB/
+-><> >
+-><> > The sources you can download at:
+-><> >
+-><> > http://wactbprot.github.com/R4CouchDB/
+-><> >
+-><> > as tar.gz or zip.
+-><> >
+-><> > It would be nice to hear from you;
+-><> >
+-><> > Best regards
+-><> > Thomas
