@@ -11,7 +11,8 @@ Description: The R4CouchDB package provides a collection of functions for
              connection set up. A unit test structure using the RUnit
              package is preliminary prepared.
              With the cdbIni() function the cdb$serverName is set to
-             "localhost" as a default. This means that localhost should provide a CouchDB.
+             "localhost" as a default. This means that localhost should
+             provide a CouchDB.
              All (former) example sections in the man pages are
              removed; the unit test structure is intended to cover the example
              task with more and easier control.

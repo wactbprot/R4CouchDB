@@ -20,8 +20,8 @@ cdbAddAttachment(cdb)
 }
 \details{
 The function uses a simple call to \code{strsplit(fileName, ".")} and
-  takes the last entry of the resulting vector as the \code{Content-Type} in
-  the \code{httpheader}
+takes the last entry of the resulting vector as the \code{Content-Type} in
+the \code{httpheader}.
 }
 
 \value{
