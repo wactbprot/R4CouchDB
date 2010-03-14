@@ -13,8 +13,7 @@ cdbAddAttachment <- function( cdb){
     cdb$error <- paste(cdb$error,
                        " no cdb$fileName given or ",
                        cdb$fileName,
-                       " does not exist under ",
-                       getwd(),
+                       " does not exist",
                        sep=" ")
   }
 
@@ -35,19 +34,18 @@ cdbAddAttachment <- function( cdb){
                        cdb$port,"/",
                        cdb$DBName,"/",
                        cdb$id,"/",
-                       cdb$fileName,"?rev=",
+                       basename(cdb$fileName),"?rev=",
                        cdb$rev,
                        sep="")
 
     res <- getURL(adrString,
-                  customrequest = "PUT",
-                  curl=cdb$curl,
-                  postfields = data,
-                  httpheader=c('Content-Type' = paste("image/", tmpFn[tmpN],sep="")),
-                  )
+           customrequest = "PUT",
+           postfields = data,
+           httpheader=c('Content-Type' =  paste("image/",tmpFn[tmpN],sep="")),
+           curl=cdb$curl
+           )
 
-    cdb$res <- fromJSON( res )
-
+    cdb$res <- fromJSON(res)
     return( cdb )
 
   }else{
