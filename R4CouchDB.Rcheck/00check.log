@@ -1,9 +1,9 @@
 * using log directory '/home/tg/eig/couchdb/R4CouchDB/R4CouchDB.Rcheck'
-* using R version 2.9.1 (2009-06-26)
+* using R version 2.10.1 (2009-12-14)
 * using session charset: UTF-8
 * checking for file 'R4CouchDB/DESCRIPTION' ... OK
 * checking extension type ... Package
-* this is package 'R4CouchDB' version '0.03'
+* this is package 'R4CouchDB' version '0.04'
 * checking package dependencies ... OK
 * checking if this is a source package ... OK
 * checking for executable files ... OK
@@ -25,10 +25,10 @@
 * checking foreign function calls ... OK
 * checking R code for possible problems ... OK
 * checking Rd files ... OK
-* checking Rd files against version 2 parser ... OK
+* checking Rd metadata ... OK
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... OK
 * checking Rd \usage sections ... OK
-* checking examples ... OK
+* checking examples ... NONE
 * checking PDF version of manual ... OK

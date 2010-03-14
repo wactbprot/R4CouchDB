@@ -1,8 +1,8 @@
 Package: R4CouchDB
 Type: Package
 Title: Collection of R functions for CouchDB access
-Version: 0.032
-Date: 2009/01/06
+Version: 0.04
+Date: 2010/03/14
 Author: wactbprot
 Maintainer: <thsteinbock@web.de>
 Description: The R4CouchDB package provides a collection of functions for
@@ -17,4 +17,4 @@ Description: The R4CouchDB package provides a collection of functions for
              task with more and easier control.
 License: BSD
 LazyLoad: yes
-Depends: R (>= 2.7.0), RCurl, RJSONIO
+Depends: R (>= 2.7.0), RCurl, bitops, RJSONIO

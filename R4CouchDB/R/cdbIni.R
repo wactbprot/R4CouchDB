@@ -16,6 +16,7 @@ cdbIni <- function(){
                 id="",
                 rev="",
                 dataList=list(),
+                fileName="",
                 design="",
                 view="",
                 queryParam="",

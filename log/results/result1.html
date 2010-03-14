@@ -34,89 +34,54 @@ Runs: <b>1</b>
 <tr><td bgcolor="#00D000">3</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;rj <- library(RJSONIO, logical.return = TRUE)</td>
 <td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0</td>
+<td bgcolor="#00D000">0.33</td>
 </tr>
 <tr><td bgcolor="#00D000">4</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;if (rc && rj) {</td>
 <td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0</td>
+<td bgcolor="#00D000">0.07</td>
 </tr>
 <tr><td bgcolor="#00D000">5</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb <- list(serverName = "", port = "5984", DBName = "", newDBName = "", removeDBName = "", id = "", rev = "", dataList = list(), design = "", view = "", queryParam = "", date = toString(Sys.Date()), error = "", res = "")</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb <- list(serverName = "localhost", port = "5984", curl = getCurlHandle(), DBName = "", newDBName = "", removeDBName = "", id = "", rev = "", dataList = list(), design = "", view = "", queryParam = "", date = toString(Sys.Date()), error = "", res = "")</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
 <tr><td bgcolor="#00D000">6</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;if (cdb$error == "") {</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#00D000">7</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
-<td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0</td>
-</tr>
-<tr><td bgcolor="#D00000">8</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
-</tr>
-<tr><td bgcolor="#D00000">9</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;else {</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
-</tr>
-<tr><td bgcolor="#D00000">10</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$error <- " can not make r4couch_test_db "</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
-</tr>
-<tr><td bgcolor="#D00000">11</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
-</tr>
-<tr><td bgcolor="#D00000">12</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
-</tr>
-<tr><td bgcolor="#D00000">13</td>
+<tr><td bgcolor="#D00000">7</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">14</td>
+<tr><td bgcolor="#D00000">8</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;else {</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">15</td>
+<tr><td bgcolor="#D00000">9</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;eTxt <- paste("RCurl loaded: ", rc, "\n", "RJSONIO loaded: ", rj)</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">16</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;print(eTxt)</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
-</tr>
-<tr><td bgcolor="#D00000">17</td>
+<tr><td bgcolor="#D00000">10</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$error <- eTxt</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">18</td>
+<tr><td bgcolor="#D00000">11</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">19</td>
+<tr><td bgcolor="#D00000">12</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">20</td>
+<tr><td bgcolor="#D00000">13</td>
 <td bgcolor="#D00000">}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
@@ -132,5 +97,5 @@ Runs: <b>1</b>
 <td align="right"><a href="./con1.html">graph</a></td></tr>
 </table>
 <hr>
-RUnit  0.4.19 2009-09-24 17:22:13</body>
+RUnit  0.4.19 2009-11-08 18:53:08</body>
 </html>

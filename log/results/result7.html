@@ -57,126 +57,91 @@ Runs: <b>1</b>
 <td bgcolor="#D00000">0</td>
 </tr>
 <tr><td bgcolor="#00D000">8</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;if (cdb$rev == "") {</td>
-<td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0</td>
-</tr>
-<tr><td bgcolor="#00D000">9</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb <- cdbGetDoc(cdb)</td>
-<td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0</td>
-</tr>
-<tr><td bgcolor="#00D000">10</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$rev <- cdb$res$"_rev"</td>
-<td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0.02</td>
-</tr>
-<tr><td bgcolor="#D00000">11</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
-</tr>
-<tr><td bgcolor="#00D000">12</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;if (length(cdb$dataList) < 1) {</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">13</td>
+<tr><td bgcolor="#D00000">9</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$error <- paste(cdb$error, " no cdb$dataList given", sep = " ")</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">14</td>
+<tr><td bgcolor="#D00000">10</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#00D000">15</td>
+<tr><td bgcolor="#00D000">11</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;if (cdb$error == "") {</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#00D000">16</td>
+<tr><td bgcolor="#00D000">12</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb <- cdbGetDoc(cdb)</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#00D000">17</td>
+<tr><td bgcolor="#00D000">13</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$rev <- cdb$res$"_rev"</td>
 <td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0.01</td>
+<td bgcolor="#00D000">0.02</td>
 </tr>
-<tr><td bgcolor="#00D000">18</td>
+<tr><td bgcolor="#00D000">14</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;data <- toJSON(list(`_id` = cdb$id, `_rev` = cdb$rev, cdb$dataList))</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#00D000">19</td>
+<tr><td bgcolor="#00D000">15</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;adrString <- paste("http://", cdb$serverName, ":", cdb$port, "/", cdb$DBName, "/", cdb$id, sep = "")</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#00D000">20</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;header <- list(`Content-Type` = "application/json")</td>
+<tr><td bgcolor="#00D000">16</td>
+<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;res <- getURL(customrequest = "PUT", curl = cdb$curl, url = adrString, postfields = data)</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#00D000">21</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;reader <- basicTextGatherer()</td>
-<td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0</td>
-</tr>
-<tr><td bgcolor="#00D000">22</td>
-<td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;res <- getURLContent(customrequest = "PUT", url = adrString, postfields = data, headerfunction = reader$update)</td>
-<td bgcolor="#00D000">1</td>
-<td bgcolor="#00D000">0</td>
-</tr>
-<tr><td bgcolor="#00D000">23</td>
+<tr><td bgcolor="#00D000">17</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$res <- fromJSON(res)</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#00D000">24</td>
+<tr><td bgcolor="#00D000">18</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb <- cdbGetDoc(cdb)</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#00D000">25</td>
+<tr><td bgcolor="#00D000">19</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;cdb$rev <- cdb$res$"_rev"</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0.01</td>
 </tr>
-<tr><td bgcolor="#00D000">26</td>
+<tr><td bgcolor="#00D000">20</td>
 <td bgcolor="#00D000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
 <td bgcolor="#00D000">1</td>
 <td bgcolor="#00D000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">27</td>
+<tr><td bgcolor="#D00000">21</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">28</td>
+<tr><td bgcolor="#D00000">22</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;else {</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">29</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;print(cdb$error)</td>
+<tr><td bgcolor="#D00000">23</td>
+<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;stop(cdb$error)</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">30</td>
-<td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return(cdb)</td>
-<td bgcolor="#D00000">0</td>
-<td bgcolor="#D00000">0</td>
-</tr>
-<tr><td bgcolor="#D00000">31</td>
+<tr><td bgcolor="#D00000">24</td>
 <td bgcolor="#D00000">&ensp;&ensp;&ensp;&ensp;}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
 </tr>
-<tr><td bgcolor="#D00000">32</td>
+<tr><td bgcolor="#D00000">25</td>
 <td bgcolor="#D00000">}</td>
 <td bgcolor="#D00000">0</td>
 <td bgcolor="#D00000">0</td>
@@ -192,5 +157,5 @@ Runs: <b>1</b>
 <td align="right"><a href="./con7.html">graph</a></td></tr>
 </table>
 <hr>
-RUnit  0.4.19 2009-09-24 17:22:13</body>
+RUnit  0.4.19 2009-11-08 18:53:08</body>
 </html>

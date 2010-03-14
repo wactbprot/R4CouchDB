@@ -1,4 +1,5 @@
 R4CouchDB-package	R4CouchDB-package
+cdbAddAttachment	cdbAddAttachment
 cdbAddDoc	cdbAddDoc
 cdbDeleteDoc	cdbDeleteDoc
 cdbGetDoc	cdbGetDoc

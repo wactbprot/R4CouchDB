@@ -46,5 +46,3 @@ Maintainer: thsteinbock@web.de
 \url{  http://couchdb.apache.org/}
 }
 \keyword{ package }
-\seealso{
-}

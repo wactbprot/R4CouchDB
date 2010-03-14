@@ -1,4 +1,5 @@
 R4CouchDB-package       Collection of R functions for CouchDB access
+cdbAddAttachment        Add Attachments
 cdbAddDoc               Generates a new document
 cdbDeleteDoc            Deletes a document from a database
 cdbGetDoc               Get a doc from CouchDB
