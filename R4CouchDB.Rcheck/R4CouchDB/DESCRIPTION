@@ -18,4 +18,8 @@ Description: The R4CouchDB package provides a collection of functions
 License: BSD
 LazyLoad: yes
 Depends: R (>= 2.7.0), RCurl, bitops, RJSONIO
+<<<<<<< HEAD
 Built: R 2.10.1; ; 2010-03-14 20:12:24 UTC; unix
+=======
+Built: R 2.10.1; ; 2010-03-14 21:27:14 UTC; unix
+>>>>>>> addAttachment
