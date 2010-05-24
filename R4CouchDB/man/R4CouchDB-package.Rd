@@ -29,11 +29,15 @@ The function \code{cdbIni()} initially provides
   port="5984")} is sufficient for calling \code{cdbGetUuids(a)}.
 
 Since
-it is not possible to provide a meaningful default \code{cdb$serverName}
-all example sections are removed.
+it was not possible to provide a meaningful default \code{cdb$serverName}
+all example sections were removed in the past. Sine the couch.io site
+starts a pre alpha testing phase I can provide:\cr
+\code{cdb$serverName <- "wactbprot.couchone.com"}\cr
+This means the following:
+...
 
- The http connection and the json transformations are done with Duncan
-Temple Langs RCurl and RJSON.
+The http connection and the json transformations are done with Duncan
+Temple Langs RCurl and RJSON where this package depends on.
 }
 \author{
 wact.b.prot
