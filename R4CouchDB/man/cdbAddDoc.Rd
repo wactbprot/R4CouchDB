@@ -32,7 +32,7 @@ This function is called addDoc (which means add a new
 }
 }
 \author{
-  wact.b.prot
+  wactbprot
   thsteinbock@web.de
 
 }
