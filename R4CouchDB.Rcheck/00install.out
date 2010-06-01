@@ -7,4 +7,6 @@ Loading required package: bitops
 ** help
 *** installing help indices
 ** building package indices ...
+** testing if installed package can be loaded
+
 * DONE (R4CouchDB)

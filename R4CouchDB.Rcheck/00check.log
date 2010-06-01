@@ -1,5 +1,5 @@
 * using log directory '/home/tg/eig/couchdb/R4CouchDB/R4CouchDB.Rcheck'
-* using R version 2.10.1 (2009-12-14)
+* using R version 2.11.0 (2010-04-22)
 * using session charset: UTF-8
 * checking for file 'R4CouchDB/DESCRIPTION' ... OK
 * checking extension type ... Package
@@ -19,6 +19,7 @@
 * checking R files for syntax errors ... OK
 * checking whether the package can be loaded ... OK
 * checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
 * checking for unstated dependencies in R code ... OK
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
@@ -30,5 +31,5 @@
 * checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... OK
 * checking Rd \usage sections ... OK
-* checking examples ... NONE
-* checking PDF version of manual ... OK
+* checking Rd contents ... OK
+* checking examples ... OK
