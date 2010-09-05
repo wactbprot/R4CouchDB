@@ -44,8 +44,8 @@ x <- seq(-10, 10, length= 30)
       z[is.na(z)] <- 1
       op <- par(bg = "white")
 cdb <- cdbIni()
-## cdb$serverName <- "wactbprot.couchone.com"
-cdb$serverName <- "localhost"
+ cdb$serverName <- "wactbprot.couchone.com"
+## cdb$serverName <- "localhost"
 cdb$DBName <- "r4couchdb"
 cdb$fileName <- paste("../",cdb$DBName,".test.png", sep="")
 cdb$dataList <- list(data=list(x=x,y=y,z=z),
