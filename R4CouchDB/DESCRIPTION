@@ -1,7 +1,7 @@
 Package: R4CouchDB
 Type: Package
 Title: Collection of R functions for CouchDB access
-Version: 0.04
+Version: 0.041
 Date: 2010/03/14
 Author: wactbprot
 Maintainer: <thsteinbock@web.de>

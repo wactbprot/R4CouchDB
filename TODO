@@ -125,3 +125,15 @@ done
 -><> >
 -><> > Best regards
 -><> > Thomas
+
+--- apply:
+Since today I can provide a default server for the example sections in the Rd
+files of this package: wactbprot.couchone.com
+This couch is for testing purposes only. Please be careful with traffic
+sensitive data and so on; don't be evil.
+
+Of course the test data will be removed frequently.
+
+to be continued
+
+wactbprot
