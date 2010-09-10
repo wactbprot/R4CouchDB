@@ -35,10 +35,9 @@ cdbUpdateDoc <- function( cdb){
                        sep="")
 
     res <- getURL(customrequest = "PUT",
-                  curl=cdb$curl,
+                  #curl=cdb$curl,
                   url = adrString,
-                       postfields = data
-                  )
+                  postfields = data )
 
     cdb$res <- fromJSON( res )
     ## update revision

@@ -19,8 +19,7 @@ cdbGetDoc <- function( cdb){
 
 
     res <- getURL(adrString,
-                  customrequest = "GET",
-                  curl=cdb$curl
+                  customrequest = "GET"
                   )
 
     cdb$res <- fromJSON(res)
