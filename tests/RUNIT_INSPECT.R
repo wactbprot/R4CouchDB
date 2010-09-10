@@ -1,69 +1,44 @@
-library(RUnit)
-## library(R4CouchDB)
-
+library(RUnit) 
 
 srcPath <- "../R4CouchDB/R/"
-
 fn <- list.files(srcPath, pattern="R$")
 
-for (k in 1:length(fn)) source(paste(srcPath,fn[k],sep=""))
-
+for (k in 1:length(fn)){
+  source(paste(srcPath,fn[k],sep=""))
+}
 
 logPath <- "../log/"
-
 track <- tracker()
 track$init()
 
 ## example section with code inspection
 
-ccc <- inspect(
-               cdbIni(),
+ccc <- inspect(cdbIni(),
                track = track)
 
-ccc$serverName <- "localhost"
+ccc$serverName <- "wactbprot.couchone.com"
 
-ccc <- inspect(
-               cdbListDB(ccc)
+ccc <- inspect(cdbListDB(ccc)
                , track = track)
 ccc$res
-
 ccc$queryParam <- "count=1"
-
-ccc <- inspect(
-               cdbGetUuids(ccc)
+ccc <- inspect(cdbGetUuids(ccc)
                ,track = track)
-
-
 ccc$newDBName <- paste("runit_test_", ccc$id, sep="")
 ccc$removeDBName  <- ccc$newDBName
-
-ccc <- inspect(
-               cdbMakeDB(ccc)
+ccc <- inspect(cdbMakeDB(ccc)
                ,track = track)
-
-
-
 ccc$dataList <- list(normalDistRand =  rnorm(20))
-
-ccc <- inspect(
-               cdbAddDoc(ccc)
+ccc <- inspect(cdbAddDoc(ccc)
                ,track = track)
-
-ccc <- inspect(
-               cdbGetDoc(ccc)
+ccc <- inspect(cdbGetDoc(ccc)
                ,track = track)
-
 ccc$dataList <- list(ccc$dataList, normalDistRand =  rnorm(20))
-
-ccc <- inspect(
-               cdbUpdateDoc(ccc)
+ccc <- inspect(cdbUpdateDoc(ccc)
                ,track = track)
 
-ccc <- inspect(
-               cdbRemoveDB(ccc)
-               ,track = track)
-
-
+##ccc <- inspect(cdbRemoveDB(ccc)
+##               ,track = track)
 
 resTrack <- track$getTrackInfo()
 printHTML.trackInfo(resTrack, baseDir=logPath)
