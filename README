@@ -1,4 +1,19 @@
-
+problem:
 workaround for error which occurs while updating (cdbUpdateDoc())
 relative large (~40k) data sets.
 curl=cdb$curl -> #curl=cdb$curl
+
+supplement:
+I was not able to reproduce the error at home 
+(in a different network topology, 
+different data but same (actualy bigger) size)
+maybe there is no need to use V0.41 ...
+I'll find it out!  
+
+advice:
+there is a new version of RJSONIO:
+Last Release: 0.3-1 (08 Sep 2010)
+see
+http://www.omegahat.org/RJSONIO
+
+wactbprot
