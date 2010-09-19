@@ -15,21 +15,32 @@ cdbIni()
 \details{
   The list:
   \code{     cdb <- list(
-                serverName = "",
+                serverName = "localhost",
                 port = "5984",
+                prot = "http",
+                uname="",
+                pwd="", 
                 curl=getCurlHandle(),
                 DBName="",
                 newDBName="",
+                removeDBName="",
                 id="",
                 rev="",
                 dataList=list(),
+                fileName="",
                 design="",
                 view="",
                 queryParam="",
-                date=toString( Sys.Date()),
+                date=toString(Sys.Date()),
                 error="",
                 res=""
                 )
+
+    cdb$baseUrl <- function(cdb){
+      mid <- if(cdb$uname == ""){""}else{paste(cdb$uname,":",cdb$pwd,"@",sep="")}
+      baseUrl <- paste(cdb$prot,"://",mid,cdb$serverName,"/", sep="")
+      return(baseUrl)
+    }
 } is returned if the packages \code{library(RCurl)} and
 \code{library(RJSONIO)} are successfully loaded.
 }
@@ -39,9 +50,7 @@ cdbIni()
 }
 }
 \author{
-
-  wact.b.prot
-  thsteinbock@web.de
+  wactbprot
 }
 \keyword{ misc }
 

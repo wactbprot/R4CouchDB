@@ -28,7 +28,7 @@ of each requests, the CouchDB answers, are stored in the
 
 The function \code{cdbIni()} initially provides
 a basic \code{cdb} list. The two basic \code{cdb} settings  set by
-\code{cdbIni()} are  \code{cdb$serverName <- "localhost"} and
+\code{cdbIni()} are  \code{cdb$prot <- "http"} and
 \code{cdb$port <- "5984"}. Moreover it is simple to change this defaults direct
 in the source code of \code{cdbIni()} and rebuild the package using
 \code{R CMD check R4CouchDB} followed by a \code{build} and \code{INSTALL}.
@@ -38,13 +38,15 @@ in the source code of \code{cdbIni()} and rebuild the package using
 Since
 it was not possible to provide a meaningful default \code{cdb$serverName}
 for all example sections, this sectionswere removed in the past. Sine
-the \url{http://couch.io}  site starts a pre alpha testing phase I can provide:\cr
+the \url{http://couchone.com}  site starts I can provide:\cr
 \code{cdb$serverName <- "wactbprot.couchone.com"}\cr
-This means the following:
-...
+
+A test run of most of the fuctions is provided in the example
+folder. There are also some comments.
 
 The http connection and the json transformations are done with Duncan
 Temple Langs RCurl and RJSON where this package depends on.
+Many thanks to him.
 }
 \author{
 wactbprot

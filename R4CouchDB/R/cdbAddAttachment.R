@@ -29,9 +29,7 @@ cdbAddAttachment <- function( cdb){
 
     cdb$rev <- cdbGetDoc(cdb)$res$'_rev'
 
-    adrString <- paste("http://",
-                       cdb$serverName,":",
-                       cdb$port,"/",
+    adrString <- paste(cdb$baseUrl(cdb),
                        cdb$DBName,"/",
                        cdb$id,"/",
                        basename(cdb$fileName),"?rev=",

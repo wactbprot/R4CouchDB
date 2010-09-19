@@ -1,11 +1,11 @@
-cdbGetUuids <- function(cdb){
+cdbGetUuidS <- function(cdb){
   ## write test functions!
 
   if(cdb$serverName == ""){
     cdb$error <- paste(cdb$error," no cdb$serverName given")
   }
 
-  if (cdb$error ==""){
+  if (cdb$error == ""){
 
     if(cdb$queryParam == ""){
       queryString <- ""
@@ -13,19 +13,17 @@ cdbGetUuids <- function(cdb){
       queryString <- paste("?",cdb$queryParam, sep="")
     }
 
-    adrString <- paste("http://",
-                       cdb$serverName,":",
-                       cdb$port, "/_uuids",
+    adrString <- paste(cdb$baseUrl(cdb),
+                       "_uuids",
                        queryString,
                        sep="")
-
 
     res <- getURL(adrString,
                   customrequest = "GET",
                   curl=cdb$curl
                   )
 
-    cdb$id <- fromJSON(res)$uuids
+    cdb$res <- fromJSON(res)$uuids
 
     return( cdb )
   }else{

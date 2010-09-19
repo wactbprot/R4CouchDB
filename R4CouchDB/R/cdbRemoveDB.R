@@ -22,9 +22,7 @@ cdbRemoveDB <- function(cdb){
 
   if( cdb$error == ""){
 
-    adrString <- paste("http://",
-                       cdb$serverName,":",
-                       cdb$port,"/",
+    adrString <- paste(cdb$baseUrl(cdb),
                        cdb$removeDBName,
                        sep="")
 

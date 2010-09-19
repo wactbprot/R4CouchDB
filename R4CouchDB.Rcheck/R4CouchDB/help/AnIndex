@@ -3,7 +3,8 @@ cdbAddAttachment	cdbAddAttachment
 cdbAddDoc	cdbAddDoc
 cdbDeleteDoc	cdbDeleteDoc
 cdbGetDoc	cdbGetDoc
-cdbGetUuids	cdbGetUuids
+cdbGetUuid	cdbGetUuid
+cdbGetUuidS	cdbGetUuidS
 cdbGetView	cdbGetView
 cdbIni	cdbIni
 cdbListDB	cdbListDB

@@ -32,8 +32,7 @@ cdbDeleteDoc(cdb)
 
 }
 \author{
-  wact.b.prot
-  thsteinbock@web.de
+  wactbprot
 }
 
 \seealso{

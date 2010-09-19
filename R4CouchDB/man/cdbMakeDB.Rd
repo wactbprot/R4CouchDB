@@ -31,14 +31,24 @@ operations happen on the new created database.
 \url{  http://couchdb.apache.org/       }
 }
 \author{
-  wact.b.prot
-  thsteinbock@web.de
+  wactbprot
+}
+\examples{
+ccc <- cdbIni()
+
+ccc$serverName <- "wactbprot.couchone.com"
+ccc$newDBName <- paste("r4couchdb",cdbGetUuid(ccc)$id, sep="_")
+ccc$removeDBName  <- ccc$newDBName
+
+ccc <- cdbMakeDB(ccc)
+ccc <- cdbRemoveDB(ccc)
+
 }
 \note{
 The convention for database naming should be implemented.
 }
 
 \seealso{
-\code{cdbRemoveDB}
+\code{cdbUpdateDoc}
 }
 \keyword{ misc }

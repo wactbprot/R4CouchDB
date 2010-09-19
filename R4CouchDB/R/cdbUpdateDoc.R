@@ -19,25 +19,23 @@ cdbUpdateDoc <- function( cdb){
   }
 
   if( cdb$error ==""){
-
     ## go for the latest revition
     cdb$rev <- cdbGetDoc(cdb)$res$'_rev'
-    cdb$dataList$'_id' <- cdb$id ## not needed
+    cdb$dataList$'_id' <- cdb$id 
     cdb$dataList$'_rev' <- cdb$rev
 
     data <- toJSON(cdb$dataList)
 
-    adrString <- paste("http://",
-                       cdb$serverName,":",
-                       cdb$port,"/",
+    adrString <- paste(cdb$baseUrl(cdb),
                        cdb$DBName,"/",
                        cdb$id,
                        sep="")
 
     res <- getURL(customrequest = "PUT",
-                  #curl=cdb$curl,
+                  curl=cdb$curl,
                   url = adrString,
-                  postfields = data )
+                  postfields = data,
+                  httpheader=c('Content-Type: application/json'))
 
     cdb$res <- fromJSON( res )
     ## update revision

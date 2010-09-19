@@ -6,9 +6,7 @@ cdbListDB <- function(cdb){
 
  if(cdb$error == ""){
 
-   adrString <- paste("http://",
-                      cdb$serverName,":",
-                      cdb$port, "/_all_dbs",
+   adrString <- paste(cdb$baseUrl(cdb), "_all_dbs",
                       sep="")
 
    res <- getURL(adrString,

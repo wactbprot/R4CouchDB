@@ -5,7 +5,8 @@
 \title{
 This function  updates an existing doc. This
 essentially means that a revision, corresponding to the '_id'
-has to be provided (in what way ever).
+has to be provided. If no '_rev' is provided the function gets the doc
+fron the db and takes the revition number for the update 
 }
 \description{
 Updating a doc at couchdb means executing a http "PUT" request. The  \code{cdb}
@@ -26,7 +27,7 @@ the cdb connection configuration list must contain the \code{cdb$serverName},
 }
 }
 \details{
-  \code{getURLContent()} with \code{customrequest = "PUT"} does the work.
+  \code{getURL()} with \code{customrequest = "PUT"} does the work.
 
 }
 \value{
@@ -44,9 +45,16 @@ the cdb connection configuration list must contain the \code{cdb$serverName},
 \url{  http://couchdb.apache.org/       }
 
 }
+\examples{
+ccc <- cdbIni()
+ccc$serverName <- "wactbprot.couchone.com"
+ccc$DBName <- "r4couchdb"
+ccc$dataList <- list(normalDistRand =  rnorm(20))
+ccc <- cdbAddDoc(ccc)
+cdbUpdateDoc(ccc)$res
+}
 \author{
-  wact.b.prot
-  thsteinbock@web.de
+  wactbprot
 }
 \seealso{
 \code{cdbInit()}

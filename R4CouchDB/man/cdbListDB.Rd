@@ -3,7 +3,7 @@
 \alias{cdbListDB}
 
 \title{
-Returns all databases
+Returns all databases on the server
 }
 \description{
 Gives a list of all databases
@@ -34,8 +34,7 @@ Simple CouchDB API end point: \url{http://localhost:5984/_all_dbs}
 
 }
 \author{
-  wact.b.prot
-  thsteinbock@web.de
+  wactbprot
 }
 
 \seealso{

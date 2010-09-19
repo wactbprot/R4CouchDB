@@ -33,11 +33,18 @@ This function is called addDoc (which means add a new
 }
 \author{
   wactbprot
-  thsteinbock@web.de
-
 }
 \seealso{
 \code{cdbGetDoc()}
+}
+\examples{
+ccc <- cdbIni()
+ccc$serverName <- "wactbprot.couchone.com"
+ccc$DBName <- "r4couchdb"
+ccc$dataList <- list(normalDistRand =  rnorm(20))
+
+cdbAddDoc(ccc)$res
+
 }
 
 \keyword{ misc }

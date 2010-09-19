@@ -18,9 +18,7 @@ cdbGetView <- function( cdb ){
       queryString <- paste("?",cdb$queryParam, sep="")
     }
 
-    adrString <- paste("http://",
-                       cdb$serverName,":",
-                       cdb$port,"/",
+    adrString <- paste(cdb$baseUrl(cdb),
                        cdb$DBName,
                        "/_design/",
                        cdb$design,

@@ -10,25 +10,18 @@ cdbMakeDB <- function(cdb){
     cdb$error <- paste(cdb$error," no cdb$newDBName given ")
 
   }else{
-
     DBNames <- cdbListDB(cdb)$res
     DBexists <- which(DBNames == cdb$newDBName)
-
+    
     if(length(DBexists) > 0){
-
       cdb$error <- paste(cdb$error," cdb$newDBName already exists ")
-
     }
   }
 
   if(cdb$error == ""){
-
-    adrString <- paste("http://",
-                       cdb$serverName,":",
-                       cdb$port,"/",
+    adrString <- paste(cdb$baseUrl(cdb),
                        cdb$newDBName,
                        sep="")
-
 
     res <- getURL(adrString,
                   customrequest = "PUT",
@@ -38,8 +31,9 @@ cdbMakeDB <- function(cdb){
     cdb$res <- fromJSON( res )
 
     ## newDB is generated it's now no longer a new one
-    cdb$DBName <- cdb$newDBName
-    return( cdb )
+    cdb$DBName    <- cdb$newDBName
+    cdb$newDBName <- ""
+    return(cdb)
 
   }else{
     stop( cdb$error )

@@ -10,7 +10,7 @@
 <div align="center">
 <a href="../../../doc/html/packages.html"><img src="../../../doc/html/left.jpg" alt="[Up]" width="30" height="30" border="0"></a>
 <a href="../../../doc/html/index.html"><img src="../../../doc/html/up.jpg" alt="[Top]" width="30" height="30" border="0"></a>
-</div><h2>Documentation for package &lsquo;R4CouchDB&rsquo; version 0.041</h2>
+</div><h2>Documentation for package &lsquo;R4CouchDB&rsquo; version 0.05</h2>
 
 <ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
 </ul>
@@ -29,14 +29,16 @@
 <td>Deletes a document from a database</td></tr>
 <tr><td width="25%"><a href="cdbGetDoc.html">cdbGetDoc</a></td>
 <td>Get a doc from CouchDB</td></tr>
-<tr><td width="25%"><a href="cdbGetUuids.html">cdbGetUuids</a></td>
-<td>Function for id generation</td></tr>
+<tr><td width="25%"><a href="cdbGetUuid.html">cdbGetUuid</a></td>
+<td>Function for request one  id</td></tr>
+<tr><td width="25%"><a href="cdbGetUuidS.html">cdbGetUuidS</a></td>
+<td>Function for request a number of ids</td></tr>
 <tr><td width="25%"><a href="cdbGetView.html">cdbGetView</a></td>
 <td>Receive view results from CouchDB</td></tr>
 <tr><td width="25%"><a href="cdbIni.html">cdbIni</a></td>
 <td>Ini function</td></tr>
 <tr><td width="25%"><a href="cdbListDB.html">cdbListDB</a></td>
-<td>Returns all databases</td></tr>
+<td>Returns all databases on the server</td></tr>
 <tr><td width="25%"><a href="cdbMakeDB.html">cdbMakeDB</a></td>
 <td>Creates a new database</td></tr>
 <tr><td width="25%"><a href="cdbRemoveDB.html">cdbRemoveDB</a></td>
@@ -44,7 +46,8 @@
 <tr><td width="25%"><a href="cdbUpdateDoc.html">cdbUpdateDoc</a></td>
 <td>This function  updates an existing doc. This
 essentially means that a revision, corresponding to the '_id'
-has to be provided (in what way ever).</td></tr>
+has to be provided. If no '_rev' is provided the function gets the doc
+fron the db and takes the revition number for the update</td></tr>
 <tr><td width="25%"><a href="R4CouchDB-package.html">R4CouchDB</a></td>
 <td>Collection of R functions for CouchDB access</td></tr>
 </table>

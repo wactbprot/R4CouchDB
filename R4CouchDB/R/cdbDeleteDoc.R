@@ -21,9 +21,7 @@ cdbDeleteDoc <- function( cdb ){
     cdb <- cdbGetDoc(cdb)
     cdb$rev <- cdb$res$'_rev'
 
-    adrString <- paste("http://",
-                       cdb$serverName,":",
-                       cdb$port,"/",
+    adrString <- paste(cdb$baseUrl(cdb),
                        cdb$DBName,"/",
                        cdb$id,
                        "?rev=",
@@ -40,7 +38,6 @@ cdbDeleteDoc <- function( cdb ){
     return( cdb )
 
   }else{
-
     stop( cdb$error )
   }
 }

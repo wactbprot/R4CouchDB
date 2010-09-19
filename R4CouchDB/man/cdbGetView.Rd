@@ -40,8 +40,15 @@ be provided in \code{cdb$queryParam}
 \url{  http://www.omegahat.org/RJavaScript/  }
 }
 \author{
-  wact.b.prot
-  thsteinbock@web.de
+  wactbprot
+}
+\examples{
+ccc <- cdbIni()
+ccc$serverName <- "wactbprot.couchone.com"
+ccc$DBName <- "r4couchdb"
+ccc$design <- "r4" ## a simple already saved view
+ccc$view <- "couchdb"
+cdbGetView(ccc)$res
 }
 \note{
 For the moment only one \code{cdb$queryParam} is possible. In the future

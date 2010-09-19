@@ -34,8 +34,7 @@ cdbRemoveDB(cdb)
 \url{  http://couchdb.apache.org/       }
 }
 \author{
-  wact.b.prot
-  thsteinbock@web.de
+  wactbprot
   }
 
   \seealso{

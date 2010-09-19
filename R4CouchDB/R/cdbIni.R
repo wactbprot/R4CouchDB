@@ -9,6 +9,9 @@ cdbIni <- function(){
     cdb <- list(
                 serverName = "localhost",
                 port = "5984",
+                prot = "http",
+                uname="",
+                pwd="", 
                 curl=getCurlHandle(),
                 DBName="",
                 newDBName="",
@@ -24,8 +27,15 @@ cdbIni <- function(){
                 error="",
                 res=""
                 )
-      return( cdb )
-    }else{
+
+    cdb$baseUrl <- function(cdb){
+      mid <- if(cdb$uname == ""){""}else{paste(cdb$uname,":",cdb$pwd,"@",sep="")}
+      baseUrl <- paste(cdb$prot,"://",mid,cdb$serverName,"/", sep="")
+      return(baseUrl)
+    }
+    
+    return( cdb )
+  }else{
 
     eTxt <- paste("RCurl loaded: ",rc,"\n",
                   "RJSONIO loaded: ",rj)
