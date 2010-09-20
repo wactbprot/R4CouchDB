@@ -19,23 +19,30 @@ cdbMakeDB <- function(cdb){
   }
 
   if(cdb$error == ""){
+
     adrString <- paste(cdb$baseUrl(cdb),
                        cdb$newDBName,
                        sep="")
-
+    
     res <- getURL(adrString,
                   customrequest = "PUT",
                   curl=cdb$curl
                   )
-
-    cdb$res <- fromJSON( res )
-
-    ## newDB is generated it's now no longer a new one
-    cdb$DBName    <- cdb$newDBName
-    cdb$newDBName <- ""
-    return(cdb)
-
-  }else{
+    res <- fromJSON( res )
+    
+    if(length(res$ok) > 0){
+      ## everything worked fine
+      cdb$res <- res
+      ## newDB is generated it's now no longer a new one
+      cdb$DBName    <- cdb$newDBName
+      cdb$newDBName <- ""
+      return(cdb)
+      
+    }else{
+      cdb$error <- paste(cdb$error, res)
+    }
+  }
+  if(!(cdb$error == "")){
     stop( cdb$error )
   }
 }

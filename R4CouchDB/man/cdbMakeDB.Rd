@@ -18,17 +18,20 @@ cdbMakeDB(cdb)
 }
 }
 \details{
-The work is done by \code{getURLContent()}. After creating the new database
-the function makes the shortcut \code{cdb$DBName <- cdb$newDBName} so that further
-operations happen on the new created database.
+  The work is done by \code{getURL()}.
+  
+  After creating the new database
+  the function makes the shortcut \code{cdb$DBName <- cdb$newDBName} so
+  that further operations happen on the new created database. Then
+  \code{cdb$newDBName <- ""} happens.  
 }
 \value{
   \item{cdb}{The CouchDB answer is stored in \code{cdb$res}. Any
-  problems on the R side are reportet in \code{cdb$error}
+    problems on the R side are reported in \code{cdb$error}
 }
 }
 \references{
-\url{  http://couchdb.apache.org/       }
+  \url{  http://couchdb.apache.org/       }
 }
 \author{
   wactbprot
@@ -42,13 +45,13 @@ ccc$removeDBName  <- ccc$newDBName
 
 ccc <- cdbMakeDB(ccc)
 ccc <- cdbRemoveDB(ccc)
-
 }
+
 \note{
-The convention for database naming should be implemented.
+  The convention for database naming should be implemented.
 }
 
 \seealso{
-\code{cdbUpdateDoc}
+  \code{cdbUpdateDoc}
 }
-\keyword{ misc }
+\keyword{misc}

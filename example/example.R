@@ -1,4 +1,4 @@
-library(RUnit) 
+
 
 srcPath <- "../R4CouchDB/R/"
 fn <- list.files(srcPath, pattern="R$")
