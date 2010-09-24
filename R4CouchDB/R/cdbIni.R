@@ -11,7 +11,7 @@ cdbIni <- function(){
                 port = "5984",
                 prot = "http",
                 uname="",
-                pwd="", 
+                pwd="",
                 curl=getCurlHandle(),
                 DBName="",
                 newDBName="",
@@ -30,10 +30,10 @@ cdbIni <- function(){
 
     cdb$baseUrl <- function(cdb){
       mid <- if(cdb$uname == ""){""}else{paste(cdb$uname,":",cdb$pwd,"@",sep="")}
-      baseUrl <- paste(cdb$prot,"://",mid,cdb$serverName,"/", sep="")
+      baseUrl <- paste(cdb$prot,"://",mid,cdb$serverName,":",cdb$port,"/", sep="")
       return(baseUrl)
     }
-    
+
     return( cdb )
   }else{
 

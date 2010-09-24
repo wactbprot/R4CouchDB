@@ -1,5 +1,5 @@
-* using log directory '/home/tg/eig/couchdb/R4CouchDB/R4CouchDB.Rcheck'
-* using R version 2.11.1 (2010-05-31)
+* using log directory '/home/bock04/eig/couchDB/R4CouchDB/R4CouchDB.Rcheck'
+* using R version 2.11.0 (2010-04-22)
 * using session charset: UTF-8
 * checking for file 'R4CouchDB/DESCRIPTION' ... OK
 * checking extension type ... Package
@@ -33,3 +33,13 @@
 * checking Rd \usage sections ... OK
 * checking Rd contents ... OK
 * checking examples ... OK
+* checking PDF version of manual ... WARNING
+LaTeX errors when creating PDF version.
+This typically indicates Rd problems.
+LaTeX errors found:
+! Paragraph ended before \Rd@code was complete.
+<to be read again> 
+                   \par 
+l.541 
+      
+* checking PDF version of manual without index ... ERROR
