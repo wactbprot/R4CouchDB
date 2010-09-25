@@ -26,20 +26,20 @@ cdbMakeDB <- function(cdb){
     
     res <- getURL(adrString,
                   customrequest = "PUT",
-                  curl=cdb$curl
-                  )
+                  curl=cdb$curl)
+    
     res <- fromJSON( res )
     
     if(length(res$ok) > 0){
       ## everything worked fine
       cdb$res <- res
-      ## newDB is generated it's now no longer a new one
+      ## newDB is generated,
+      ## it's now no longer a new one
       cdb$DBName    <- cdb$newDBName
       cdb$newDBName <- ""
-      return(cdb)
-      
+      return(cdb)     
     }else{
-      cdb$error <- paste(cdb$error, res)
+      cdb$error <- paste(cdb$error, res$error)
     }
   }
   if(!(cdb$error == "")){
