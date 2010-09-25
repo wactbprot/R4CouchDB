@@ -14,8 +14,8 @@ delete.
 \tabular{ll}{
 Package: \tab R4CouchDB\cr
 Type: \tab Package\cr
-Version: \tab 0.1\cr
-Date: \tab 2009-08-29\cr
+Version: \tab 0.05\cr
+Date: \tab 2010-09-24\cr
 License: \tab BSD\cr
 LazyLoad: \tab yes\cr
 }
