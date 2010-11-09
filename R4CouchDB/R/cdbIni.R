@@ -17,7 +17,6 @@ cdbIni <- function(){
                 newDBName="",
                 removeDBName="",
                 id="",
-                rev="",
                 dataList=list(),
                 fileName="",
                 design="",

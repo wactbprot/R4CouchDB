@@ -29,11 +29,13 @@ cdbAddDoc <- function( cdb){
                   customrequest = "PUT",
                   curl=cdb$curl,
                   postfields = data,
-                  httpheader=c('Content-Type' ='application/json'))
+                  httpheader=c('Content-Type: application/json'))
     
     res <- fromJSON( res )
 
     if(length(res$ok) > 0){
+      cdb$dataList$'_id' <- res$id
+      cdb$dataList$'_rev' <- res$rev
       cdb$res <- res
       return( cdb )
     }else{

@@ -31,11 +31,13 @@ ccc <- cdbMakeDB(ccc)
 ccc$dataList <- list(normalDistRand =  rnorm(20))
 ccc <- cdbAddDoc(ccc)
 
+## since v0.6 her ccc$dataList
+## contains the _id and _rev key
 ## everything ok?
 cdbGetDoc(ccc)$res
 
 ## try cdbUpdateDoc(ccc)
-ccc$dataList <- list(ccc$dataList, normalDistRand =  rnorm(20))
+ccc$dataList$Date <- date()
 ccc <- cdbUpdateDoc(ccc)
 
 ## make a png (stolen from ?persp)

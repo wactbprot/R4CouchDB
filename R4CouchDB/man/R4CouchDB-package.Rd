@@ -58,7 +58,7 @@ Maintainer: thsteinbock@web.de
   \url{  http://www.omegahat.org/RCurl/}
   \url{  http://www.omegahat.org/RJSONIO/}
   \url{  http://couchdb.apache.org/}
-  \url{  http://couch.io/}
+  \url{  http://couchone.com/}
 
 }
 \keyword{ package }

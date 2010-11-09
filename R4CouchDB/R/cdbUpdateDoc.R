@@ -11,20 +11,14 @@ cdbUpdateDoc <- function( cdb){
                        " no cdb$serverName given ",
                        sep=" ")
   }
-
-  if(length(cdb$dataList) < 1){
+  
+  if(length(cdb$dataList$'_rev') < 1){
     cdb$error <- paste(cdb$error,
-                       " no cdb$dataList given",
+                       "no revision in cdb$dataList",
                        sep=" ")
   }
 
   if( cdb$error ==""){
-    ## go for the latest revition
-    cdb$rev <- cdbGetDoc(cdb)$res$'_rev'
-    cdb$dataList$'_id' <- cdb$id 
-    cdb$dataList$'_rev' <- cdb$rev
-
-    data <- toJSON(cdb$dataList)
 
     adrString <- paste(cdb$baseUrl(cdb),
                        cdb$DBName,"/",
@@ -34,18 +28,23 @@ cdbUpdateDoc <- function( cdb){
     res <- getURL(customrequest = "PUT",
                   curl=cdb$curl,
                   url = adrString,
-                  postfields = data,
+                  postfields = toJSON(cdb$dataList),
                   httpheader=c('Content-Type: application/json'))
 
-    cdb$res <- fromJSON( res )
-    ## update revision
-    cdb <- cdbGetDoc(cdb)
-    cdb$rev <- cdb$res$'_rev'
-
-    return( cdb )
-
-  }else{
-
+    res <- fromJSON( res )
+    
+    if((length(res$ok)) > 0 & res$ok){
+      ## update revision in dataList
+      ## it's not quite ok
+      ## looks like a side effect o_°?
+      cdb$dataList$'_rev' <- res$rev
+      cdb$res <- res
+      return( cdb )
+    }else{
+      cdb$error <- paste(cdb$error, res$error)
+    }
+  }
+  if(!(cdb$error == "")){
     stop( cdb$error )
   }
 }

@@ -25,10 +25,12 @@ This function is called addDoc (which means add a new
   to add if no \code{cdb$id} is provided. If a \code{cdb$id} is provided
   the function fails when a document with the given id already
   exists. In this case one should use  \code{cdbUpdateDoc()}.
+Since version v0.6 the function writes the \code{_rev} and \code{_id}
+  key to the top level of \code{cdb$dataList}.
 }
 
 \value{
- \item{cdb}{The result is stored in \code{cdb$res}
+ \item{cdb}{The couchdb response is stored in \code{cdb$res}
 }
 }
 \author{
