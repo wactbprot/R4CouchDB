@@ -7,9 +7,10 @@ for (k in 1:length(fn)){
 }
 
 ccc <- cdbIni()
-
+##ccc$uname <- "wactbprot"
+##ccc$pwd <- pwd
 ccc$serverName <- "wactbprot.couchone.com"
-
+## ccc$serverName<- "localhost"
 ccc <- cdbListDB(ccc)
 
 ccc$res

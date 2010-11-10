@@ -26,13 +26,23 @@ cdbIni <- function(){
                 error="",
                 res=""
                 )
-
+    
+    cdb$opts <- function(cdb){
+      if(cdb$uname == ""){
+        opts <- curlOptions(header = FALSE)
+      }else{
+        opts <- curlOptions(header = FALSE,
+                            httpauth = 1L,
+                            userpwd=paste(cdb$uname,":",cdb$pwd,sep=""))
+      }
+      return(opts)
+    }
+      
     cdb$baseUrl <- function(cdb){
-      mid <- if(cdb$uname == ""){""}else{paste(cdb$uname,":",cdb$pwd,"@",sep="")}
-      baseUrl <- paste(cdb$prot,"://",mid,cdb$serverName,":",cdb$port,"/", sep="")
+      baseUrl <- paste(cdb$prot,"://",cdb$serverName,":",cdb$port,"/", sep="")
       return(baseUrl)
     }
-
+    
     return( cdb )
   }else{
 

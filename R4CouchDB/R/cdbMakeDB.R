@@ -26,7 +26,8 @@ cdbMakeDB <- function(cdb){
     
     res <- getURL(adrString,
                   customrequest = "PUT",
-                  curl=cdb$curl)
+                  curl=cdb$curl,
+                  .opts =cdb$opts(cdb))
     
     res <- fromJSON( res )
     

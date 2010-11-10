@@ -33,7 +33,7 @@ cdbUpdateDoc <- function( cdb){
 
     res <- fromJSON( res )
     
-    if((length(res$ok)) > 0 & res$ok){
+    if((length(res$ok)) > 0 ){
       ## update revision in dataList
       ## it's not quite ok
       ## looks like a side effect o_°?
