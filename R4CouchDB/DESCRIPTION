@@ -1,21 +1,21 @@
 Package: R4CouchDB
 Type: Package
 Title: Collection of R functions for CouchDB access
-Version: 0.061
-Date: 2010/10/09
+Version: 0.062
+Date: 2011/05/09
 Author: wactbprot
 Maintainer: <thsteinbock@web.de>
 Description: The R4CouchDB package provides a collection of functions for
              basic database and document management operations such as add  and
              delete. Every cdbFunction() gets and emits a list containing the
-             connection set up. 
+             connection set up.
              With the cdbIni() function the cdb$serverName is set to
              "localhost" as a default. This means that localhost should
              provide a CouchDB. The example sections in the Rd files (man
-	     section) run with
-	     http://wactbprot.couchone.com.
-	     This allows to provide (more or less) real examples.
-	     Many thanx to the couchone relaxers 
+             section) run with
+             http://wactbprot.couchone.com.
+             This allows to provide (more or less) real examples.
+             Many thanx to the couchone relaxers
 License: BSD
 LazyLoad: yes
 Depends: R (>= 2.7.0), bitops, RCurl, RJSONIO

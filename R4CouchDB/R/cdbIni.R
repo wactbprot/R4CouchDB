@@ -21,12 +21,13 @@ cdbIni <- function(){
                 fileName="",
                 design="",
                 view="",
+                list="",
                 queryParam="",
                 date=toString(Sys.Date()),
                 error="",
                 res=""
                 )
-    
+
     cdb$opts <- function(cdb){
       if(cdb$uname == ""){
         opts <- curlOptions(header = FALSE)
@@ -37,12 +38,12 @@ cdbIni <- function(){
       }
       return(opts)
     }
-      
+
     cdb$baseUrl <- function(cdb){
       baseUrl <- paste(cdb$prot,"://",cdb$serverName,":",cdb$port,"/", sep="")
       return(baseUrl)
     }
-    
+
     return( cdb )
   }else{
 

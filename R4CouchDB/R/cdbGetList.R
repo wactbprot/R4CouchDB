@@ -1,4 +1,4 @@
-cdbGetView <- function( cdb ){
+cdbGetList <- function( cdb ){
 
   if(cdb$design == "") {
     cdb$error <- paste(cdb$error, "no cdb$design given"
@@ -7,7 +7,12 @@ cdbGetView <- function( cdb ){
 
   if(cdb$view == "") {
     cdb$error <- paste(cdb$error,
-                       "no cdb$design given", sep=" ")
+                       "no cdb$view given", sep=" ")
+  }
+
+  if(cdb$list == "") {
+    cdb$error <- paste(cdb$error,
+                       "no cdb$list given", sep=" ")
   }
 
   if(cdb$error ==""){
@@ -22,8 +27,9 @@ cdbGetView <- function( cdb ){
                        cdb$DBName,
                        "/_design/",
                        cdb$design,
-                       "/_view/",
-                       cdb$view,
+                       "/_list/",
+                       cdb$list,
+                       "/",cdb$view,
                        queryString,
                        sep="")
 
@@ -31,7 +37,6 @@ cdbGetView <- function( cdb ){
                   customrequest = "GET",
                   curl=cdb$curl
                   )
-
 
     res <- fromJSON(res)
 
@@ -46,3 +51,15 @@ cdbGetView <- function( cdb ){
     stop( cdb$error )
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
