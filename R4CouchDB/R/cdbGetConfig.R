@@ -1,11 +1,11 @@
-cdbGetUuid <- function(cdb){
+cdbGetConfig <- function(cdb){
   ## write test functions!
   if(cdb$serverName == ""){
     cdb$error <- paste(cdb$error," no cdb$serverName given")
   }
   if (cdb$error ==""){
     adrString <- paste(cdb$baseUrl(cdb),
-                       "_uuids?count=1",
+                       "_config",
                        sep="")
     res <- getURL(adrString,
                   customrequest = "GET",
@@ -13,7 +13,7 @@ cdbGetUuid <- function(cdb){
                   )
     res <- fromJSON(res)
     if(!(length(res$error) > 0)){
-      cdb$id <- res$uuids
+      cdb$res <- res
       return( cdb )
     }else{
       cdb$error <- paste(cdb$error, res$error,res$reason)
