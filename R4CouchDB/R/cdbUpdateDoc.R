@@ -11,7 +11,7 @@ cdbUpdateDoc <- function( cdb){
                        " no cdb$serverName given ",
                        sep=" ")
   }
-  
+
   if(length(cdb$dataList$'_rev') < 1){
     cdb$error <- paste(cdb$error,
                        "no revision in cdb$dataList",
@@ -25,14 +25,20 @@ cdbUpdateDoc <- function( cdb){
                        cdb$id,
                        sep="")
 
+    ## its terrible I know :(
+    pf <- toJSON(cdb$dataList)
+
+    pf <- iconv(pf,"latin1","UTF-8")
+
+
     res <- getURL(customrequest = "PUT",
                   curl=cdb$curl,
                   url = adrString,
-                  postfields = toJSON(cdb$dataList),
+                  postfields = pf,
                   httpheader=c('Content-Type: application/json'))
 
     res <- fromJSON( res )
-    
+
     if((length(res$ok)) > 0 ){
       ## update revision in dataList
       ## it's not quite ok
