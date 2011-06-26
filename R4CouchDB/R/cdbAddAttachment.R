@@ -43,12 +43,9 @@ cdbAddAttachment <- function( cdb){
            curl=cdb$curl
            )
 
-    cdb$res <- fromJSON(res)
-    return( cdb )
+    return(cdb$checkRes(cdb,res))
 
   }else{
-
-    stop( cdb$error )
-
+    stop(cdb$error)
   }
 }

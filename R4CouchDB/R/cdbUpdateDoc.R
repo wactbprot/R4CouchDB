@@ -24,12 +24,9 @@ cdbUpdateDoc <- function( cdb){
                        cdb$DBName,"/",
                        cdb$id,
                        sep="")
-
     ## its terrible I know :(
     pf <- toJSON(cdb$dataList)
-
     pf <- iconv(pf,"latin1","UTF-8")
-
 
     res <- getURL(customrequest = "PUT",
                   curl=cdb$curl,
@@ -37,20 +34,15 @@ cdbUpdateDoc <- function( cdb){
                   postfields = pf,
                   httpheader=c('Content-Type: application/json'))
 
-    res <- fromJSON( res )
-
-    if((length(res$ok)) > 0 ){
-      ## update revision in dataList
-      ## it's not quite ok
-      ## looks like a side effect o_°?
-      cdb$dataList$'_rev' <- res$rev
-      cdb$res <- res
-      return( cdb )
-    }else{
-      cdb$error <- paste(cdb$error, res$error)
+    cdb <-  cdb$checkRes(cdb,res)
+    
+    if((length(cdb$res$ok)) > 0 ){
+      # 
+      cdb$dataList$'_rev' <- cdb$res$rev #!?
+      cdb$rev <- cdb$res$rev
     }
-  }
-  if(!(cdb$error == "")){
-    stop( cdb$error )
-  }
+    return(cdb)
+  }else{
+    stop(cdb$error)
+  }   
 }

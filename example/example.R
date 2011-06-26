@@ -27,7 +27,8 @@ ccc$id
 ## the paste() with id makes sure that the db don't exist
 ccc$newDBName <- paste("r4couchdb_", ccc$id, sep="")
 ccc <- cdbMakeDB(ccc)
-               
+ccc$res
+
 ## generate some data and add to dataList
 ccc$dataList <- list(normalDistRand =  rnorm(20))
 ccc <- cdbAddDoc(ccc)
@@ -62,4 +63,4 @@ ccc <- cdbAddAttachment(ccc)
 ## remove the db when ready
 ## ccc$removeDBName  <- ccc$newDBName
 ## ccc <- cdbRemoveDB(ccc)
-##               
+##

@@ -44,6 +44,21 @@ cdbIni <- function(){
       return(baseUrl)
     }
 
+    cdb$checkRes <- function(cdb,res){
+      if(!(cdb$error == "")){
+        stop( cdb$error )
+      }
+      
+      res <- fromJSON(res)
+      
+      if(!(length(res$error) > 0)){
+        cdb$res <- res
+        return( cdb )
+      }else{
+        stop(paste(cdb$error, res$error,res$reason))
+      }
+    }
+    
     return( cdb )
   }else{
 
@@ -52,8 +67,5 @@ cdbIni <- function(){
 
     cdb$error <- eTxt
     return( cdb )
-
-    ## libs can be loaded online ...
-    ## ... later
   }
 }
