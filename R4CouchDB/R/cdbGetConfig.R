@@ -11,7 +11,7 @@ cdbGetConfig <- function(cdb){
                   customrequest = "GET",
                   curl=cdb$curl
                   )
-    res <- fromJSON(res)
+    res <- fromJSON(res,nullValue = NA, simplify=FALSE,simplifyWithNames=FALSE)
     if(!(length(res$error) > 0)){
       cdb$res <- res
       return( cdb )

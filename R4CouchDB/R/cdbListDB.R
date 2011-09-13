@@ -10,8 +10,8 @@ cdbListDB <- function(cdb){
                  customrequest = "GET",
                  curl=cdb$curl
                  )
-
-   return(cdb$checkRes(cdb,res))
+   cdb$res <- res
+   return(cdb)
 
  }else{
    stop(cdb$error)

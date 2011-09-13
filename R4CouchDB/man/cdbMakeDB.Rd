@@ -36,16 +36,6 @@ cdbMakeDB(cdb)
 \author{
   wactbprot
 }
-\examples{
-ccc <- cdbIni()
-
-ccc$serverName <- "wactbprot.couchone.com"
-ccc$newDBName <- paste("r4couchdb",cdbGetUuid(ccc)$id, sep="_")
-ccc$removeDBName  <- ccc$newDBName
-
-ccc <- cdbMakeDB(ccc)
-ccc <- cdbRemoveDB(ccc)
-}
 
 \note{
   The convention for database naming should be implemented.

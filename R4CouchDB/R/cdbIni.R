@@ -49,7 +49,7 @@ cdbIni <- function(){
         stop( cdb$error )
       }
       
-      res <- fromJSON(res)
+      res <- fromJSON(res,nullValue = NA, simplify=FALSE,simplifyWithNames=FALSE)
       
       if(!(length(res$error) > 0)){
         cdb$res <- res

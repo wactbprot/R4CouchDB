@@ -21,11 +21,10 @@ cdbMakeDB <- function(cdb){
                   curl=cdb$curl,
                   .opts =cdb$opts(cdb))
     
-    cdb <- cdb$checkRes(cdb,res)
-    
     cdb$DBName    <- cdb$newDBName
     cdb$newDBName <- ""
 
+    cdb$res <- res
     return(cdb)
 
   }else{

@@ -33,7 +33,7 @@ cdbAddDoc <- function( cdb){
                   httpheader=c('Content-Type: application/json'),
                   .opts =cdb$opts(cdb))
 
-    res <- fromJSON( res )
+    res <- fromJSON( res , nullValue = NA, simplify=FALSE,simplifyWithNames=FALSE)
 
     if(length(res$ok) > 0){
       cdb$dataList$'_id' <- res$id
