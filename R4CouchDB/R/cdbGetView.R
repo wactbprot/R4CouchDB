@@ -1,5 +1,5 @@
 cdbGetView <- function( cdb ){
-
+  
   if(cdb$design == "") {
     cdb$error <- paste(cdb$error, "no cdb$design given"
                        , sep=" ")
@@ -9,15 +9,15 @@ cdbGetView <- function( cdb ){
     cdb$error <- paste(cdb$error,
                        "no cdb$design given", sep=" ")
   }
-
+  
   if(cdb$error ==""){
-
+    
     if(cdb$queryParam == ""){
       queryString <- ""
     }else{
       queryString <- paste("?",cdb$queryParam, sep="")
     }
-
+    
     adrString <- paste(cdb$baseUrl(cdb),
                        cdb$DBName,
                        "/_design/",
@@ -26,23 +26,15 @@ cdbGetView <- function( cdb ){
                        cdb$view,
                        queryString,
                        sep="")
-
+    
     res <- getURL(adrString,
                   customrequest = "GET",
                   curl=cdb$curl
                   )
-
-
-    res <- fromJSON(res,nullValue = NA, , simplify=FALSE,simplifyWithNames=FALSE)
-
-    if(!(length(res$error) > 0)){
-      cdb$res <- res
-      return( cdb )
-    }else{
-      cdb$error <- paste(cdb$error, res$error,res$reason)
-    }
-  }
-  if(!(cdb$error == "")){
+    
+    return(cdb$checkRes(cdb,res))
+    
+  }else{
     stop( cdb$error )
   }
 }

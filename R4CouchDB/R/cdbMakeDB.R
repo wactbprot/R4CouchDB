@@ -24,9 +24,8 @@ cdbMakeDB <- function(cdb){
     cdb$DBName    <- cdb$newDBName
     cdb$newDBName <- ""
 
-    cdb$res <- res
-    return(cdb)
-
+    return(cdb$checkRes(cdb,res))
+    
   }else{
     stop(cdb$error)
   }

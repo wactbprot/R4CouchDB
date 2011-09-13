@@ -37,17 +37,9 @@ cdbGetList <- function( cdb ){
                   customrequest = "GET",
                   curl=cdb$curl
                   )
-
-    res <- fromJSON(res,nullValue = NA,, simplify=FALSE,simplifyWithNames=FALSE)
-
-    if(!(length(res$error) > 0)){
-      cdb$res <- res
-      return( cdb )
-    }else{
-      cdb$error <- paste(cdb$error, res$error,res$reason)
-    }
-  }
-  if(!(cdb$error == "")){
+    return(cdb$checkRes(cdb,res))
+    
+  }else{
     stop( cdb$error )
   }
 }

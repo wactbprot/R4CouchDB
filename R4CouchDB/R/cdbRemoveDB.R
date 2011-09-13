@@ -25,7 +25,8 @@ cdbRemoveDB <- function(cdb){
     
     res       <- getURL(adrString,
                         curl=cdb$curl,
-                        customrequest = "DELETE")
+                        customrequest = "DELETE",
+                        .opts =cdb$opts(cdb))
     return(cdb$checkRes(cdb,res))
   }else{
     stop(cdb$error)

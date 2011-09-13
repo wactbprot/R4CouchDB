@@ -1,5 +1,5 @@
 cdbGetUuid <- function(cdb){
-  ## write test functions!
+ 
   if(cdb$serverName == ""){
     cdb$error <- paste(cdb$error," no cdb$serverName given")
   }

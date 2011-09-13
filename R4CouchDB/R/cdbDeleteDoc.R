@@ -21,8 +21,8 @@ cdbDeleteDoc <- function( cdb ){
     
     res <- getURL(adrString,
                   customrequest = "DELETE",
-                  curl=cdb$curl
-                  )
+                  curl = cdb$curl,
+                  .opts =cdb$opts(cdb))
     
     return(cdb$checkRes(cdb,res))
     

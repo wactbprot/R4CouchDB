@@ -22,18 +22,15 @@ cdbAddDoc <- function( cdb){
                        cdb$DBName,"/",
                        cdb$id,
                        sep="")
-
-    pf <- toJSON(cdb$dataList)
-    pf <- iconv(pf, "latin1", "UTF-8")
-
+ 
     res <- getURL(adrString,
                   customrequest = "PUT",
                   curl=cdb$curl,
-                  postfields = pf,
+                  postfields = cdb$toJSON(cdb$dataList),
                   httpheader=c('Content-Type: application/json'),
                   .opts =cdb$opts(cdb))
 
-    res <- fromJSON( res , nullValue = NA, simplify=FALSE,simplifyWithNames=FALSE)
+    res <- cdb$fromJSON( res )
 
     if(length(res$ok) > 0){
       cdb$dataList$'_id' <- res$id

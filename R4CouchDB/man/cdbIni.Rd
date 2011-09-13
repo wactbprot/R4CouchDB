@@ -9,7 +9,7 @@ Ini function
 Function returns a list with some default settings
 }
 \usage{
-cdbIni()
+cdbIni(serverName="localhost",port="5984",dbname="")
 }
 
 \details{
