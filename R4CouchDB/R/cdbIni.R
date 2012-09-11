@@ -45,16 +45,14 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
     }
 
     cdb$fromJSON <- function(jsn){
-      lst <- fromJSON(jsn,
-                      nullValue = NA,
-                      simplify=FALSE,
-                      simplifyWithNames=FALSE)
-      return(lst)
+      return(fromJSON(jsn,
+                      nullValue         = NA,
+                      simplify          = FALSE,
+                      simplifyWithNames = FALSE))
     }
     
     cdb$toJSON <- function(lst){
-     jsn <- iconv(toJSON(lst), "latin1", "UTF-8")
-     return(jsn)
+      return(toJSON(lst))
     }
     
     cdb$checkRes <- function(cdb,res){

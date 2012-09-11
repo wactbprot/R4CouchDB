@@ -38,14 +38,6 @@ cdbGetDoc(cdb)
 \author{
   wactbprot
 }
-\examples{
-ccc <- cdbIni()
-ccc$serverName <- "wactbprot.couchone.com"
-ccc$DBName <- "r4couchdb"
-ccc$dataList <- list(normalDistRand =  rnorm(20))
-ccc <- cdbAddDoc(ccc)
-
-}
 
 \seealso{
 \code{cdbAddDoc()}

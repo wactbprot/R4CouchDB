@@ -14,8 +14,8 @@ delete.
 \tabular{ll}{
 Package: \tab R4CouchDB\cr
 Type: \tab Package\cr
-Version: \tab 0.08\cr
-Date: \tab 2011-09-13\cr
+Version: \tab 0.09\cr
+Date: \tab 2011-09-10\cr
 License: \tab BSD\cr
 LazyLoad: \tab yes\cr
 }
@@ -35,14 +35,9 @@ in the source code of \code{cdbIni()} and rebuild the package using
 (see "Appendix B Invoking R" of  "An Introduction to R" at
 \url{http://www.r-project.org}).
 
-Since
-it was not possible to provide a meaningful default \code{cdb$serverName}
-for all example sections, this sectionswere removed in the past. Sine
-the \url{http://couchone.com}  site starts I can provide:\cr
-\code{cdb$serverName <- "wactbprot.couchone.com"}\cr
-
-A test run of most of the fuctions is provided in the example
-folder. There are also some comments.
+To overcome requirement to have a running couchdb at localhost, all
+example sections in the functions descriptions are removed. Have a look
+in the demo folder to find some examples. There are also some comments.
 
 The http connection and the json transformations are done with Duncan
 Temple Langs RCurl and RJSON where this package depends on.
@@ -51,14 +46,12 @@ Many thanks to him.
 \author{
 wactbprot
 
-Maintainer: thsteinbock@web.de
+Maintainer: thsteinbock|at|web.de
 }
 \references{
   \url{  http://r-project.org/}
   \url{  http://www.omegahat.org/RCurl/}
   \url{  http://www.omegahat.org/RJSONIO/}
   \url{  http://couchdb.apache.org/}
-  \url{  http://couchone.com/}
-
 }
 \keyword{ package }

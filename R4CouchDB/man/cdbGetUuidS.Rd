@@ -33,12 +33,7 @@ Simple CouchDB API end point to http://serverName:port/_uuids. The
   \url{  http://www.omegahat.org/RJSONIO/      }
   \url{  http://couchdb.apache.org/            }
 }
-\examples{
-ccc <- cdbIni()
-ccc$serverName <- "wactbprot.couchone.com"
-ccc$queryParam <- "count=10"
-cdbGetUuidS(ccc)$res
-}
+
 \author{
   wactbprot
 }

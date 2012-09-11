@@ -42,14 +42,8 @@ be provided in \code{cdb$queryParam}
 \author{
   wactbprot
 }
-\examples{
-ccc <- cdbIni()
-ccc$serverName <- "wactbprot.couchone.com"
-ccc$DBName <- "r4couchdb"
-ccc$design <- "r4" ## a simple already saved view
-ccc$view <- "couchdb"
-cdbGetView(ccc)$res
-}
+
+
 \note{
 For the moment only one \code{cdb$queryParam} is possible. In the future
 maybe Duncans \code{RJavaScript} package can be used to generate views

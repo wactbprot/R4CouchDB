@@ -46,14 +46,8 @@ cdbUpdateDoc(cdb)
 \url{  http://couchdb.apache.org/       }
 
 }
-\examples{
-ccc <- cdbIni()
-ccc$serverName <- "wactbprot.couchone.com"
-ccc$DBName <- "r4couchdb"
-ccc$dataList <- list(normalDistRand =  rnorm(20))
-ccc <- cdbAddDoc(ccc)
-cdbUpdateDoc(ccc)$res
-}
+
+
 \author{
   wactbprot
 }

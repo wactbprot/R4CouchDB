@@ -39,15 +39,6 @@ Since version v0.6 the function writes the \code{_rev} and \code{_id}
 \seealso{
 \code{cdbGetDoc()}
 }
-\examples{
-ccc <- cdbIni()
-ccc$serverName <- "wactbprot.couchone.com"
-ccc$DBName <- "r4couchdb"
-ccc$dataList <- list(normalDistRand =  rnorm(20))
-
-cdbAddDoc(ccc)$res
-
-}
 
 \keyword{ misc }
 
