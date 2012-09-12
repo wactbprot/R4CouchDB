@@ -22,28 +22,28 @@ provide a CouchDB. There are some examples below the demo folder.
 
 ## Getting started
 
-1. download latest version or clone repository
-2. open a shell and install the package with:
+* download latest version or clone repository
+* open a shell and install the package with:
       
-       R CMD INSTALL R4couchDB
+         R CMD INSTALL R4couchDB
   
   dependencies (bitopts, RCurl, RJSONIO) can be 
   installed in the same way
-3. open R shell and load library with:
+* open R shell and load library with:
 
-      library(R4CouchDB)
+         library(R4CouchDB)
 
-4. generate a conection object (list) with:
+* generate a connection object (list) with:
 
-      foo <- cdbIni()
+         foo <- cdbIni()
 
-5. play around with foo like:
+* play around with foo like:
 
-      foo$queryParam <- "count=10"
-      cdbGetUuidS(foo)$res
+         foo$queryParam <- "count=10"
+         cdbGetUuidS(foo)$res
 
-      foo$newDBName  <- "bar_db")
-      foo            <- cdbMakeDB(foo)
-      foo$res
+         foo$newDBName  <- "bar_db")
+         foo            <- cdbMakeDB(foo)
+         foo$res
 
-6. get angry and write a ticket or mail
+* get angry and write a ticket or mail
