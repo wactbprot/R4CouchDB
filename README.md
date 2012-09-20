@@ -47,10 +47,10 @@ provide a CouchDB. There are some examples below the demo folder.
 
          foo$newDBName  <- "twitter_db"
          foo            <- cdbMakeDB(foo)
+
 	 u              <- "http://search.twitter.com/search.json?q=couchdb"
 
          res            <- fromJSON(getURLContent(u))
-
 	 lapply(res$results, 
                 function(i){
                     foo$dataList <- i
