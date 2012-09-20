@@ -38,13 +38,25 @@ provide a CouchDB. There are some examples below the demo folder.
 
          foo <- cdbIni()
 
-* play around with foo like:
+* play around with _foo_
 
          foo$queryParam <- "count=10"
          cdbGetUuidS(foo)$res
 
-         foo$newDBName  <- "bar_db")
+* or make a twitter_db and fill up some search results  
+
+         foo$newDBName  <- "twitter_db"
          foo            <- cdbMakeDB(foo)
+	 u              <- "http://search.twitter.com/search.json?q=couchdb"
+
+         res            <- fromJSON(getURLContent(u))
+
+	 lapply(res$results, 
+                function(i){
+                    foo$dataList <- i
+                    cdbAddDoc(foo)
+                            }
+                )
          foo$res
 
 * get angry and write a ticket or mail
