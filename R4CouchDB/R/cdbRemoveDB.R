@@ -1,22 +1,7 @@
 cdbRemoveDB <- function(cdb){
   
-  if(cdb$serverName == ""){
-    cdb$error <- paste(cdb$error," no cdb$serverName given")
-  }
-  
-  if(cdb$removeDBName == ""){
-    cdb$error <- paste(cdb$error, "no cdb$removeDBName given")
-  }else{
-    DBNames <- cdbListDB(cdb)$res
-    DBexists <- which(DBNames == cdb$removeDBName)
-    
-    if(length(DBexists) == 0){
-      cdb$error <- paste(cdb$error,
-                         " there is no DB called >",
-                         cdb$removeDBName, "< on >",
-                         cdb$serverName ,"<")
-    }
-  }
+  fname <- deparse(match.call()[[1]])
+  cdb   <- cdb$checkCdb(cdb,fname)
   
   if( cdb$error == ""){
     adrString <- paste(cdb$baseUrl(cdb),
@@ -28,9 +13,8 @@ cdbRemoveDB <- function(cdb){
                         customrequest = "DELETE",
                         .opts =cdb$opts(cdb))
     return(cdb$checkRes(cdb,res))
+
   }else{
     stop(cdb$error)
   }
-  
-
 }

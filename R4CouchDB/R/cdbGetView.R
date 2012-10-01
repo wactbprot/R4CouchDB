@@ -1,14 +1,7 @@
 cdbGetView <- function( cdb ){
   
-  if(cdb$design == "") {
-    cdb$error <- paste(cdb$error, "no cdb$design given"
-                       , sep=" ")
-  }
-
-  if(cdb$view == "") {
-    cdb$error <- paste(cdb$error,
-                       "no cdb$design given", sep=" ")
-  }
+  fname <- deparse(match.call()[[1]])
+  cdb   <- cdb$checkCdb(cdb,fname)
   
   if(cdb$error ==""){
     
@@ -27,7 +20,7 @@ cdbGetView <- function( cdb ){
                        queryString,
                        sep="")
     
-    res <- getURL(adrString,
+    res <- getURL(utils::URLencode(adrString),
                   customrequest = "GET",
                   curl=cdb$curl
                   )

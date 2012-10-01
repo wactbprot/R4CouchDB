@@ -1,25 +1,14 @@
 cdbGetList <- function( cdb ){
-
-  if(cdb$design == "") {
-    cdb$error <- paste(cdb$error, "no cdb$design given"
-                       , sep=" ")
-  }
-
-  if(cdb$view == "") {
-    cdb$error <- paste(cdb$error,
-                       "no cdb$view given", sep=" ")
-  }
-
-  if(cdb$list == "") {
-    cdb$error <- paste(cdb$error,
-                       "no cdb$list given", sep=" ")
-  }
-
+  
+  fname <- deparse(match.call()[[1]])
+  cdb   <- cdb$checkCdb(cdb,fname)
+  
   if(cdb$error ==""){
 
     if(cdb$queryParam == ""){
       queryString <- ""
     }else{
+      ## todo: let usr specify list(a=b, c=d) ...
       queryString <- paste("?",cdb$queryParam, sep="")
     }
 
@@ -33,10 +22,10 @@ cdbGetList <- function( cdb ){
                        queryString,
                        sep="")
 
-    res <- getURL(adrString,
+    res <- getURL(utils::URLencode(adrString),
                   customrequest = "GET",
-                  curl=cdb$curl
-                  )
+                  curl=cdb$curl)
+    
     return(cdb$checkRes(cdb,res))
     
   }else{

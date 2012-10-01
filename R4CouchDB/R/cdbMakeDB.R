@@ -1,16 +1,8 @@
 cdbMakeDB <- function(cdb){
-  if(cdb$serverName == ""){
-    cdb$error <- paste(cdb$error," no cdb$serverName given")
-  }
-  if(cdb$newDBName == ""){
-     cdb$error <- paste(cdb$error," no cdb$newDBName given ")
-   }else{
-     DBNames <- cdbListDB(cdb)$res
-     DBexists <- which(DBNames == cdb$newDBName)
-     if(length(DBexists) > 0){
-       cdb$error <- paste(cdb$error," cdb$newDBName already exists ")
-     }
-   }
+  
+  fname <- deparse(match.call()[[1]])
+  cdb   <- cdb$checkCdb(cdb,fname)
+  
   if(cdb$error == ""){
     adrString <- paste(cdb$baseUrl(cdb),
                        cdb$newDBName,

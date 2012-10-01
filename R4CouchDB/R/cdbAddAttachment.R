@@ -1,34 +1,17 @@
 cdbAddAttachment <- function( cdb){
-  
-  if(cdb$serverName == ""){
-    cdb$error <- paste(cdb$error," no cdb$serverName given ")
-  }
-  
-  if(cdb$DBName ==""){
-    cdb$error <- paste(cdb$error, " no cdb$DBName given ", sep=" ")
-  }
-  
-  if( !(file.exists(cdb$fileName))){
+
+  fname <- deparse(match.call()[[1]])
+  cdb   <- cdb$checkCdb(cdb,fname)
     
-    cdb$error <- paste(cdb$error,
-                       " no cdb$fileName given or ",
-                       cdb$fileName,
-                       " does not exist",
-                       sep=" ")
-  }
-  
   if(cdb$error == ""){
-    
-    tmpN <- length(tmpFn <- unlist(strsplit(cdb$fileName,"\\.")))
-    
+    tmpN      <- length(tmpFn <- unlist(strsplit(cdb$fileName,"\\.")))
     noOfBytes <- file.info(cdb$fileName)$size
-    con <- file(cdb$fileName, "rb")
-    data <- readBin(con,n=noOfBytes,raw())
     
+    con       <- file(cdb$fileName, "rb")
+    data      <- readBin(con,n=noOfBytes,raw())
     close(con)
     
-    cdb$rev <- cdbGetDoc(cdb)$res$'_rev'
-    
+    cdb$rev   <- cdbGetDoc(cdb)$res$'_rev'
     adrString <- paste(cdb$baseUrl(cdb),
                        cdb$DBName,"/",
                        cdb$id,"/",

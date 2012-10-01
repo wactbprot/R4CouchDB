@@ -26,10 +26,16 @@ provide a CouchDB. There are some examples below the demo folder.
 * download latest version or clone repository
 * open a shell and install the package with:
       
-         R CMD INSTALL R4couchDB
+         R CMD INSTALL R4CouchDB
   
   dependencies (bitopts, RCurl, RJSONIO) can be 
   installed in the same way
+
+* an easier way for those who have _devtools_ installed is 
+
+         library(devtools)
+         install_github('R4CouchDB', 'wactbprot', subdir = 'R4CouchDB')
+
 * open R shell and load library with:
 
          library(R4CouchDB)

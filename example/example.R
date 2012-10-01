@@ -1,4 +1,7 @@
-## 
+##
+## R4CouchDB example session
+##
+
 srcPath <- "../R4CouchDB/R/"
 fn <- list.files(srcPath, pattern="R$")
 
@@ -7,6 +10,10 @@ for (k in 1:length(fn)){
 }
 
 ccc            <- cdbIni()
+
+## here one can do some auth settungs 
+## ccc$uname <- "user.name"
+## ccc$pwd   <- "pass.word"
 
 ## database list please
 ccc            <- cdbListDB(ccc)

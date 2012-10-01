@@ -1,13 +1,8 @@
 cdbGetDoc <- function(cdb){
-  
-  if(cdb$serverName == ""){
-    cdb$error <- paste(cdb$error," no cdb$serverName given")
-  }
-  
-  if( cdb$id == ""){
-    cdb$error <- paste( cdb$error, " no cdb$id given ")
-  }
-  
+
+  fname <- deparse(match.call()[[1]])
+  cdb   <- cdb$checkCdb(cdb,fname)
+    
   if(cdb$error == ""){
     adrString <- paste(cdb$baseUrl(cdb),
                        cdb$DBName,"/",

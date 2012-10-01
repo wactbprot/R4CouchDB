@@ -1,8 +1,7 @@
 cdbGetUuid <- function(cdb){
- 
-  if(cdb$serverName == ""){
-    cdb$error <- paste(cdb$error," no cdb$serverName given")
-  }
+  
+  fname <- deparse(match.call()[[1]])
+  cdb   <- cdb$checkCdb(cdb,fname)
 
   if (cdb$error ==""){
 

@@ -1,19 +1,21 @@
 cdbGetUuidS <- function(cdb){
-  if(cdb$serverName == ""){
-    cdb$error <- paste(cdb$error," no cdb$serverName given")
-  }
+
+  fname <- deparse(match.call()[[1]])
+  cdb   <- cdb$checkCdb(cdb,fname)
+  
   if (cdb$error == ""){
+
     if(cdb$queryParam == ""){
       queryString <- ""
     }else{
       queryString <- paste("?",cdb$queryParam, sep="")
     }
-    adrString <- paste(cdb$baseUrl(cdb),
-                       "_uuids",
-                       queryString,
-                       sep="")
+    adrString     <- paste(cdb$baseUrl(cdb),
+                           "_uuids",
+                           queryString,
+                           sep="")
     
-    res <- getURL(adrString,
+    res <- getURL(utils::URLencode(adrString),
                   customrequest = "GET",
                   curl=cdb$curl
                   )
@@ -21,6 +23,6 @@ cdbGetUuidS <- function(cdb){
     return(cdb$checkRes(cdb,res))
     
   }else{
-   stop(cdb$error)
- }
+    stop(cdb$error)
+  }
 }
