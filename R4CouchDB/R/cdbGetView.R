@@ -1,3 +1,32 @@
+#' Receive view results from CouchDB
+#' 
+#' The function provides accesses to CouchDB views.
+#' 
+#' Query params e.g. \code{"reduce=false"} or \code{"group_level=1"} can be
+#' provided in \code{cdb$queryParam}
+#' 
+#' @usage cdbGetView(cdb)
+#' @param cdb Beside the connection details (\code{cdb$port},\code{cdb$DAName}
+#' ...) the \code{cdb$design} and \code{cdb$view} is needed.
+#' @return
+#' 
+#' \item{cdb }{The result of the request is stored in cdb$res after converting
+#' the json answer into a list using fromJSON(). If a needed cdb list entry was
+#' not provided cdb$error says something about the R side
+#' 
+#' }
+#' @note For the moment only one \code{cdb$queryParam} is possible. In the
+#' future maybe Duncans \code{RJavaScript} package can be used to generate
+#' views without leaving R.
+#' @author wactbprot
+#' @export
+#' @references
+#' 
+#' \url{ http://www.omegahat.org/RCurl/ } \url{
+#' http://www.omegahat.org/RJSONIO/ } \url{ http://couchdb.apache.org/ } \url{
+#' http://www.omegahat.org/RJavaScript/ }
+#' @keywords misc
+
 cdbGetView <- function( cdb ){
   
   fname <- deparse(match.call()[[1]])
