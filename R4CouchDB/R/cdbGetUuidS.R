@@ -21,11 +21,6 @@
 #' \url{ http://www.omegahat.org/RCurl/ } \url{
 #' http://www.omegahat.org/RJSONIO/ } \url{ http://couchdb.apache.org/ }
 #' @keywords misc
-#' @examples
-#' 
-#' ccc            <- cdbIni()
-#' ccc$queryParam <- "count=10"
-#' cdbGetUuidS(ccc)$res
 #'
 
 cdbGetUuidS <- function(cdb){

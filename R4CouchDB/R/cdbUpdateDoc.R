@@ -29,13 +29,6 @@
 #' @references \url{ http://www.omegahat.org/RCurl/ } \url{
 #' http://www.omegahat.org/RJSONIO/ } \url{ http://couchdb.apache.org/ }
 #' @keywords misc
-#' @examples
-#' 
-#' ccc            <- cdbIni()
-#' ccc$DBName     <- "r4couchdb" ## database should already exist
-#' ccc$dataList   <- list(normalDistRand =  rnorm(20))
-#' ccc            <- cdbAddDoc(ccc)
-#' cdbUpdateDoc(ccc)$res
 #'
 
 cdbUpdateDoc <- function( cdb){

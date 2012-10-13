@@ -18,13 +18,6 @@
 #' @export
 #' @seealso \code{cdbGetDoc()}
 #' @keywords misc
-#' @examples
-#' 
-#' ccc            <- cdbIni()
-#' ccc$DBName     <- "r4couchdb" ## should already exist
-#' ccc$dataList   <- list(normalDistRand =  rnorm(20))
-#' 
-#' cdbAddDoc(ccc)$res
 #' 
 
 cdbAddDoc <- function( cdb){

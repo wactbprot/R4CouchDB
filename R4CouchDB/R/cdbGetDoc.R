@@ -23,12 +23,7 @@
 #' 
 #' \url{ http://couchdb.apache.org/ } \url{ http://www.omegahat.org/ }
 #' @keywords misc
-#' @examples
-#' 
-#' ccc          <- cdbIni()
-#' ccc$DBName   <- "r4couchdb" ## should already exist
-#' ccc$dataList <- list(normalDistRand =  rnorm(20))
-#' ccc          <- cdbAddDoc(ccc)
+#'
 
 cdbGetDoc <- function(cdb){
 

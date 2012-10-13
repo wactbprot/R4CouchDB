@@ -1,47 +1,43 @@
 \name{cdbMakeDB}
-\Rdversion{1.1}
 \alias{cdbMakeDB}
-
-\title{
-Creates a new database
-}
-\description{
-  The name of the new database is taken from \code{cdb$newDBName}.
-}
+\title{Creates a new database}
 \usage{
-cdbMakeDB(cdb)
+  cdbMakeDB(cdb)
 }
-
 \arguments{
-  \item{cdb}{The \code{cdb} have to provide \code{cdb$serverName},
-  \code{cdb$port} and  \code{cdb$newDBName}
-}
-}
-\details{
-  The work is done by \code{getURL()}.
-  
-  After creating the new database
-  the function makes the shortcut \code{cdb$DBName <- cdb$newDBName} so
-  that further operations happen on the new created database. Then
-  \code{cdb$newDBName <- ""} happens.  
+  \item{cdb}{The \code{cdb} have to provide
+  \code{cdb$serverName}, \code{cdb$port} and
+  \code{cdb$newDBName}}
 }
 \value{
-  \item{cdb}{The CouchDB answer is stored in \code{cdb$res}. Any
-    problems on the R side are reported in \code{cdb$error}
+  \item{cdb}{The CouchDB answer is stored in
+  \code{cdb$res}. Any problems on the R side are reported
+  in \code{cdb$error} }
 }
+\description{
+  The name of the new database is taken from
+  \code{cdb$newDBName}.
 }
-\references{
-  \url{  http://couchdb.apache.org/       }
+\details{
+  The work is done by \code{getURL()} from Duncans RCurl
+  package.
+
+  After creating the new database the function makes the
+  shortcut \code{cdb$DBName <- cdb$newDBName} so that
+  further operations happen on the new created database.
+  Finaly \code{cdb$newDBName <- ""}.
+}
+\note{
+  The convention for database naming should be implemented.
 }
 \author{
   wactbprot
 }
-
-\note{
-  The convention for database naming should be implemented.
+\references{
+  \url{ http://couchdb.apache.org/ }
 }
-
 \seealso{
   \code{cdbUpdateDoc}
 }
 \keyword{misc}
+

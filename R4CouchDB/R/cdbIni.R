@@ -8,11 +8,13 @@
 #' successfully loaded.
 #' 
 #' @usage cdbIni(serverName="localhost",port="5984",dbname="")
+#' @param serverName server name 
+#' @param port port
+#' @param dbname name of database
 #' @return
 #' 
 #' \item{cdb}{see details for the default settings of this function }
 #' @author wactbprot
-#' @export
 #' @keywords misc
 
 cdbIni <- function(serverName="localhost",port="5984",dbname=""){
