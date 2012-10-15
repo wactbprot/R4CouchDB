@@ -63,3 +63,19 @@ provide a CouchDB. There are some examples below the demo folder.
          foo$res
 
 * get angry and write a ticket or mail
+
+## Problems
+
+If you get somenthing like this:
+
+        untar2(tarfile, files, list, exdir) : unsupported entry type ‘x’
+
+on installation you can try
+
+       export R_INSTALL_TAR=tar
+
+and than
+
+       R CMD INSTALL R4CouchDB_latest_
+
+HTH
