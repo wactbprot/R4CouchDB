@@ -7,14 +7,16 @@
 #' the packages \code{library(RCurl)} and \code{library(RJSONIO)} are
 #' successfully loaded.
 #' 
-#' @usage cdbIni(serverName="localhost",port="5984",dbname="")
+#' @usage cdbIni()
 #' @param serverName server name 
 #' @param port port
 #' @param dbname name of database
-#' @return
+#' @return \item{cdb}{The R4CouchDB (method) chain(ing) list }
 #' 
 #' \item{cdb}{see details for the default settings of this function }
 #' @author wactbprot
+#' @export
+#'
 #' @keywords misc
 
 cdbIni <- function(serverName="localhost",port="5984",dbname=""){
