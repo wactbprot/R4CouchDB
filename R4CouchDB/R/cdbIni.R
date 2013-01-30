@@ -87,7 +87,7 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
       ## resulting in \r in the database
       jsn <- toJSON(lst, collapse = "")
       jsn <- gsub("\\r","\\\\r",jsn)
-      jsn <- gsub("\\n","\\\\n",jsn)
+
       return(jsn)
     }
     
