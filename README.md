@@ -87,7 +87,6 @@ In cdbIni I added with 0.1.2 the lines:
        cdb$toJSON <- function(lst){
          jsn <- toJSON(lst, collapse = "")
          jsn <- gsub("\\r","\\\\r",jsn)
-         jsn <- gsub("\\n","\\\\n",jsn)
          return(jsn)
        }
 
