@@ -66,6 +66,8 @@ provide a CouchDB. There are some examples below the demo folder.
 
 ## Problems
 
+### untar
+
 If you get somenthing like this:
 
         untar2(tarfile, files, list, exdir) : unsupported entry type ‘x’
@@ -78,4 +80,23 @@ and than
 
        R CMD INSTALL R4CouchDB_latest_
 
-HTH
+### \r
+
+In cdbIni I added with 0.1.2 the lines:
+
+       cdb$toJSON <- function(lst){
+         jsn <- toJSON(lst, collapse = "")
+         jsn <- gsub("\\r","\\\\r",jsn)
+         jsn <- gsub("\\n","\\\\n",jsn)
+         return(jsn)
+       }
+
+ The point is: one can have a 
+
+       {"a":"\r"} 
+
+in the database but one can not send it back
+this way. A \r is here replaced by \\r
+resulting in \r in the database. I'm not happy 
+with this but have no better solution for the moment.
+   
