@@ -7,8 +7,11 @@
 #' the packages \code{library(RCurl)} and \code{library(RJSONIO)} are
 #' successfully loaded.
 #'
+#' Thanks Duncan Temple Lang for
 #' http://www.omegahat.org/RJSONIO/
-#' thanx to Duncan Temple Lang
+#' and
+#' http://www.omegahat.org/RCurl/
+#' 
 #'
 #' @author wactbprot
 #' @export
@@ -16,7 +19,7 @@
 #' @param serverName server name 
 #' @param port port
 #' @param dbname name of database
-#' @return
+#' @return \item{cdb}{The R4CouchDB (method) chain(ing) list }
 #' 
 #' \item{cdb}{see details for the default settings of this function }
 #' @keywords misc
