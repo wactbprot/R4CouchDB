@@ -1,4 +1,6 @@
+export(cdbIni)
 export(cdbAddDoc)
+export(cdbAddAttachment)
 export(cdbDeleteDoc)
 export(cdbGetConfig)
 export(cdbGetDoc)

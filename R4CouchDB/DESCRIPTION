@@ -1,8 +1,8 @@
 Package: R4CouchDB
 Type: Package
 Title: A R convenience layer for CouchDB
-Version: 0.1.1
-Date: 2012/10/13
+Version: 0.1.2
+Date: 2013/01/29
 Author: wactbprot
 Maintainer: <thsteinbock@web.de>
 Description: The R4CouchDB package provides a collection of functions for
@@ -17,6 +17,7 @@ Depends:
     RCurl(>= 1.6),
     RJSONIO (>= 0.95)
 Collate:
+    'cdbIni.R'
     'cdbAddAttachment.R'
     'cdbAddDoc.R'
     'cdbDeleteDoc.R'
@@ -26,7 +27,6 @@ Collate:
     'cdbGetUuid.R'
     'cdbGetUuidS.R'
     'cdbGetView.R'
-    'cdbIni.R'
     'cdbListDB.R'
     'cdbMakeDB.R'
     'cdbRemoveDB.R'

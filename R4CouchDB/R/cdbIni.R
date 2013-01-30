@@ -6,7 +6,12 @@
 #' The list: \code{ cdb <- list(serverName = "localhost", ... )} is returned if
 #' the packages \code{library(RCurl)} and \code{library(RJSONIO)} are
 #' successfully loaded.
-#' 
+#'
+#' http://www.omegahat.org/RJSONIO/
+#' thanx to Duncan Temple Lang
+#'
+#' @author wactbprot
+#' @export
 #' @usage cdbIni(serverName="localhost",port="5984",dbname="")
 #' @param serverName server name 
 #' @param port port
@@ -14,12 +19,10 @@
 #' @return
 #' 
 #' \item{cdb}{see details for the default settings of this function }
-#' @author wactbprot
 #' @keywords misc
+#'
 
 cdbIni <- function(serverName="localhost",port="5984",dbname=""){
-  ## http://www.omegahat.org/RJSONIO/
-  ## thanx to Duncan Temple Lang
   rc <- library(RCurl,
                 logical.return = TRUE,
                 quietly =TRUE)
@@ -75,7 +78,14 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
     }
     
     cdb$toJSON <- function(lst){
-      return(toJSON(lst))
+      ## one can {"a":"\r"} have in the
+      ## database but one can not send it back
+      ## in this way. A \r is here replaced by \\r
+      ## resulting in \r in the database
+      jsn <- toJSON(lst, collapse = "")
+      jsn <- gsub("\\r","\\\\r",jsn)
+      jsn <- gsub("\\n","\\\\n",jsn)
+      return(jsn)
     }
     
     cdb$checkRes <- function(cdb,res){

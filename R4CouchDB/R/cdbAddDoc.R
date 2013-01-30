@@ -36,8 +36,7 @@ cdbAddDoc <- function( cdb){
                        sep="")
     
     res <- getURL(adrString,
-                  customrequest = "PUT",
-                  curl=cdb$curl,
+                  customrequest = 'PUT',
                   postfields = cdb$toJSON(cdb$dataList),
                   httpheader=c('Content-Type: application/json'),
                   .opts =cdb$opts(cdb))
