@@ -1,13 +1,10 @@
-
-          _____   _      )   ___                ______    ______   
-         (, /   ) /   / (__/_____)          /) (, /    ) (, /    ) 
-           /__ / /___/_   /       ___    _ (/    /    /    /---(   
-        ) /   \_    /    /       (_)(_(_(__/ )__/___ /_ ) / ____)  
-       (_/         /    (______)             (_/___ /  (_/ (       
-                                                                      
-      
-
-
+<pre>
+         __ _  _     ___                 _        ___  ___ 
+        /__\ || |   / __\___  _   _  ___| |__    /   \/ __\
+       / \// || |_ / /  / _ \| | | |/ __| '_ \  / /\ /__\//
+      / _  \__   _/ /__| (_) | |_| | (__| | | |/ /_// \/  \
+      \/ \_/  |_| \____/\___/ \__,_|\___|_| |_/___,'\_____/
+</pre>
 
 ## A Collection of R functions for CouchDB access
 
@@ -32,9 +29,11 @@ provide a CouchDB. There are some examples below the demo folder.
   installed in the same way
 
 * an easier way for those who have _devtools_ installed is 
-
+  
          library(devtools)
          install_github('R4CouchDB', 'wactbprot', subdir = 'R4CouchDB')
+  
+  (see e.g. http://www.inside-r.org/packages/cran/devtools/docs/install_github)
 
 * open R shell and load library with:
 
@@ -96,6 +95,19 @@ In cdbIni I added with 0.1.2 the lines:
 
 in the database but one can not send it back
 this way. A \r is here replaced by \\r
-resulting in \r in the database. I'm not happy 
+resulting in \r in the database. 
+The gsub statement behaves like this:
+
+       > gsub("\\r","\\\\r","\r")
+       [1] "\\r"
+       > gsub("\\r","\\\\r","\\r")
+       [1] "\\r"
+       > gsub("\\r","\\\\r","\\\r")
+       [1] "\\\\r"
+       > gsub("\\r","\\\\r","\\\\r")
+       [1] "\\\\r"
+
+I'm not happy 
 with this but have no better solution for the moment.
-   
+
+
