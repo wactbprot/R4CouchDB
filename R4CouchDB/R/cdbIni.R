@@ -32,31 +32,33 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
   rj <- library(RJSONIO,
                 logical.return = TRUE,
                 quietly =TRUE)
-
+  
   if(rc && rj){
-
+    
     cdb <- list(
-                serverName = serverName,
-                port = port,
-                prot = "http",
-                uname="",
-                pwd="",
-                curl=getCurlHandle(),
-                DBName=dbname,
-                newDBName="",
-                removeDBName="",
-                id="",
-                dataList=list(),
-                fileName="",
-                design="",
-                view="",
-                list="",
-                queryParam="",
-                date=toString(Sys.Date()),
-                error="",
-                res=""
-                )
-
+      serverName   = serverName,
+      port         = port,
+      prot         = "http",
+      uname        = "",
+      pwd          = "",
+      curl         = getCurlHandle(),
+      DBName       = dbname,
+      newDBName    = "",
+      removeDBName = "",
+      id           = "",
+      dataList     = list(),
+      fileName     = "",
+      design       = "",
+      view         = "",
+      list         = "",
+      queryParam   = "",
+      date         = toString(Sys.Date()),
+      localEnc     = unlist(strsplit(Sys.getlocale("LC_CTYPE"),"\\."))[2],
+      serverEnc    = "UTF-8",
+      encSub       = "?",
+      error        = "",
+      res          = "")
+    
     cdb$opts <- function(cdb){
       if(cdb$uname == ""){
         opts <- curlOptions(header = FALSE)
@@ -81,28 +83,38 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
     }
     
     cdb$toJSON <- function(lst){
+      jsn <- toJSON(lst, collapse = "")
+      ## couchdb has a right to get proper
+      ## json. bad requests often came from
+      ## stuff like \xa0\xbc\xed. Here we say
+      ## gtfo and replace it with cdb$encSub 
+      jsn <- iconv(jsn,
+                   cdb$localEnc,
+                   cdb$serverEnc,
+                   sub=cdb$encSub)
       ## one can {"a":"\r"} have in the
       ## database but one can not send it back
       ## in this way. A \r is here replaced by \\r
       ## resulting in \r in the database
-      jsn <- toJSON(lst, collapse = "")
+       
       jsn <- gsub("\\r","\\\\r",jsn)
-
       return(jsn)
     }
     
     cdb$checkRes <- function(cdb,res){
       if(!(cdb$error == "")){
-        stop( cdb$error )
+        stop( paste("local error:", cdb$error))
       }
       
       res <- cdb$fromJSON(res)
       
-      if(!(length(res$error) > 0)){
+      if(length(res$error) > 0){
+        stop(paste("local error:", cdb$error,
+                   "server error:", res$error,
+                   "server reason:", res$reason))
+      }else{
         cdb$res <- res
         return( cdb )
-      }else{
-        stop(paste(cdb$error, res$error,res$reason))
       }
     }
 

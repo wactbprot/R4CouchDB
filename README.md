@@ -51,16 +51,17 @@ provide a CouchDB. There are some examples below the demo folder.
 * or make a twitter_db and fill up some search results from the request
   http://search.twitter.com/search.json?q=couchdb
 
-         foo$newDBName  <- "twitter_db"
+         foo$newDBName  <- "japan_db"
          foo            <- cdbMakeDB(foo)
-         u              <- "http://search.twitter.com/search.json?q=couchdb"
+         u              <- "http://search.twitter.com/search.json?q=japan&rpp=100&page=10"
          res            <- fromJSON(getURLContent(u))
          lapply(res$results,
                     function(i){
                          foo$dataList <- i
-                         cdbAddDoc(foo)})
-         foo$res
+                         cdbAddDoc(foo)$error
+                     }) 
 
+ 
 * get angry and write a ticket or mail
 
 ## Problems
