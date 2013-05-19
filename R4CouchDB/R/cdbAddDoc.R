@@ -34,11 +34,12 @@ cdbAddDoc <- function( cdb){
                        cdb$DBName,"/",
                        cdb$id,
                        sep="")
-    
+    pf  <-cdb$toJSON(cdb$dataList)
+   
     res <- getURL(adrString,
                   customrequest = 'PUT',
-                  postfields = cdb$toJSON(cdb$dataList),
-                  httpheader=c('Content-Type: application/json'),
+                  postfields = pf,
+                  httpheader=c('Content-Type: application/json;charset=utf-8'),
                   .opts =cdb$opts(cdb))
     
     res <- cdb$fromJSON( res )

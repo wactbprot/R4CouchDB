@@ -71,11 +71,22 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
     }
  
     cdb$baseUrl <- function(cdb){
-      baseUrl <- paste(cdb$prot,"://",cdb$serverName,":",cdb$port,"/", sep="")
-      return(baseUrl)
+      return(paste(cdb$prot,
+                   "://",
+                   cdb$serverName,
+                   ":",
+                   cdb$port,
+                   "/",
+                   sep="")
+             )
     }
 
     cdb$fromJSON <- function(jsn){
+      jsn <- iconv(jsn,
+                   cdb$serverEnc,
+                   cdb$localEnc,
+                   sub=cdb$encSub)
+      
       return(fromJSON(jsn,
                       nullValue         = NA,
                       simplify          = FALSE,
@@ -83,20 +94,17 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
     }
     
     cdb$toJSON <- function(lst){
-      jsn <- toJSON(lst, collapse = "")
-      ## couchdb has a right to get proper
-      ## json. bad requests often came from
-      ## stuff like \xa0\xbc\xed. Here we say
-      ## gtfo and replace it with cdb$encSub 
+      jsn <- toJSON(lst,
+                    collapse = "")
       jsn <- iconv(jsn,
                    cdb$localEnc,
                    cdb$serverEnc,
                    sub=cdb$encSub)
+
       ## one can {"a":"\r"} have in the
-      ## database but one can not send it back
-      ## in this way. A \r is here replaced by \\r
+      ## database but one can not send it
+      ## this way. A \r is here replaced by \\r
       ## resulting in \r in the database
-       
       jsn <- gsub("\\r","\\\\r",jsn)
       return(jsn)
     }

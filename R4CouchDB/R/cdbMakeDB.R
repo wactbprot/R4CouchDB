@@ -29,13 +29,13 @@ cdbMakeDB <- function(cdb){
     adrString <- paste(cdb$baseUrl(cdb),
                        cdb$newDBName,
                        sep="")
-    
+
     res <- getURL(adrString,
                   customrequest = "PUT",
                   curl=cdb$curl,
                   .opts =cdb$opts(cdb))
     
-    cdb$DBName    <- cdb$newDBName
+    cdb$DBName    <- cdb$newDBName    
     cdb$newDBName <- ""
 
     return(cdb$checkRes(cdb,res))
