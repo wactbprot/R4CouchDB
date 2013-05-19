@@ -15,8 +15,7 @@ delete.
 Every cdbFunction() gets and emits a list containing the
 connection set up.
 With the cdbIni() function the cdb$serverName is set to
-"localhost" as a default. This means that localhost should
-provide a CouchDB. There are some examples below the demo folder.
+"localhost" as a default. There are some examples below the demo folder.
 
 ## Getting started
 
