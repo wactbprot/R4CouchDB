@@ -2,18 +2,50 @@
 \alias{cdbIni}
 \title{Ini function}
 \usage{
-  cdbIni(serverName="localhost",port="5984",dbname="")
+  cdbIni(serverName="localhost", port="5984", DBName="",
+    prot = "http", uname = "", pwd = "", newDBName = "",
+    removeDBName = "", id = "", dataList = list(), fileName
+    = "", design = "", view = "", list = "", queryParam =
+    "", encSub = "?")
 }
 \arguments{
   \item{serverName}{server name}
 
   \item{port}{port}
 
-  \item{dbname}{name of database}
+  \item{DBName}{name of database}
+
+  \item{prot}{name of the protocol default is http}
+
+  \item{uname}{name of the user}
+
+  \item{pwd}{password}
+
+  \item{newDBName}{name of the database for cdbMakeDB()}
+
+  \item{removeDBName}{name of the database to remove with
+  cdbRemoveDB()}
+
+  \item{id}{the document id to get, put, post or delete}
+
+  \item{dataList}{a list containing data to post or update}
+
+  \item{fileName}{for use in cdbAddAttachment}
+
+  \item{design}{the name of the design used when asking a
+  view or list}
+
+  \item{view}{the name of the view to query}
+
+  \item{list}{the name of the list to query}
+
+  \item{queryParam}{additional query params}
+
+  \item{encSub}{a character which is used as a replacement
+  for chars who can not be converted by iconv}
 }
 \value{
-  \item{cdb}{see details for the default settings of this
-  function }
+  \item{cdb}{The R4CouchDB (method) chain(ing) list }
 }
 \description{
   Function returns a list with some default settings and

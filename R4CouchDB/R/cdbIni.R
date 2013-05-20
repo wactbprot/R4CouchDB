@@ -1,64 +1,85 @@
 #' Ini function
-#' 
+#'
 #' Function returns a list with some default settings and often used functions
 #' such as \code{cdb$baseUrl}.
-#' 
+#'
 #' The list: \code{ cdb <- list(serverName = "localhost", ... )} is returned if
 #' the packages \code{library(RCurl)} and \code{library(RJSONIO)} are
 #' successfully loaded.
-#'
-#' Thanks Duncan Temple Lang for
-#' http://www.omegahat.org/RJSONIO/
-#' and
-#' http://www.omegahat.org/RCurl/
 #' 
-#'
 #' @author wactbprot
 #' @export
-#' @usage cdbIni(serverName="localhost",port="5984",dbname="")
-#' @param serverName server name 
+#' @usage cdbIni(serverName="localhost", port="5984", DBName="", prot = "http", uname = "", pwd = "", newDBName = "", removeDBName = "", id  = "", dataList = list(), fileName = "", design = "", view = "", list = "", queryParam = "", encSub = "?")
+#' @param serverName server name
 #' @param port port
-#' @param dbname name of database
+#' @param DBName name of database
+#' @param prot name of the protocol default is http
+#' @param uname name of the user
+#' @param pwd password
+#' @param newDBName name of the database for cdbMakeDB()
+#' @param removeDBName name of the database to remove with cdbRemoveDB()
+#' @param id the document id to get, put, post or delete
+#' @param dataList a list containing data to post or update
+#' @param fileName for use in cdbAddAttachment
+#' @param design the name of the design used when asking a view or list
+#' @param view the name of the view to query
+#' @param list the name of the list to query
+#' @param queryParam additional query params
+#' @param encSub a character which is used as a replacement for chars who can not be converted by iconv
 #' @return \item{cdb}{The R4CouchDB (method) chain(ing) list }
-#' 
-#' \item{cdb}{see details for the default settings of this function }
 #' @keywords misc
 #'
 
-cdbIni <- function(serverName="localhost",port="5984",dbname=""){
+cdbIni <- function(serverName   = "localhost",
+                   port         = "5984",
+                   DBName       = "",
+                   prot         = "http",
+                   uname        = "",
+                   pwd          = "",
+                   newDBName    = "",
+                   removeDBName = "",
+                   id           = "",
+                   dataList     = list(),
+                   fileName     = "",
+                   design       = "",
+                   view         = "",
+                   list         = "",
+                   queryParam   = "",
+                   encSub       = "?"){
+
   rc <- library(RCurl,
                 logical.return = TRUE,
                 quietly =TRUE)
   rj <- library(RJSONIO,
                 logical.return = TRUE,
                 quietly =TRUE)
-  
+
   if(rc && rj){
-    
+
     cdb <- list(
+      DBName       = DBName,
       serverName   = serverName,
       port         = port,
-      prot         = "http",
-      uname        = "",
-      pwd          = "",
-      curl         = getCurlHandle(),
-      DBName       = dbname,
-      newDBName    = "",
-      removeDBName = "",
-      id           = "",
-      dataList     = list(),
-      fileName     = "",
-      design       = "",
-      view         = "",
-      list         = "",
-      queryParam   = "",
-      date         = toString(Sys.Date()),
-      localEnc     = unlist(strsplit(Sys.getlocale("LC_CTYPE"),"\\."))[2],
-      serverEnc    = "UTF-8",
-      encSub       = "?",
+      uname        = uname,
+      pwd          = pwd,
+      newDBName    = newDBName,
+      removeDBName = removeDBName,
+      id           = id,
+      dataList     = dataList,
+      fileName     = fileName,
+      design       = design,
+      view         = view,
+      list         = list,
+      queryParam   = queryParam,
+      encSub       = encSub,
       error        = "",
-      res          = "")
-    
+      res          = "",
+      date         = toString(Sys.Date()),
+      curl         = getCurlHandle(),
+      localEnc     = unlist(strsplit(Sys.getlocale("LC_CTYPE"),"\\."))[2],
+      serverEnc    = "UTF-8"
+      )
+
     cdb$opts <- function(cdb){
       if(cdb$uname == ""){
         opts <- curlOptions(header = FALSE)
@@ -69,7 +90,7 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
       }
       return(opts)
     }
- 
+
     cdb$baseUrl <- function(cdb){
       return(paste(cdb$prot,
                    "://",
@@ -86,13 +107,13 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
                    cdb$serverEnc,
                    cdb$localEnc,
                    sub=cdb$encSub)
-      
+
       return(fromJSON(jsn,
                       nullValue         = NA,
                       simplify          = FALSE,
                       simplifyWithNames = FALSE))
     }
-    
+
     cdb$toJSON <- function(lst){
       jsn <- toJSON(lst,
                     collapse = "")
@@ -108,14 +129,14 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
       jsn <- gsub("\\r","\\\\r",jsn)
       return(jsn)
     }
-    
+
     cdb$checkRes <- function(cdb,res){
       if(!(cdb$error == "")){
         stop( paste("local error:", cdb$error))
       }
-      
+
       res <- cdb$fromJSON(res)
-      
+
       if(length(res$error) > 0){
         stop(paste("local error:", cdb$error,
                    "server error:", res$error,
@@ -133,7 +154,7 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
         cdb <- chk.id(cdb)
         cdb <- chk.db.name(cdb)
       }
-      
+
       if(fname == "cdbAddAttachment"){
         cdb <- chk.server.name(cdb)
         cdb <- chk.id(cdb)
@@ -142,10 +163,10 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
       }
 
       if(fname == "cdbAddDoc"){
-         cdb <- chk.server.name(cdb)
-         cdb <- chk.db.name(cdb)
-         cdb <- chk.data.list(cdb)
-       }
+        cdb <- chk.server.name(cdb)
+        cdb <- chk.db.name(cdb)
+        cdb <- chk.data.list(cdb)
+      }
 
       if(fname == "cdbDeleteDoc"){
         cdb <- chk.server.name(cdb)
@@ -172,23 +193,23 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
       if(fname == "cdbGetUuidS"){
         cdb <- chk.server.name(cdb)
       }
-      
+
       if(fname == "cdbGetView"){
         cdb <- chk.server.name(cdb)
         cdb <- chk.db.name(cdb)
         cdb <- chk.design.name(cdb)
         cdb <- chk.view.name(cdb)
       }
-      
+
       if(fname == "cdbListDB"){
         cdb <- chk.server.name(cdb)
       }
-      
+
       if(fname == "cdbMakeDB"){
         cdb <- chk.server.name(cdb)
         cdb <- chk.newdb.name(cdb)
       }
-      
+
       if(fname == "cdbRemoveDB"){
         cdb <- chk.server.name(cdb)
         cdb <- chk.rmdb.name(cdb)
@@ -219,14 +240,14 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
       }
       return(cdb)
     }
-    
+
     chk.rmdb.name <- function(cdb){
       if(cdb$removeDBName == ""){
         cdb$error <- paste(cdb$error, "no cdb$removeDBName given")
       }else{
         DBNames <- cdbListDB(cdb)$res
         DBexists <- which(DBNames == cdb$removeDBName)
-        
+
         if(length(DBexists) == 0){
           cdb$error <- paste(cdb$error,
                              " there is no DB called >",
@@ -236,7 +257,7 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
       }
       return(cdb)
     }
-    
+
     chk.design.name <- function(cdb){
       if(cdb$design == "") {
         cdb$error <- paste(cdb$error,
@@ -252,7 +273,7 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
       }
       return(cdb)
     }
-    
+
     chk.view.name <- function(cdb){
       if(cdb$view == "") {
         cdb$error <- paste(cdb$error,
@@ -269,7 +290,7 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
       }
       return(cdb)
     }
-    
+
     chk.file.name <- function(cdb){
       if( !(file.exists(cdb$fileName))){
         cdb$error <- paste(cdb$error,
@@ -303,13 +324,10 @@ cdbIni <- function(serverName="localhost",port="5984",dbname=""){
       return(cdb)
     }
     ## ----------------------chk.fns-----------------^
-    
     return( cdb )
-  
   }else{
-
-    eTxt <- paste("RCurl loaded: ",rc,"\n",
-                  "RJSONIO loaded: ",rj)
-    stop(eTxt)
+    stop(paste("RCurl loaded: ",rc,"\n",
+               "RJSONIO loaded: ",rj)
+         )
   }
 }
