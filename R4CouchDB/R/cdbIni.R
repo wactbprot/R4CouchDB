@@ -59,6 +59,7 @@ cdbIni <- function(serverName   = "localhost",
     cdb <- list(
       DBName       = DBName,
       serverName   = serverName,
+      prot         = prot,
       port         = port,
       uname        = uname,
       pwd          = pwd,
