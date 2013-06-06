@@ -77,7 +77,9 @@ cdbIni <- function(serverName   = "localhost",
       res          = "",
       date         = toString(Sys.Date()),
       curl         = getCurlHandle(),
-      localEnc     = unlist(strsplit(Sys.getlocale("LC_CTYPE"),"\\."))[2],
+      localEnc     = "UTF-8",
+        ## unlist(strsplit(Sys.getlocale("LC_CTYPE"),"\\."))[2],
+        ## works not reliable
       serverEnc    = "UTF-8"
       )
 
