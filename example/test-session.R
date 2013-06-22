@@ -1,12 +1,17 @@
 #'
 #' R4CouchDB example session
-#' 
+#'
 #' @author wactbprot
-#' load the R4Couchdb package
-#' by means of the source command
-#' 
-srcPath  <- "../R4CouchDB/R/"
-fn       <- list.files(srcPath, pattern="R$")
+#'
+#' This code thinks you are in the
+#' example folder; if you are not execute:
+#' > setwd("path/to/example")
+#'
+#' load the R4CouchDB functions
+#' by means of the source command.
+#'
+srcPath       <- "../R4CouchDB/R/"
+fn            <- list.files(srcPath, pattern="R$")
 for (k in 1:length(fn)){
   source(paste(srcPath, fn[k], sep=""))
 }
@@ -18,13 +23,13 @@ library(RJSONIO)
 #' At first one have to generate the ini list.
 #' This list (here ccc) contains everything
 #' you need for  the connection.
-ccc            <- cdbIni()
-#' one can do some auth settings 
+ccc           <- cdbIni()
+#' one can do some auth settings
 #' ccc$uname <- "user.name"
 #' ccc$pwd   <- "pass.word"
-#' 
+#'
 #' database list please
-ccc            <- cdbListDB(ccc)
+ccc           <- cdbListDB(ccc)
 ccc$res
 
 ccc$queryParam <- "count=10"
@@ -61,28 +66,25 @@ cdbGetDoc(ccc)$res
 ccc$dataList$Date <- date()
 ccc               <- cdbUpdateDoc(ccc)
 #'
-#' make a png (stolen from ?persp)
+#' make a 3d plot (stolen from ?persp)
 x     <- seq(-10, 10, length= 30)
 y     <- x
-f     <- function(x,y) { r <- sqrt(x^2+y^2); 10 * sin(r)/r }
+f     <- function(x,y) {r <- sqrt(x^2+y^2); 10 * sin(r)/r }
 z     <- outer(x, y, f)
 #'
 z[is.na(z)]  <- 1
-op           <- par(bg = "white")
-ccc$fileName <- paste("../",
-                      ccc$DBName,
-                      ".test.png",
-                      sep="")
+op           <- par(bg = "black")
+ccc$fileName <- "3dplot.pdf"
 
-#' make an png
-png(filename = ccc$fileName)
+pdf(ccc$fileName)
 persp(x, y, z,
       theta = 30,
       phi = 30,
       expand = 0.5,
       col = "lightblue")
 dev.off()
-#' add the plot as attachment to the db
+#' add the plot as attachment to the database
+#' it workes over  ccc$fileName
 ccc   <- cdbAddAttachment(ccc)
 
 #'  remove the db when ready
