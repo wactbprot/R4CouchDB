@@ -2,9 +2,9 @@
 #'
 #' This function adds attachments to a doc.
 #'
-#' The function uses a simple call to \code{strsplit(fileName, ".")} and takes
-#' the last entry of the resulting vector as the \code{Content-Type} in the
-#' \code{httpheader}.
+#' The function uses  \code{guessMIMEType()} to do exactly this.
+#' If the switch \code{cdb$attachmentsWithPath} is set to \code{TRUE}
+#' the attachments were saved with path.
 #'
 #' @usage cdbAddAttachment(cdb)
 #' @param cdb The list \code{cdb} has to contain
@@ -17,42 +17,43 @@
 
 cdbAddAttachment <- function( cdb){
 
-  fname <- deparse(match.call()[[1]])
-  cdb   <- cdb$checkCdb(cdb,fname)
+    fname <- deparse(match.call()[[1]])
+    cdb   <- cdb$checkCdb(cdb,fname)
 
-  if(cdb$error == ""){
-    tmpN       <- length(tmpFn <- unlist(strsplit(cdb$fileName,"\\.")))
-    noOfBytes  <- file.info(cdb$fileName)$size
+    if(cdb$error == ""){
+        tmpN       <- length(tmpFn <- unlist(strsplit(cdb$fileName,"\\.")))
+        noOfBytes  <- file.info(cdb$fileName)$size
+        con        <- file(cdb$fileName, "rb")
+        data       <- readBin(con, n = noOfBytes,raw())
 
-    con        <- file(cdb$fileName, "rb")
-    data       <- readBin(con, n = noOfBytes,raw())
+        close(con)
 
-    close(con)
+        if(cdb$attachmentsWithPath){
+            fbn    <- cdb$fileName
+        }else{
+            fbn    <- basename(cdb$fileName)
+        }
+        ctp        <- toString(guessMIMEType(basename(fbn)))
+        cdb$rev    <- cdbGetDoc(cdb)$res$'_rev'
+        adrString  <- paste(cdb$baseUrl(cdb),
+                            cdb$DBName,
+                            "/",
+                            cdb$id,
+                            "/",
+                            fbn,
+                            "?rev=",
+                            cdb$rev,
+                            sep = "")
 
-    fbn        <- basename(cdb$fileName)
-    ctp        <- toString(guessMIMEType(fbn))
-    
-    cdb$rev    <- cdbGetDoc(cdb)$res$'_rev'
-    
-    adrString  <- paste(cdb$baseUrl(cdb),
-                        cdb$DBName,
-                        "/",
-                        cdb$id,
-                        "/",
-                        fbn,
-                        "?rev=",
-                        cdb$rev,
-                        sep = "")
-
-    res        <- getURL(adrString,
-                         customrequest = "PUT",
-                         postfields    = data,
-                         httpheader    = c("Content-Type" = ctp))
+        res        <- getURL(adrString,
+                             customrequest = "PUT",
+                             postfields    = data,
+                             httpheader    = c("Content-Type" = ctp))
 
 
-    return(cdb$checkRes(cdb,res))
+        return(cdb$checkRes(cdb,res))
 
-  }else{
-    stop(cdb$error)
-  }
+    }else{
+        stop(cdb$error)
+    }
 }
