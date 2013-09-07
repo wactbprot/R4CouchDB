@@ -1,10 +1,11 @@
 #' Add attachments
 #'
-#' This function adds attachments to a doc.
+#' This function adds attachments to a database document.
 #'
 #' The function uses  \code{guessMIMEType()} to do exactly this.
 #' If the switch \code{cdb$attachmentsWithPath} is set to \code{TRUE}
-#' the attachments were saved with path.
+#' the attachments were saved with path which is the default since version
+#' 0.2.5 of R4CouchDB
 #'
 #' @usage cdbAddAttachment(cdb)
 #' @param cdb The list \code{cdb} has to contain
@@ -18,7 +19,7 @@
 cdbAddAttachment <- function( cdb){
 
     fname <- deparse(match.call()[[1]])
-    cdb   <- cdb$checkCdb(cdb,fname)
+    cdb   <- cdb$checkCdb(cdb, fname)
 
     if(cdb$error == ""){
         tmpN       <- length(tmpFn <- unlist(strsplit(cdb$fileName,"\\.")))

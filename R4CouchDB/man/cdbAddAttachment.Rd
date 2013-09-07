@@ -13,12 +13,13 @@
   \item{cdb}{The result is stored in \code{cdb$res} }
 }
 \description{
-  This function adds attachments to a doc.
+  This function adds attachments to a database document.
 }
 \details{
   The function uses \code{guessMIMEType()} to do exactly
   this. If the switch \code{cdb$attachmentsWithPath} is set
-  to \code{TRUE} the attachments were saved with path.
+  to \code{TRUE} the attachments were saved with path which
+  is the default since version 0.2.5 of R4CouchDB
 }
 \author{
   wactbprot

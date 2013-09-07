@@ -9,7 +9,7 @@
 #'
 #' @author wactbprot
 #' @export
-#' @usage cdbIni(serverName="localhost", port="5984", DBName="", prot = "http", uname = "", pwd = "", newDBName = "", removeDBName = "", id  = "", dataList = list(), fileName = "", design = "", view = "", list = "", queryParam = "", encSub = "?")
+#' @usage cdbIni(serverName="localhost", port="5984", DBName="", prot = "http", uname = "", pwd = "", newDBName = "", removeDBName = "", id  = "", dataList = list(), fileName = "", design = "", view = "", list = "", queryParam = "", encSub = "?", attachmentsWithPath=TRUE)
 #' @param serverName server name
 #' @param port port
 #' @param DBName name of database
@@ -26,6 +26,7 @@
 #' @param list the name of the list to query
 #' @param queryParam additional query params
 #' @param encSub a character which is used as a replacement for chars who can not be converted by iconv
+#' @param attachmentsWithPath effects the result of the function cdbAddAttachment in the way the variable is named
 #' @return \item{cdb}{The R4CouchDB (method) chain(ing) list }
 #' @keywords misc
 #'
@@ -45,7 +46,8 @@ cdbIni <- function(serverName   = "localhost",
                    view         = "",
                    list         = "",
                    queryParam   = "",
-                   encSub       = "?"){
+                   encSub       = "?",
+                   attachmentsWithPath = TRUE){
 
     rc <- library(RCurl,
                   logical.return = TRUE,

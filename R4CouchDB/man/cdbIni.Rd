@@ -6,7 +6,7 @@
     prot = "http", uname = "", pwd = "", newDBName = "",
     removeDBName = "", id = "", dataList = list(), fileName
     = "", design = "", view = "", list = "", queryParam =
-    "", encSub = "?")
+    "", encSub = "?", attachmentsWithPath=TRUE)
 }
 \arguments{
   \item{serverName}{server name}
@@ -43,6 +43,10 @@
 
   \item{encSub}{a character which is used as a replacement
   for chars who can not be converted by iconv}
+
+  \item{attachmentsWithPath}{effects the result of the
+  function cdbAddAttachment in the way the variable is
+  named}
 }
 \value{
   \item{cdb}{The R4CouchDB (method) chain(ing) list }
