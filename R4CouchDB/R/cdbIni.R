@@ -133,7 +133,14 @@ cdbIni <- function(serverName   = "localhost",
             jsn <- gsub("\\r","\\\\r",jsn)
             return(jsn)
         }
-
+        cdb$getDocRev <- function(cdb){
+            adrString <- paste(cdb$baseUrl(cdb),
+                               cdb$DBName,"/",
+                               cdb$id,
+                               sep="")
+            res <- url.exists(adrString, .header=TRUE)
+            return(paste("",gsub("\\\"", "", res["ETag"]), sep=""))
+        }
         cdb$checkRes <- function(cdb,res){
             if(!(cdb$error == "")){
                 stop( paste("local error:", cdb$error))

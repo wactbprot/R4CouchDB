@@ -2,18 +2,18 @@
 #'
 #' This essentially means that a
 #' revision, corresponding to the '_id' has to be provided. If no '_rev' is
-#' provided the function gets the doc fron the db and takes the revition number
-#' for the update
-#' 
+#' given in the \code{cdb} list the function gets the doc from the db
+#' and takes the rev number for the update
+#'
 #' Updating a doc at couchdb means executing a http "PUT" request. The
 #' \code{cdb} list must contain the \code{cdb$serverName}, \code{cdb$port},
 #' \code{cdb$DBName}, \code{cdb$id}. Since v0.6 the revision of the document
-#' should exist at the intended place; \code{cdb$dataList$'_rev'}.
-#' 
+#' should exist at the intended place: \code{cdb$dataList$'_rev'}.
+#'
 #' \code{getURL()} with \code{customrequest = "PUT"} does the work.  If a
 #' needed \code{cdb$} list entry is not provided \code{cdb$error} maybe says
 #' something about the R side.
-#' 
+#'
 #' @usage cdbUpdateDoc(cdb)
 #' @param cdb the cdb connection configuration list must contain the
 #' \code{cdb$serverName}, \code{cdb$port}, \code{cdb$DBName} and \code{cdb$id}.
@@ -32,32 +32,39 @@
 #'
 
 cdbUpdateDoc <- function( cdb){
-  
-  fname <- deparse(match.call()[[1]])
-  cdb   <- cdb$checkCdb(cdb,fname)
-  
-  if( cdb$error ==""){
 
-    adrString <- paste(cdb$baseUrl(cdb),
-                       cdb$DBName,"/",
-                       cdb$id,
-                       sep="")
+    fname <- deparse(match.call()[[1]])
+    cdb   <- cdb$checkCdb(cdb,fname)
 
-    res <- getURL(customrequest = "PUT",
-                  curl=cdb$curl,
-                  url = adrString,
-                  postfields = cdb$toJSON(cdb$dataList),
-                  httpheader=c('Content-Type: application/json;charset=utf-8'),
-                  .opts =cdb$opts(cdb))
-
-    cdb <-  cdb$checkRes(cdb,res)
-    
-    if((length(cdb$res$ok)) > 0 ){
-      cdb$dataList$'_rev' <- cdb$res$rev 
-      cdb$rev <- cdb$res$rev
+    if(length(cdb$dataList[["_rev"]]) < 1){
+        rev <- cdb$getDocRev(cdb)
+        if(!is.na(rev)){
+            cdb$dataList[["_rev"]] <- rev
+        }
     }
-    return(cdb)
-  }else{
-    stop(cdb$error)
-  }   
+
+    if( cdb$error ==""){
+
+        adrString   <- paste(cdb$baseUrl(cdb),
+                             cdb$DBName,"/",
+                             cdb$id,
+                             sep="")
+
+        res <- getURL(customrequest = "PUT",
+                      curl=cdb$curl,
+                      url = adrString,
+                      postfields = cdb$toJSON(cdb$dataList),
+                      httpheader=c('Content-Type: application/json;charset=utf-8'),
+                      .opts =cdb$opts(cdb))
+
+        cdb <-  cdb$checkRes(cdb,res)
+
+        if((length(cdb$res$ok)) > 0 ){
+            cdb$dataList$'_rev' <- cdb$res$rev
+            cdb$rev <- cdb$res$rev
+        }
+        return(cdb)
+    }else{
+        stop(cdb$error)
+    }
 }

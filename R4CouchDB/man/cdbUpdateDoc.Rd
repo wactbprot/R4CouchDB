@@ -19,16 +19,16 @@
 }
 \description{
   This essentially means that a revision, corresponding to
-  the '_id' has to be provided. If no '_rev' is provided
-  the function gets the doc fron the db and takes the
-  revition number for the update
+  the '_id' has to be provided. If no '_rev' is given in
+  the \code{cdb} list the function gets the doc from the db
+  and takes the rev number for the update
 }
 \details{
   Updating a doc at couchdb means executing a http "PUT"
   request. The \code{cdb} list must contain the
   \code{cdb$serverName}, \code{cdb$port},
   \code{cdb$DBName}, \code{cdb$id}. Since v0.6 the revision
-  of the document should exist at the intended place;
+  of the document should exist at the intended place:
   \code{cdb$dataList$'_rev'}.
 
   \code{getURL()} with \code{customrequest = "PUT"} does
