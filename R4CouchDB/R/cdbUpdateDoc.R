@@ -43,7 +43,7 @@ cdbUpdateDoc <- function( cdb){
         }
     }
 
-    if( cdb$error ==""){
+    if(cdb$error == ""){
 
         adrString   <- paste(cdb$baseUrl(cdb),
                              cdb$DBName,"/",
@@ -60,7 +60,7 @@ cdbUpdateDoc <- function( cdb){
         cdb <-  cdb$checkRes(cdb,res)
 
         if((length(cdb$res$ok)) > 0 ){
-            cdb$dataList$'_rev' <- cdb$res$rev
+            cdb$dataList[["_rev"]] <- cdb$res$rev
             cdb$rev <- cdb$res$rev
         }
         return(cdb)

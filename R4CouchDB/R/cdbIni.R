@@ -138,8 +138,12 @@ cdbIni <- function(serverName   = "localhost",
                                cdb$DBName,"/",
                                cdb$id,
                                sep="")
-            res <- url.exists(adrString, .header=TRUE)
-            return(paste("",gsub("\\\"", "", res["ETag"]), sep=""))
+            res <- url.exists(adrString, .header=TRUE)["ETag"]
+            if(is.na(res)){
+                return(NA)
+            }else{
+                return(paste("", gsub("\\\"", "", res), sep = ""))
+            }
         }
         cdb$checkRes <- function(cdb,res){
             if(!(cdb$error == "")){

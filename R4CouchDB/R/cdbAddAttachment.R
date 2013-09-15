@@ -13,6 +13,7 @@
 #' \code{cdb$id}.
 #' @return \item{cdb}{The result is stored in \code{cdb$res} }
 #' @author wactbprot
+#' @export
 #' @keywords misc
 #'
 
