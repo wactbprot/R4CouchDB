@@ -36,11 +36,10 @@ cdbUpdateDoc <- function( cdb){
     fname <- deparse(match.call()[[1]])
     cdb   <- cdb$checkCdb(cdb,fname)
 
-    if(length(cdb$dataList[["_rev"]]) < 1){
-        rev <- cdb$getDocRev(cdb)
-        if(!is.na(rev)){
-            cdb$dataList[["_rev"]] <- rev
-        }
+
+    rev <- cdb$getDocRev(cdb)
+    if(!is.na(rev)){
+        cdb$dataList[["_rev"]] <- rev
     }
 
     if(cdb$error == ""){
