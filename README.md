@@ -1,10 +1,10 @@
-<pre>
+```
          __ _  _     ___                 _        ___  ___ 
         /__\ || |   / __\___  _   _  ___| |__    /   \/ __\
        / \// || |_ / /  / _ \| | | |/ __| '_ \  / /\ /__\//
       / _  \__   _/ /__| (_) | |_| | (__| | | |/ /_// \/  \
       \/ \_/  |_| \____/\___/ \__,_|\___|_| |_/___,'\_____/
-</pre>
+```
 
 ## A Collection of R functions for CouchDB access
 
@@ -52,21 +52,9 @@ There are some examples below the demo folder.
          foo$queryParam <- "count=10"
          cdbGetUuidS(foo)$res
 
-* or make a twitter_db and fill up some search results from the request
-  http://search.twitter.com/search.json?q=couchdb
+* see test session in the example folder
 
-         foo$newDBName  <- "japan_db"
-         foo            <- cdbMakeDB(foo)
-         u              <- "http://search.twitter.com/search.json?q=japan&rpp=100&page=10"
-         res            <- fromJSON(getURLContent(u))
-         lapply(res$results,
-                    function(i){
-                         foo$dataList <- i
-                         cdbAddDoc(foo)$error
-                     }) 
-
- 
-* get angry and write a ticket or mail
+* get angry and write a issue
 
 ## Problems
 
@@ -89,7 +77,9 @@ and than
 In cdbIni I added with 0.1.2 the lines:
 
        cdb$toJSON <- function(lst){
-         jsn <- toJSON(lst, collapse = "")
+         jsn <- toJSON(lst, 
+			    collapse = "",
+				digits = digits)
          jsn <- gsub("\\r","\\\\r",jsn)
          return(jsn)
        }
@@ -116,3 +106,11 @@ I'm not happy
 with this but have no better solution for the moment.
 
 
+### digits
+
+Numbers are converted to JSON with 7 digits by default. Adjust this to your
+needs by
+
+
+      cdb        <- cdbIni()
+      cdb$digits <- 13

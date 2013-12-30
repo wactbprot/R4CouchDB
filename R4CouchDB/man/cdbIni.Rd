@@ -6,7 +6,7 @@
     prot = "http", uname = "", pwd = "", newDBName = "",
     removeDBName = "", id = "", dataList = list(), fileName
     = "", design = "", view = "", list = "", queryParam =
-    "", encSub = "?", attachmentsWithPath=TRUE)
+    "", encSub = "?", attachmentsWithPath=TRUE, digits = 7)
 }
 \arguments{
   \item{serverName}{server name}
@@ -47,6 +47,8 @@
   \item{attachmentsWithPath}{effects the result of the
   function cdbAddAttachment in the way the variable is
   named}
+
+  \item{digits}{digits kept at toJSON conversion}
 }
 \value{
   \item{cdb}{The R4CouchDB (method) chain(ing) list }

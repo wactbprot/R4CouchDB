@@ -1,5 +1,5 @@
-export(cdbAddDoc)
 export(cdbAddAttachment)
+export(cdbAddDoc)
 export(cdbDeleteDoc)
 export(cdbGetConfig)
 export(cdbGetDoc)

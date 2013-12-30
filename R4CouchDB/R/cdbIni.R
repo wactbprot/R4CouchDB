@@ -9,7 +9,7 @@
 #'
 #' @author wactbprot
 #' @export
-#' @usage cdbIni(serverName="localhost", port="5984", DBName="", prot = "http", uname = "", pwd = "", newDBName = "", removeDBName = "", id  = "", dataList = list(), fileName = "", design = "", view = "", list = "", queryParam = "", encSub = "?", attachmentsWithPath=TRUE)
+#' @usage cdbIni(serverName="localhost", port="5984", DBName="", prot = "http", uname = "", pwd = "", newDBName = "", removeDBName = "", id  = "", dataList = list(), fileName = "", design = "", view = "", list = "", queryParam = "", encSub = "?", attachmentsWithPath=TRUE, digits = 7)
 #' @param serverName server name
 #' @param port port
 #' @param DBName name of database
@@ -27,6 +27,7 @@
 #' @param queryParam additional query params
 #' @param encSub a character which is used as a replacement for chars who can not be converted by iconv
 #' @param attachmentsWithPath effects the result of the function cdbAddAttachment in the way the variable is named
+#' @param digits digits kept at toJSON conversion
 #' @return \item{cdb}{The R4CouchDB (method) chain(ing) list }
 #' @keywords misc
 #'
@@ -47,7 +48,8 @@ cdbIni <- function(serverName   = "localhost",
                    list         = "",
                    queryParam   = "",
                    encSub       = "?",
-                   attachmentsWithPath = TRUE){
+                   attachmentsWithPath = TRUE,
+                   digits       = 7){
 
     rc <- library(RCurl,
                   logical.return = TRUE,
@@ -81,8 +83,8 @@ cdbIni <- function(serverName   = "localhost",
             curl         = getCurlHandle(),
             localEnc     = "UTF-8",
             serverEnc    = "UTF-8",
-            attachmentsWithPath = TRUE
-            )
+            attachmentsWithPath = TRUE,
+            digits       = digits)
 
         cdb$opts <- function(cdb){
             if(cdb$uname != "" & cdb$pwd != ""){
@@ -120,7 +122,8 @@ cdbIni <- function(serverName   = "localhost",
 
         cdb$toJSON <- function(lst){
             jsn <- toJSON(lst,
-                          collapse = "")
+                          collapse = "",
+                          digits   = digits)
             jsn <- iconv(jsn,
                          cdb$localEnc,
                          cdb$serverEnc,
@@ -131,6 +134,7 @@ cdbIni <- function(serverName   = "localhost",
             ## this way. A \r is here replaced by \\r
             ## resulting in \r in the database
             jsn <- gsub("\\r","\\\\r",jsn)
+            
             return(jsn)
         }
         cdb$getDocRev <- function(cdb){
