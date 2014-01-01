@@ -11,6 +11,10 @@
 #' converting the answer into a list using \code{fromJSON()}.  }
 #' @author wactbprot
 #' @export
+#' @examples
+#'\dontrun{
+#' cdbGetConfig(cdbIni())$res
+#'}
 #' @seealso \code{cdbMakeDB}
 #' @references
 #' 

@@ -9,7 +9,6 @@
 #' 
 #' in cdb$errors
 #' @return
-#' 
 #' \item{cdb }{The result of the request is stored in \code{cdb$res} after
 #' converting the answer into a list using \code{fromJSON()}. If a list entry
 #' needed in \code{cdb} is not provided \code{cdb$error} gives some
@@ -18,9 +17,16 @@
 #' }
 #' @author wactbprot
 #' @export
+#' @examples
+#' \dontrun{
+#' ccc               <- cdbIni()
+#' ccc$newDBName     <- "r4couchdb_db"
+#' ccc$dataList      <- list(normalDistRand =  rnorm(20))
+#' ccc               <- cdbAddDoc(ccc)
+#' cdbGetDoc(ccc)$res
+#' }
 #' @seealso \code{cdbAddDoc()}
 #' @references
-#' 
 #' \url{ http://couchdb.apache.org/ } \url{ http://www.omegahat.org/ }
 #' @keywords misc
 #'

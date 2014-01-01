@@ -24,6 +24,16 @@
   function writes to cdb$res (in opposite to
   \code{cdbGetUuid()} whitch writes to \code{cdb$id})
 }
+\examples{
+\dontrun{
+ccc               <- cdbIni()
+ccc$queryParam    <- "count=10"
+cdbGetUuidS(ccc)$res
+# better clear params in order to avoid
+# unwanted side effects
+ccc$queryParam    <- ""
+}
+}
 \author{
   wactbprot
 }

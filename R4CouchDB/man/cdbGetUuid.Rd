@@ -20,6 +20,11 @@
   Simple CouchDB API end point to
   http://serverName:port/_uuids.
 }
+\examples{
+\dontrun{
+cdbGetUuid(cdbIni())$res
+}
+}
 \author{
   wactbprot
 }

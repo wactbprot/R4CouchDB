@@ -1,14 +1,9 @@
-export(cdbAddAttachment)
-export(cdbAddDoc)
-export(cdbDeleteDoc)
-export(cdbGetConfig)
-export(cdbGetDoc)
-export(cdbGetList)
-export(cdbGetUuid)
-export(cdbGetUuidS)
-export(cdbGetView)
-export(cdbIni)
-export(cdbListDB)
-export(cdbMakeDB)
-export(cdbRemoveDB)
-export(cdbUpdateDoc)
+# Export all names
+exportPattern(".")
+
+# Import all packages listed as Imports or Depends
+import(
+  bitops,
+  RCurl,
+  RJSONIO
+)

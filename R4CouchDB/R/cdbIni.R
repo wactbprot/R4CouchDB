@@ -28,6 +28,14 @@
 #' @param encSub a character which is used as a replacement for chars who can not be converted by iconv
 #' @param attachmentsWithPath effects the result of the function cdbAddAttachment in the way the variable is named
 #' @param digits digits kept at toJSON conversion
+#' @export
+#' @examples
+#'\dontrun{
+#' ccc <- cdbIni(digits=13,
+#'               DBName="r4couch_db",
+#'               attachmentsWithPath=FALSE,
+#'               dataList=list(normalDistRand =  rnorm(20)))
+#'}
 #' @return \item{cdb}{The R4CouchDB (method) chain(ing) list }
 #' @keywords misc
 #'

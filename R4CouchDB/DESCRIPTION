@@ -4,7 +4,7 @@ Title: A R convenience layer for CouchDB
 Version: 0.4
 Date: 2013/12/31
 Author: Thomas Bock
-Maintainer: <thsteinbock@web.de>
+Maintainer: wactbprot <thsteinbock@web.de>
 Description: The R4CouchDB package provides a collection of functions for
     basic database and document management operations such as add  and
     delete. Every cdbFunction() gets and returns a list() containing the

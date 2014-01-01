@@ -62,6 +62,14 @@
   ... )} is returned if the packages \code{library(RCurl)}
   and \code{library(RJSONIO)} are successfully loaded.
 }
+\examples{
+\dontrun{
+ccc <- cdbIni(digits=13,
+              DBName="r4couch_db",
+              attachmentsWithPath=FALSE,
+              dataList=list(normalDistRand =  rnorm(20)))
+}
+}
 \author{
   wactbprot
 }

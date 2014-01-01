@@ -30,6 +30,16 @@
 \note{
   The convention for database naming should be implemented.
 }
+\examples{
+\dontrun{
+ccc               <- cdbIni()
+ccc$newDBName     <- "r4couchdb_db"
+ccc               <- cdbMakeDB(ccc)
+ccc$res
+ccc$removeDBName  <- ccc$DBName
+cdbRemoveDB(ccc)$res
+}
+}
 \author{
   wactbprot
 }

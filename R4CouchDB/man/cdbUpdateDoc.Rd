@@ -36,6 +36,18 @@
   provided \code{cdb$error} maybe says something about the
   R side.
 }
+\examples{
+\dontrun{
+ccc               <- cdbIni()
+# I assume a database at localhost:5984 already exists
+ccc$DBName        <- "r4couchdb_db"
+ccc$dataList      <- list(normalDistRand =  rnorm(20))
+ccc               <- cdbAddDoc(ccc)
+
+ccc$dataList$Date <- date()
+ccc               <- cdbUpdateDoc(ccc)
+}
+}
 \author{
   wactbprot
 }

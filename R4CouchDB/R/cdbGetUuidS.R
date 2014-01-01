@@ -15,6 +15,15 @@
 #' converting the answer into a list using \code{fromJSON()}.  }
 #' @author wactbprot
 #' @export
+#' @examples
+#'\dontrun{
+#' ccc               <- cdbIni()
+#' ccc$queryParam    <- "count=10"
+#' cdbGetUuidS(ccc)$res
+#' # better clear params in order to avoid
+#' # unwanted side effects
+#' ccc$queryParam    <- ""
+#'}
 #' @seealso \code{cdbMakeDB}
 #' @references
 #' 

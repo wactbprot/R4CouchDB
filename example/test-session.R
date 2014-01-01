@@ -37,7 +37,6 @@ ccc$queryParam <- "count=10"
 cdbGetUuidS(ccc)$res
 #' reset queryParam e.g. for cdbGetView()
 ccc$queryParam <- ""
-#'
 #' writes the id to ccc$id
 ccc            <- cdbGetUuid(ccc)
 ccc$id

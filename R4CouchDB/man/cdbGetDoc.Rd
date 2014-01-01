@@ -24,6 +24,15 @@
   With a given \code{cdb$id} this function requests the
   document.
 }
+\examples{
+\dontrun{
+ccc               <- cdbIni()
+ccc$newDBName     <- "r4couchdb_db"
+ccc$dataList      <- list(normalDistRand =  rnorm(20))
+ccc               <- cdbAddDoc(ccc)
+cdbGetDoc(ccc)$res
+}
+}
 \author{
   wactbprot
 }
