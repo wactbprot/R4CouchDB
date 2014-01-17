@@ -14,9 +14,12 @@
 #' the json answer into a list using \code{cdb$fromJSON()}.}
 #' @author wactbprot
 #' @export
+#' @examples
+#' \dontrun{
+#' cdbListDB(cdbIni())$res
+#'}
 #' @seealso \code{cdbMakeDB}
 #' @references
-#' 
 #' \url{ http://www.omegahat.org/RCurl/ } \url{
 #' http://www.omegahat.org/RJSONIO/ } \url{ http://couchdb.apache.org/ }
 #' @keywords misc

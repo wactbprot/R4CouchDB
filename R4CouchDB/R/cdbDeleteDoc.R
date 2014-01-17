@@ -16,7 +16,6 @@
 #' @export
 #' @seealso \code{cdbAddDoc()}
 #' @references
-#' 
 #' \url{ http://couchdb.apache.org/ } \url{ http://www.omegahat.org/ }
 #' @keywords misc
 #'

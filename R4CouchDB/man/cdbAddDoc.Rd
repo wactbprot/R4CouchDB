@@ -27,6 +27,16 @@
   writes the \code{_rev} and \code{_id} key to the top
   level of \code{cdb$dataList}.
 }
+\examples{
+\dontrun{
+ccc               <- cdbIni()
+# I assume a database at localhost:5984 already exists
+ccc$DBName        <- "r4couchdb_db"
+ccc$dataList      <- list(normalDistRand =  rnorm(20))
+ccc               <- cdbAddDoc(ccc)
+
+}
+}
 \author{
   wactbprot
 }

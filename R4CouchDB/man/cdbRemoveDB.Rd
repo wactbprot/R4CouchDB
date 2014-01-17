@@ -23,6 +23,16 @@
   provided for more explicit deleting respectively more
   secure removing.
 }
+\examples{
+\dontrun{
+ccc               <- cdbIni()
+ccc$newDBName     <- "r4couchdb_db"
+ccc               <- cdbMakeDB(ccc)
+ccc$res
+ccc$removeDBName  <- ccc$DBName
+cdbRemoveDB(ccc)$res
+}
+}
 \author{
   wactbprot
 }

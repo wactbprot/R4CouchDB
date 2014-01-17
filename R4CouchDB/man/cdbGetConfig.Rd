@@ -17,6 +17,11 @@
   Function provides access to the \code{_config} api end
   point
 }
+\examples{
+\dontrun{
+cdbGetConfig(cdbIni())$res
+}
+}
 \author{
   wactbprot
 }

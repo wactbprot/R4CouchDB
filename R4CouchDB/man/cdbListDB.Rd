@@ -21,6 +21,11 @@
   The function uses the CouchDB API end point:
   \url{http://localhost:5984/_all_dbs}
 }
+\examples{
+\dontrun{
+cdbListDB(cdbIni())$res
+}
+}
 \author{
   wactbprot
 }

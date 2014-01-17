@@ -6,7 +6,7 @@
     prot = "http", uname = "", pwd = "", newDBName = "",
     removeDBName = "", id = "", dataList = list(), fileName
     = "", design = "", view = "", list = "", queryParam =
-    "", encSub = "?", attachmentsWithPath=TRUE)
+    "", encSub = "?", attachmentsWithPath=TRUE, digits = 7)
 }
 \arguments{
   \item{serverName}{server name}
@@ -47,6 +47,8 @@
   \item{attachmentsWithPath}{effects the result of the
   function cdbAddAttachment in the way the variable is
   named}
+
+  \item{digits}{digits kept at toJSON conversion}
 }
 \value{
   \item{cdb}{The R4CouchDB (method) chain(ing) list }
@@ -59,6 +61,14 @@
   The list: \code{ cdb <- list(serverName = "localhost",
   ... )} is returned if the packages \code{library(RCurl)}
   and \code{library(RJSONIO)} are successfully loaded.
+}
+\examples{
+\dontrun{
+ccc <- cdbIni(digits=13,
+              DBName="r4couch_db",
+              attachmentsWithPath=FALSE,
+              dataList=list(normalDistRand =  rnorm(20)))
+}
 }
 \author{
   wactbprot
