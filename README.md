@@ -40,7 +40,7 @@ cdb$digits
 
 
 * R4CouchDB is is available over
-  (http://cran.r-project.org/web/packages/R4CouchDB/index.html)[http://cran.r-project.org]. This
+  [http://cran.r-project.org](http://cran.r-project.org/web/packages/R4CouchDB/index.html). This
   means that one can use the R command
 
 ```
