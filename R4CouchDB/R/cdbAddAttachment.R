@@ -73,14 +73,14 @@ cdbAddAttachment <- function( cdb){
                             cdb$rev,
                             sep = "")
 
-        res        <- getURL(adrString,
+        res        <- getURL(utils::URLencode(adrString),
                              customrequest = "PUT",
                              postfields    = data,
+                             curl          = cdb$curl,
                              httpheader    = c("Content-Type" = ctp))
-
-
+        
         return(cdb$checkRes(cdb,res))
-
+        
     }else{
         stop(cdb$error)
     }
