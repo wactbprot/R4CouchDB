@@ -32,10 +32,11 @@ cdbGetConfig <- function(cdb){
     adrString <- paste(cdb$baseUrl(cdb),
                        "_config",
                        sep="")
-    res       <- getURL(adrString,
+
+    res       <- getURL(utils::URLencode(adrString),
                         customrequest = "GET",
-                        curl=cdb$curl
-                        )
+                        .opts         = cdb$opts(cdb),
+                        curl          = cdb$curl)
     
     return(cdb$checkRes(cdb,res))
   }else{

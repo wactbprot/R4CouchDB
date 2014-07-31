@@ -61,12 +61,12 @@ cdbUpdateDoc <- function( cdb){
                              cdb$id,
                              sep="")
 
-        res <- getURL(customrequest = "PUT",
-                      curl=cdb$curl,
-                      url = adrString,
-                      postfields = cdb$toJSON(cdb$dataList),
-                      httpheader=c('Content-Type: application/json;charset=utf-8'),
-                      .opts =cdb$opts(cdb))
+        res <- getURL(utils::URLencode(adrString),
+                      customrequest = "PUT",
+                      postfields    = cdb$toJSON(cdb$dataList),
+                      httpheader    = c('Content-Type: application/json;charset=utf-8'),
+                      curl          = cdb$curl,
+                      .opts         = cdb$opts(cdb))
 
         cdb <-  cdb$checkRes(cdb,res)
 

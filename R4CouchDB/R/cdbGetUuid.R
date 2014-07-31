@@ -33,9 +33,10 @@ cdbGetUuid <- function(cdb){
     adrString <- paste(cdb$baseUrl(cdb),
                        "_uuids?count=1",
                        sep="")
-    res           <- getURL(adrString,
+    res           <- getURL(utils::URLencode(adrString),
                             customrequest = "GET",
-                            curl=cdb$curl)
+                            curl          = cdb$curl,
+                            .opts         = cdb$opts(cdb))
 
     cdb <-  cdb$checkRes(cdb,res)
 

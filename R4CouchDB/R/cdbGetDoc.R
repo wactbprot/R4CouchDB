@@ -42,8 +42,11 @@ cdbGetDoc <- function(cdb){
                        cdb$id,
                        sep="")
     
-    res <- getURL(adrString,
-                  customrequest = "GET")
+    res <- getURL(utils::URLencode(adrString),
+                  customrequest = "GET",
+                  curl          = cdb$curl,
+                  .opts         = cdb$opts(cdb))
+    
 
     return(cdb$checkRes(cdb,res))
 

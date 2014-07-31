@@ -37,10 +37,11 @@ cdbRemoveDB <- function(cdb){
                        cdb$removeDBName,
                        sep="")
 
-    res       <- getURL(adrString,
-                        curl=cdb$curl,
+    res       <- getURL(utils::URLencode(adrString),
                         customrequest = "DELETE",
-                        .opts =cdb$opts(cdb))
+                        curl          = cdb$curl,
+                        .opts         = cdb$opts(cdb))
+    
     return(cdb$checkRes(cdb,res))
 
   }else{
