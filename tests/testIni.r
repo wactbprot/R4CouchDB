@@ -1,9 +1,9 @@
 source("load.r")
 
-context("Ini params of con list")
-
+context("testing cdbIni()")
+cdb <- cdbIni()
 test_that("all defaults are present", {
-    cdb <- cdbIni()
+
 
     expect_that(cdb$serverName, equals("localhost"))
     expect_that(cdb$port      , equals("5984"))
@@ -26,7 +26,7 @@ test_that("all defaults are present", {
 })
 
 test_that("all operational values are set", {
-    cdb <- cdbIni()
+
 
     expect_that(cdb$localEnc       , equals("UTF-8"))
     expect_that(cdb$serverEnc      , equals("UTF-8"))
@@ -35,7 +35,7 @@ test_that("all operational values are set", {
 })
 
 test_that("Rcurl initializes as expected", {
-    cdb <- cdbIni()
+
     expect_that(is.object(cdb$curl), equals(TRUE))
     expect_that(class(cdb$curl)[1], equals("CURLHandle"))
 })
