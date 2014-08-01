@@ -12,6 +12,15 @@ The R4CouchDB package provides a collection of functions for
 basic database and document management operations such as add and
 delete.
 
+## Literature
+
+The R4CouchDB package is reviewed in the book 
+[_XML and Web Technologies for Data Sciences with R_](http://www.springer.com/statistics/computational+statistics/book/978-1-4614-7899-7) 
+by Deborah Nolan and Duncan Temple Lang published in 2014 on _Springer_.  
+
+
+## Overview
+
 Every ```cdbFunction()``` gets and returns a ```list()``` containing the
 complete connection set up and the data.
 With the command 
