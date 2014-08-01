@@ -16,8 +16,7 @@ delete.
 
 The R4CouchDB package is reviewed in the book 
 [_XML and Web Technologies for Data Sciences with R_](http://www.springer.com/statistics/computational+statistics/book/978-1-4614-7899-7) 
-by Deborah Nolan and Duncan Temple Lang published in 2014 on _Springer_.  
-
+by Deborah Nolan and Duncan Temple Lang published in 2014 on _Springer_.
 
 ## Overview
 
@@ -55,7 +54,10 @@ cdb$digits
 ```
   install.packages("R4CouchDB")
 ```
- (please be aware of the fact that beside ```R-base-devel``` must be installed Rcurl needs ```libcurl-devel```)
+
+ be aware of the fact that beside ```R-base-devel``` must be installed Rcurl needs ```libcurl-devel```.
+ The package name may differ e.g.: **openSuse** people say ```zypper in libcurl-devel```
+ **ubuntu** useRs run ```sudo apt-get install libcurl4-openssl-dev ```
 
 * an further way for those who have _devtools_ installed is
 ```
