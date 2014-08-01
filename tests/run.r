@@ -13,9 +13,7 @@ if(length(i) == 0){
     cdbMakeDB(cdb)$res
 }
 
-cdb$id       <- testConsts$id
-cdb$DBName   <- testConsts$db
-cdb$dataList <- testConsts$data
-cdb          <- cdbUpdateDoc(cdb)
+test_file("testUpdateDoc.r")
 
 test_file("testGetDoc.r")
+
