@@ -42,20 +42,20 @@
 
 cdbIni <- function(serverName   = "localhost",
                    port         = "5984",
-                   DBName       = "",
                    prot         = "http",
+                   DBName       = "",
                    uname        = "",
                    pwd          = "",
                    newDBName    = "",
                    removeDBName = "",
                    id           = "",
-                   dataList     = list(),
                    fileName     = "",
                    design       = "",
                    view         = "",
                    list         = "",
                    queryParam   = "",
                    encSub       = "?",
+                   dataList     = list(),
                    attachmentsWithPath = TRUE,
                    digits       = 7){
 
