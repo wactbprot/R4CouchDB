@@ -12,6 +12,7 @@ if(length(i) == 0){
     cdb$newDBName <- testConsts$db
     cdbMakeDB(cdb)$res
 }
+test_file("testAddDoc.r")
 
 test_file("testUpdateDoc.r")
 

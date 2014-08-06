@@ -23,7 +23,8 @@ test_that("error msg generated", {
 
 test_that("base functionality of cdbUpdateDoc()", {
 
-
+    cdb$error    <- ""
+    
     cdb$id       <- testConsts$id
     cdb$DBName   <- testConsts$db
     cdb$dataList <- testConsts$data
