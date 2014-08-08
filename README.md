@@ -12,6 +12,9 @@ The R4CouchDB package provides a collection of functions for
 basic database and document management operations such as add and
 delete.
 
+**Note:** Check out [*sofa*](https://github.com/SChamberlain/sofa), from
+@recology_  another R package to interact with CouchDB.
+
 ## Literature
 
 The R4CouchDB package is reviewed in the book 
@@ -21,8 +24,7 @@ by Deborah Nolan and Duncan Temple Lang published in 2014 on _Springer_.
 ## Overview
 
 Every ```cdbFunction()``` gets and returns a ```list()``` containing the
-complete connection set up and the data.
-With the command 
+complete connection set up and the data. With the command 
 
 ```
 cdb <- cdbIni()
@@ -40,12 +42,7 @@ cdb$digits
 [1] 7
 ```
 
-**Note:** Check out [*sofa*](https://github.com/SChamberlain/sofa), from
-@recology_  another R package to interact with CouchDB.
-
-
 ## Getting started
-
 
 * R4CouchDB is is available over
   [http://cran.r-project.org](http://cran.r-project.org/web/packages/R4CouchDB/index.html). This
@@ -55,7 +52,7 @@ cdb$digits
   install.packages("R4CouchDB")
 ```
 
- be aware of the fact that beside ```R-base-devel``` must be installed Rcurl needs ```libcurl-devel```.
+ be aware of the fact that beside ```R-base-devel``` must be installed RCurl needs ```libcurl-devel```.
  The package name may differ e.g.: **openSuse** people say ```zypper in libcurl-devel```
  **ubuntu** useRs run ```sudo apt-get install libcurl4-openssl-dev ```
 
@@ -81,10 +78,21 @@ cdb$digits
 ```
 * see test session in the example folder
 
-* get angry and write a issue
+* get angry and write a [issue](https://github.com/wactbprot/R4CouchDB/issues)
+
+## Tests
+
+Since version 0.6 a test session is available. The functions below the
+folder ```tests``` in the files ```test/test*.r``` assume a writable _CouchDB_
+instance running on [http://localhost:5984](http://localhost:5984).
+Run the tests e.g. with:
+
+```
+$> cd R4CouchDB/tests 
+$> R -f run.r
+```
 
 ## Problems
-
 ### untar
 
 If you get somenthing like this:
@@ -130,7 +138,7 @@ The ```gsub()``` function behaves like this:
        > gsub("\\r","\\\\r","\\\\r")
        [1] "\\\\r"
 ```
-I'm not happy with this but have no better solution for the moment.
+I'm not happy with this but I have no better solution for the moment.
 
 
 ### digits
@@ -147,4 +155,9 @@ Adjust this to your needs by:
 ```
       cdb        <- cdbIni()
       cdb$digits <- 13
+```
+or
+```
+      cdb        <- cdbIni(digits=13)
+      
 ```
