@@ -12,3 +12,5 @@ test_file("testUpdateDoc.r")
 
 test_file("testGetDoc.r")
 
+test_file("testRemoveDB.r")
+

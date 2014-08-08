@@ -88,12 +88,17 @@ cdbIni <- function(serverName   = "localhost",
 
     cdb$opts <- function(cdb){
         if(cdb$uname != "" & cdb$pwd != ""){
-            opts <- curlOptions(header = FALSE,
+            opts <- curlOptions(header   = FALSE,
                                 httpauth = 1L,
-                                userpwd=paste(cdb$uname,":",cdb$pwd,sep=""))
+                                userpwd  = paste(cdb$uname,
+                                    ":",
+                                    cdb$pwd,
+                                    sep="")
+                                )
         }else{
             opts <- curlOptions(header = FALSE)
         }
+        
         return(opts)
     }
 
@@ -264,16 +269,14 @@ cdbIni <- function(serverName   = "localhost",
 
     chk.rmdb.name <- function(cdb){
         if(cdb$removeDBName == ""){
-            cdb$error <- paste(cdb$error, "no cdb$removeDBName given")
+            cdb$error <- paste(cdb$error, ";no cdb$removeDBName given")
         }else{
             DBNames <- cdbListDB(cdb)$res
             DBexists <- which(DBNames == cdb$removeDBName)
 
             if(length(DBexists) == 0){
                 cdb$error <- paste(cdb$error,
-                                   " there is no DB called >",
-                                   cdb$removeDBName, "< on >",
-                                   cdb$serverName ,"<")
+                                   ";cdb$removeDBName does not exist")
             }
         }
         return(cdb)
