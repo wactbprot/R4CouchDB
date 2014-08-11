@@ -3,16 +3,16 @@
 \alias{cdbIni}
 \title{Ini function}
 \usage{
-cdbIni(serverName="localhost", port="5984", DBName="", prot = "http", uname = "", pwd = "", newDBName = "", removeDBName = "", id  = "", dataList = list(), fileName = "", design = "", view = "", list = "", queryParam = "", encSub = "?", attachmentsWithPath=TRUE, digits = 7)
+cdbIni(serverName="localhost", port="5984", prot = "http", DBName="", uname = "", pwd = "", newDBName = "", removeDBName = "", id  = "",  fileName = "", design = "", view = "", list = "", queryParam = "", encSub = "?", count = 10, dataList = list(), attachmentsWithPath=TRUE, digits = 7)
 }
 \arguments{
 \item{serverName}{server name}
 
 \item{port}{port}
 
-\item{DBName}{name of database}
-
 \item{prot}{name of the protocol default is http}
+
+\item{DBName}{name of database}
 
 \item{uname}{name of the user}
 
@@ -23,8 +23,6 @@ cdbIni(serverName="localhost", port="5984", DBName="", prot = "http", uname = ""
 \item{removeDBName}{name of the database to remove with cdbRemoveDB()}
 
 \item{id}{the document id to get, put, post or delete}
-
-\item{dataList}{a list containing data to post or update}
 
 \item{fileName}{for use in cdbAddAttachment}
 
@@ -37,6 +35,10 @@ cdbIni(serverName="localhost", port="5984", DBName="", prot = "http", uname = ""
 \item{queryParam}{additional query params}
 
 \item{encSub}{a character which is used as a replacement for chars who can not be converted by iconv}
+
+\item{count}{how many uuids should be returned by cdbGetUuidS()}
+
+\item{dataList}{a list containing data to post or update}
 
 \item{attachmentsWithPath}{effects the result of the function cdbAddAttachment in the way the variable is named}
 

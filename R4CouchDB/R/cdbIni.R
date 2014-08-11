@@ -9,26 +9,27 @@
 #'
 #' @author wactbprot
 #' @export
-#' @usage cdbIni(serverName="localhost", port="5984", DBName="", prot = "http", uname = "", pwd = "", newDBName = "", removeDBName = "", id  = "", dataList = list(), fileName = "", design = "", view = "", list = "", queryParam = "", encSub = "?", attachmentsWithPath=TRUE, digits = 7)
+#' @usage cdbIni(serverName="localhost", port="5984", prot = "http", DBName="", uname = "", pwd = "", newDBName = "", removeDBName = "", id  = "",  fileName = "", design = "", view = "", list = "", queryParam = "", encSub = "?", count = 10, dataList = list(), attachmentsWithPath=TRUE, digits = 7)
 #' @param serverName server name
 #' @param port port
-#' @param DBName name of database
 #' @param prot name of the protocol default is http
+#' @param DBName name of database
 #' @param uname name of the user
 #' @param pwd password
 #' @param newDBName name of the database for cdbMakeDB()
 #' @param removeDBName name of the database to remove with cdbRemoveDB()
 #' @param id the document id to get, put, post or delete
-#' @param dataList a list containing data to post or update
 #' @param fileName for use in cdbAddAttachment
 #' @param design the name of the design used when asking a view or list
 #' @param view the name of the view to query
 #' @param list the name of the list to query
 #' @param queryParam additional query params
-#' @param count how many uuids should be returned by cdbGetUuidS()
 #' @param encSub a character which is used as a replacement for chars who can not be converted by iconv
+#' @param count how many uuids should be returned by cdbGetUuidS()
+#' @param dataList a list containing data to post or update
 #' @param attachmentsWithPath effects the result of the function cdbAddAttachment in the way the variable is named
 #' @param digits digits kept at toJSON conversion
+#' @import RCurl RJSONIO bitops
 #' @export
 #' @examples
 #'\dontrun{

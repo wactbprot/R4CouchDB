@@ -10,11 +10,11 @@ cdbGetConfig(cdb)
 \code{cdb$serverName} is needed.}
 }
 \value{
-\item{cdb }{The result of the request is stored in \code{cdb$re} after
-converting the answer into a list using \code{fromJSON()}.  }
+\item{cdb }{The result of the request is stored in \code{cdb$res} after
+converting the answer into a list using \code{fromJSON()}.}
 }
 \description{
-Function provides access to the \code{_config} api end point
+Function provides access to the \code{_config} api end point.
 }
 \examples{
 \dontrun{
