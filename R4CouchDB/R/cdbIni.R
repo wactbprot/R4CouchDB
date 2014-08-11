@@ -25,6 +25,7 @@
 #' @param view the name of the view to query
 #' @param list the name of the list to query
 #' @param queryParam additional query params
+#' @param count how many uuids should be returned by cdbGetUuidS()
 #' @param encSub a character which is used as a replacement for chars who can not be converted by iconv
 #' @param attachmentsWithPath effects the result of the function cdbAddAttachment in the way the variable is named
 #' @param digits digits kept at toJSON conversion
@@ -55,6 +56,7 @@ cdbIni <- function(serverName   = "localhost",
                    list         = "",
                    queryParam   = "",
                    encSub       = "?",
+                   count        = 10,
                    dataList     = list(),
                    attachmentsWithPath = TRUE,
                    digits       = 7){
@@ -76,6 +78,7 @@ cdbIni <- function(serverName   = "localhost",
         view         = view,
         list         = list,
         queryParam   = queryParam,
+        count        = count,
         encSub       = encSub,
         error        = "",
         res          = "",
@@ -164,8 +167,7 @@ cdbIni <- function(serverName   = "localhost",
         res <- cdb$fromJSON(res)
 
         if(length(res$error) > 0){
-            stop(paste("local error:", cdb$error,
-                       "server error:", res$error,
+            stop(paste("server error:", res$error,
                        "server reason:", res$reason))
         }else{
             cdb$res <- res
@@ -219,8 +221,9 @@ cdbIni <- function(serverName   = "localhost",
 
         if(fname == "cdbGetUuidS"){
             cdb <- chk.server.name(cdb)
+            cdb <- chk.count(cdb)
         }
-
+        
         if(fname == "cdbGetView"){
             cdb <- chk.server.name(cdb)
             cdb <- chk.db.name(cdb)
@@ -252,6 +255,15 @@ cdbIni <- function(serverName   = "localhost",
     }
 
     ## ----------------------chk.fns-----------------v
+    chk.count <- function(cdb){
+        if(!is.numeric(cdb$count) | (cdb$count  < 1)){
+            
+            cdb$error <- paste(cdb$error,
+                               ";cdb$count is not numeric or smaller than 1")
+        }
+        return(cdb)
+
+    }
     chk.doc.exists <- function(cdb){
         res <- cdb$getDocRev(cdb)
 
@@ -329,9 +341,7 @@ cdbIni <- function(serverName   = "localhost",
     chk.file.name <- function(cdb){
         if( !(file.exists(cdb$fileName))){
             cdb$error <- paste(cdb$error,
-                               ";no cdb$fileName given or",
-                               cdb$fileName,
-                               "does not exist")
+                               ";no cdb$fileName given or does not exist")
         }
         return(cdb)
     }

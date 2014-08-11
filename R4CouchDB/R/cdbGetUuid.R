@@ -25,26 +25,29 @@
 
 cdbGetUuid <- function(cdb){
 
-  fname <- deparse(match.call()[[1]])
-  cdb   <- cdb$checkCdb(cdb,fname)
+    fname <- deparse(match.call()[[1]])
+    cdb   <- cdb$checkCdb(cdb,fname)
 
-  if (cdb$error ==""){
+    if(cdb$error == ""){
 
-    adrString <- paste(cdb$baseUrl(cdb),
-                       "_uuids?count=1",
-                       sep="")
-    res           <- getURL(utils::URLencode(adrString),
-                            customrequest = "GET",
-                            curl          = cdb$curl,
-                            .opts         = cdb$opts(cdb))
+        adrString <- paste(cdb$baseUrl(cdb),
+                           "_uuids?count=1",
+                           sep = "")
+        
+        res           <- getURL(utils::URLencode(adrString),
+                                customrequest = "GET",
+                                curl          = cdb$curl,
+                                .opts         = cdb$opts(cdb))
 
-    cdb <-  cdb$checkRes(cdb,res)
+        cdb <-  cdb$checkRes(cdb,res)
 
-    cdb$id <- unlist(cdb$res$uuids)
-
-    return(cdb)
-
-  }else{
-    stop(cdb$error)
-  }
+        if(cdb$error == ""){
+            cdb$id <- unlist(cdb$res$uuids)
+            return(cdb)
+        }else{
+            stop(cdb$error)
+        }
+    }else{
+        stop(cdb$error)
+    }
 }

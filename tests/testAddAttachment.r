@@ -20,7 +20,7 @@ test_that("error msg generated", {
 
     cdb$fileName <- "not-available.pdf"    
     expect_that(cdbAddAttachment(cdb), throws_error(
-        "^.*no cdb\\$fileName given or not-available.pdf does not exist"
+        "^.*no cdb\\$fileName given or does not exist"
         ))
 
     cdb$id <- "not-available"

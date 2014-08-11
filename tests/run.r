@@ -2,9 +2,13 @@ source("load.r")
 
 test_file("testIni.r")
 
-cdb  <- cdbIni()
+test_file("testGetUuid.r")
+
+test_file("testGetUuidS.r")
 
 test_file("testMakeDB.r")
+
+test_file("testListDB.r")
 
 test_file("testAddDoc.r")
 
@@ -14,5 +18,8 @@ test_file("testAddAttachment.r")
 
 test_file("testGetDoc.r")
 
+test_file("testDeleteDoc.r")
+
 test_file("testRemoveDB.r")
+
 
