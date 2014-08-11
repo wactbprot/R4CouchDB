@@ -1,11 +1,15 @@
 #' Add attachments
 #'
-#' This function adds attachments to a database document.
+#' This function adds attachments to a database document that already
+#' exists.
 #'
-#' The function uses  \code{guessMIMEType()} to do exactly this.
+#' The function uses the  \code{RCurl}- function
+#' \code{guessMIMEType()} to do exactly this: guessing the mime type of
+#' \code{cdb$fileName}.
+#' 
 #' If the switch \code{cdb$attachmentsWithPath} is set to \code{TRUE}
-#' the attachments were saved with path which is the default since version
-#' 0.2.5 of R4CouchDB
+#' the attachment is saved with the path. This behavior is default
+#' since version 0.2.5 of R4CouchDB
 #'
 #' @usage cdbAddAttachment(cdb)
 #' @param cdb The list \code{cdb} has to contain
@@ -47,8 +51,11 @@ cdbAddAttachment <- function( cdb){
 
     fname <- deparse(match.call()[[1]])
     cdb   <- cdb$checkCdb(cdb, fname)
-
+    
     if(cdb$error == ""){
+        
+        cdb$rev    <- cdb$getDocRev(cdb)
+        
         tmpN       <- length(tmpFn <- unlist(strsplit(cdb$fileName,"\\.")))
         noOfBytes  <- file.info(cdb$fileName)$size
         con        <- file(cdb$fileName, "rb")
@@ -62,7 +69,7 @@ cdbAddAttachment <- function( cdb){
             fbn    <- basename(cdb$fileName)
         }
         ctp        <- toString(guessMIMEType(basename(fbn)))
-        cdb$rev    <- cdbGetDoc(cdb)$res$'_rev'
+        
         adrString  <- paste(cdb$baseUrl(cdb),
                             cdb$DBName,
                             "/",

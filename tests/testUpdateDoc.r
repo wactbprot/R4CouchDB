@@ -1,10 +1,9 @@
 source("load.r")
 
 context("testing cdbUpdateDoc()")
-cdb <- cdbIni()
 
 test_that("error msg generated", {
-
+    
     expect_that(cdbUpdateDoc(cdb), throws_error(
         "^.*no cdb\\$dataList given"
         ))
@@ -28,7 +27,7 @@ test_that("base functionality of cdbUpdateDoc()", {
     cdb$DBName   <- testConsts$db
     cdb$dataList <- testConsts$data
 
-    for(i in 1:10){
+    for(i in 1:5){
         res          <- cdbUpdateDoc(cdb)$res 
         expect_that(res$ok, equals(TRUE))
     }

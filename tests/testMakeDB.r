@@ -1,7 +1,6 @@
 source("load.r")
 
 context("testing cdbMakeDB()")
-cdb <- cdbIni()
 
 test_that("error msg generated", {
     expect_that(cdbMakeDB(cdb), throws_error(
@@ -9,11 +8,11 @@ test_that("error msg generated", {
         ))
 })
 
-
 test_that("base functionality of cdbMakeDB()", {
 
     dbs  <- unlist(cdbListDB(cdb)$res)
     i    <- which(dbs %in% c(testConsts$db))
+
     if(length(i) > 0){
         cdb$removeDBName <- testConsts$db
         tmp              <- cdbRemoveDB(cdb)
@@ -30,6 +29,7 @@ test_that("base functionality of cdbMakeDB()", {
 })
 
 test_that("error msg generated", {
+
     cdb$newDBName <- testConsts$db
 
     expect_that(cdbMakeDB(cdb), throws_error(

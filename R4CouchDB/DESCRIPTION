@@ -18,18 +18,3 @@ Depends:
     bitops,
     RCurl (>= 1.95),
     RJSONIO (>= 1.0)
-Collate:
-    'cdbIni.R'
-    'cdbAddAttachment.R'
-    'cdbAddDoc.R'
-    'cdbDeleteDoc.R'
-    'cdbGetConfig.R'
-    'cdbGetDoc.R'
-    'cdbGetList.R'
-    'cdbGetUuid.R'
-    'cdbGetUuidS.R'
-    'cdbGetView.R'
-    'cdbListDB.R'
-    'cdbMakeDB.R'
-    'cdbRemoveDB.R'
-    'cdbUpdateDoc.R'

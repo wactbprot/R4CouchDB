@@ -1,13 +1,12 @@
 source("load.r")
 
 context("testing cdbIni()")
-cdb <- cdbIni()
+
 test_that("all defaults are present", {
 
-
-    expect_that(cdb$serverName, equals("localhost"))
-    expect_that(cdb$port      , equals("5984"))
-    expect_that(cdb$prot      , equals("http"))
+    expect_that(cdb$serverName    , equals("localhost"))
+    expect_that(cdb$port          , equals("5984"))
+    expect_that(cdb$prot          , equals("http"))
     expect_that(cdb$DBName        , equals(""))
     expect_that(cdb$uname         , equals(""))
     expect_that(cdb$pwd           , equals(""))
@@ -21,12 +20,12 @@ test_that("all defaults are present", {
     expect_that(cdb$queryParam    , equals(""))
     expect_that(cdb$encSub        , equals("?"))
     expect_that(cdb$dataList      , equals( list()))
-    expect_that(cdb$attachmentsWithPath , equals( TRUE))
     expect_that(cdb$digits        , equals(7))
+    expect_that(cdb$attachmentsWithPath , equals( TRUE))
+
 })
 
 test_that("all operational values are set", {
-
 
     expect_that(cdb$localEnc       , equals("UTF-8"))
     expect_that(cdb$serverEnc      , equals("UTF-8"))

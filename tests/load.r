@@ -18,6 +18,7 @@ for (k in 1:length(fn)){
 noOfChar   <- 1000
 noOfNum    <- 10000
 testConsts <- list(db        = "test_db",
+                   fileName  = "test.pdf",
                    id        = "test_id",
                    data      = list(
                        noOfChars = noOfChar * length(letters),
@@ -25,3 +26,5 @@ testConsts <- list(db        = "test_db",
                        chars     = rep(letters, noOfChar),
                        numbers   = 1:noOfNum
                        ))
+
+cdb <- cdbIni()

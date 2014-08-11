@@ -1,7 +1,6 @@
 source("load.r")
 
 context("testing cdbAddDoc()")
-cdb <- cdbIni()
 
 test_that("error msg generated", {
 

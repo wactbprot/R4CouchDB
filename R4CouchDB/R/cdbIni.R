@@ -185,6 +185,7 @@ cdbIni <- function(serverName   = "localhost",
             cdb <- chk.server.name(cdb)
             cdb <- chk.id(cdb)
             cdb <- chk.db.name(cdb)
+            cdb <- chk.doc.exists(cdb)
             cdb <- chk.file.name(cdb)
         }
 
@@ -251,6 +252,16 @@ cdbIni <- function(serverName   = "localhost",
     }
 
     ## ----------------------chk.fns-----------------v
+    chk.doc.exists <- function(cdb){
+        res <- cdb$getDocRev(cdb)
+
+        if(is.na(res)){
+            cdb$error <- paste(cdb$error,
+                               ";document cdb$id does not exist")
+        }
+        return(cdb)
+     
+    }
     chk.newdb.name <- function(cdb){
         if(cdb$newDBName == ""){
             cdb$error <- paste(cdb$error,

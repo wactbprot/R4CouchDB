@@ -1,7 +1,6 @@
 source("load.r")
 
 context("testing cdbRemoveDB()")
-cdb <- cdbIni()
 
 test_that("error msg generated", {
     expect_that(cdbRemoveDB(cdb), throws_error(
@@ -29,6 +28,7 @@ test_that("base functionality of cdbRemoveDB()", {
 })
 
 test_that("error msg generated", {
+
     cdb$removeDBName <- testConsts$db
     expect_that(cdbRemoveDB(cdb), throws_error(
         "^.*cdb\\$removeDBName does not exist"

@@ -10,6 +10,8 @@ test_file("testAddDoc.r")
 
 test_file("testUpdateDoc.r")
 
+test_file("testAddAttachment.r")
+
 test_file("testGetDoc.r")
 
 test_file("testRemoveDB.r")
