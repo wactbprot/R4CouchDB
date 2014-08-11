@@ -41,7 +41,9 @@ cdbRemoveDB <- function(cdb){
                         customrequest = "DELETE",
                         curl          = cdb$curl,
                         .opts         = cdb$opts(cdb))
-    
+
+    cdb$removeDBName <- ""
+
     return(cdb$checkRes(cdb,res))
 
   }else{
