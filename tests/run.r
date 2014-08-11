@@ -2,6 +2,8 @@ source("load.r")
 
 test_file("testIni.r")
 
+test_file("testGetConfig.r")
+
 test_file("testGetUuid.r")
 
 test_file("testGetUuidS.r")
