@@ -18,6 +18,9 @@ for (k in 1:length(fn)){
 noOfChar   <- 1000
 noOfNum    <- 10000
 testConsts <- list(db        = "test_db",
+                   design    = "test",
+                   view      = "test",
+                   list      = "test",
                    server    = "localhost",
                    fileName  = "test.pdf",
                    id        = "test_id",
