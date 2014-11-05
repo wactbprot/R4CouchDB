@@ -55,7 +55,7 @@ cdbAddDocS <- function( cdb){
 	    tmp <- sapply(res,"[")
       cdb$dataList$'_id' <- unlist(tmp["id",])
       cdb$dataList$'_rev' <- unlist(tmp["rev",])
-      cdb$res <- tmp
+      cdb$res <- res
       return( cdb )
     }else{
       cdb$error <- paste(cdb$error, res$error)
