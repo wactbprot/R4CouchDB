@@ -177,81 +177,77 @@ cdbIni <- function(serverName   = "localhost",
     }
 
     cdb$checkCdb <- function(cdb,fname){
+	    switch(fname,
+		   cdbGetDoc = {
+			   cdb <- chk.server.name(cdb)
+			   cdb <- chk.id(cdb)
+			   cdb <- chk.db.name(cdb)
+		   },
+		   cdbAddAttachment = {
+			   cdb <- chk.server.name(cdb)
+			   cdb <- chk.id(cdb)
+			   cdb <- chk.db.name(cdb)
+			   cdb <- chk.doc.exists(cdb)
+			   cdb <- chk.file.name(cdb)
+		   },
+		   cdbAddDoc = {
+			   cdb <- chk.server.name(cdb)
+			   cdb <- chk.db.name(cdb)
+			   cdb <- chk.data.list(cdb)
+		   },
+		   cdbDeleteDoc = {
+			   cdb <- chk.server.name(cdb)
+			   cdb <- chk.db.name(cdb)
+			   cdb <- chk.id(cdb)
+		   },
+		   cdbGetConfig = {
+			   cdb <- chk.server.name(cdb)
+		   },
+		   cdbGetList = {
+			   cdb <- chk.server.name(cdb)
+			   cdb <- chk.db.name(cdb)
+			   cdb <- chk.design.name(cdb)
+			   cdb <- chk.list.name(cdb)
+			   cdb <- chk.view.name(cdb)
+		   },
+		   cdbGetUuid = {
+			   cdb <- chk.server.name(cdb)
+		   },
+		   cdbGetUuidS = {
+			   cdb <- chk.server.name(cdb)
+			   cdb <- chk.count(cdb)
+		   },
+		   cdbGetView = {
+			   cdb <- chk.server.name(cdb)
+			   cdb <- chk.db.name(cdb)
+			   cdb <- chk.design.name(cdb)
+			   cdb <- chk.view.name(cdb)
+		   },
+		   cdbListDB = {
+			   cdb <- chk.server.name(cdb)
+		   },
+		   cdbMakeDB = {
+			   cdb <- chk.server.name(cdb)
+			   cdb <- chk.newdb.name(cdb)
+		   },
+		   cdbRemoveDB = {
+			   cdb <- chk.server.name(cdb)
+			   cdb <- chk.rmdb.name(cdb)
+		   },
+		   cdbUpdateDoc = {
+			   cdb <- chk.server.name(cdb)
+			   cdb <- chk.id(cdb)
+			   cdb <- chk.db.name(cdb)
+			   cdb <- chk.data.list(cdb)
+		   },
+		   cdbAddDocS = {
+			   cdb <- chk.server.name(cdb)
+			   cdb <- chk.db.name(cdb)
+			   cdb <- chk.data.list(cdb)
+		   },
+		   stop(paste0(fname," is not defined"))
+		   )
 
-        if(fname == "cdbGetDoc"){
-            cdb <- chk.server.name(cdb)
-            cdb <- chk.id(cdb)
-            cdb <- chk.db.name(cdb)
-        }
-
-        if(fname == "cdbAddAttachment"){
-            cdb <- chk.server.name(cdb)
-            cdb <- chk.id(cdb)
-            cdb <- chk.db.name(cdb)
-            cdb <- chk.doc.exists(cdb)
-            cdb <- chk.file.name(cdb)
-        }
-
-        if(fname == "cdbAddDoc"){
-            cdb <- chk.server.name(cdb)
-            cdb <- chk.db.name(cdb)
-            cdb <- chk.data.list(cdb)
-        }
-
-        if(fname == "cdbDeleteDoc"){
-            cdb <- chk.server.name(cdb)
-            cdb <- chk.db.name(cdb)
-            cdb <- chk.id(cdb)
-        }
-
-        if(fname == "cdbGetConfig"){
-            cdb <- chk.server.name(cdb)
-        }
-
-        if(fname == "cdbGetList"){
-            cdb <- chk.server.name(cdb)
-            cdb <- chk.db.name(cdb)
-            cdb <- chk.design.name(cdb)
-            cdb <- chk.list.name(cdb)
-            cdb <- chk.view.name(cdb)
-        }
-
-        if(fname == "cdbGetUuid"){
-            cdb <- chk.server.name(cdb)
-        }
-
-        if(fname == "cdbGetUuidS"){
-            cdb <- chk.server.name(cdb)
-            cdb <- chk.count(cdb)
-        }
-        
-        if(fname == "cdbGetView"){
-            cdb <- chk.server.name(cdb)
-            cdb <- chk.db.name(cdb)
-            cdb <- chk.design.name(cdb)
-            cdb <- chk.view.name(cdb)
-        }
-
-        if(fname == "cdbListDB"){
-            cdb <- chk.server.name(cdb)
-        }
-
-        if(fname == "cdbMakeDB"){
-            cdb <- chk.server.name(cdb)
-            cdb <- chk.newdb.name(cdb)
-        }
-
-        if(fname == "cdbRemoveDB"){
-            cdb <- chk.server.name(cdb)
-            cdb <- chk.rmdb.name(cdb)
-        }
-
-        if(fname == "cdbUpdateDoc"){
-            cdb <- chk.server.name(cdb)
-            cdb <- chk.id(cdb)
-            cdb <- chk.db.name(cdb)
-            cdb <- chk.data.list(cdb)
-        }
         return(cdb)
     }
 
