@@ -3,7 +3,25 @@
 \alias{cdbIni}
 \title{Ini function}
 \usage{
-cdbIni(serverName="localhost", port="5984", prot = "http", DBName="", uname = "", pwd = "", newDBName = "", removeDBName = "", id  = "",  fileName = "", design = "", view = "", list = "", queryParam = "", encSub = "?", count = 10, dataList = list(), attachmentsWithPath=TRUE, digits = 7)
+cdbIni(serverName="localhost",
+port="5984",
+prot = "http",
+DBName="",
+uname = "",
+pwd = "",
+newDBName = "",
+removeDBName = "",
+id  = "",
+fileName = "",
+design = "",
+view = "",
+list = "",
+queryParam = "",
+encSub = "?",
+count = 10,
+dataList = list(),
+attachmentsWithPath=TRUE,
+digits = 7)
 }
 \arguments{
 \item{serverName}{server name}
