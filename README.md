@@ -15,11 +15,18 @@ delete.
 **Note:** Check out [*sofa*](https://github.com/SChamberlain/sofa), from
 @recology_  another R package to interact with CouchDB.
 
+**Note** I added a example of
+  [R4CouchDB usage to the (new) CouchDB wiki](https://cwiki.apache.org/confluence/display/COUCHDB/R)
+  
 ## Literature
 
 The R4CouchDB package is reviewed in the book 
 [_XML and Web Technologies for Data Sciences with R_](http://www.springer.com/statistics/computational+statistics/book/978-1-4614-7899-7) 
 by Deborah Nolan and Duncan Temple Lang published in 2014 on _Springer_.
+
+## Credits
+
+* Thanks to [@parisni](https://github.com/parisni) for the contribution of ```cdbAddDocS()``` 
 
 ## Overview
 

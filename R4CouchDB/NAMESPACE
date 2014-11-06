@@ -2,6 +2,7 @@
 
 export(cdbAddAttachment)
 export(cdbAddDoc)
+export(cdbAddDocS)
 export(cdbDeleteDoc)
 export(cdbGetConfig)
 export(cdbGetDoc)

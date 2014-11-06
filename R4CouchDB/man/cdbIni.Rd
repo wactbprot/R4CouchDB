@@ -83,7 +83,7 @@ ccc <- cdbIni(digits=13,
 }
 }
 \author{
-wactbprot
+wactbprot, parisni
 }
 \keyword{misc}
 

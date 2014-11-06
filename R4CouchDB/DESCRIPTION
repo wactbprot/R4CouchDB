@@ -1,8 +1,8 @@
 Package: R4CouchDB
 Type: Package
 Title: A R convenience layer for CouchDB
-Version: 0.6
-Date: 2014/08/11
+Version: 0.7
+Date: 2014/11/06
 Author: Thomas Bock
 URL: https://github.com/wactbprot/R4CouchDB
 Maintainer: Thomas Bock <thsteinbock@web.de>

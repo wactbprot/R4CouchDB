@@ -7,7 +7,7 @@
 #' the packages \code{library(RCurl)} and \code{library(RJSONIO)} are
 #' successfully loaded.
 #'
-#' @author wactbprot
+#' @author wactbprot, parisni 
 #' @export
 #' @usage cdbIni(serverName="localhost",
 #' port="5984",
@@ -261,7 +261,7 @@ cdbIni <- function(serverName   = "localhost",
 		   cdbAddDocS = {
 			   cdb <- chk.server.name(cdb)
 			   cdb <- chk.db.name(cdb)
-			   cdb <- chk.data.list(cdb)
+			   cdb <- chk.data.lists(cdb)
 		   },
 		   stop(paste0(fname," is not defined"))
 		   )
@@ -350,6 +350,27 @@ cdbIni <- function(serverName   = "localhost",
             cdb$error <- paste(cdb$error,
                                ";no cdb$dataList given")
         }
+        return(cdb)
+    }
+
+    chk.data.lists <- function(cdb){
+
+        if(!is.list(cdb$dataList)){
+            cdb$error <- paste(cdb$error,
+                               ";cdb$dataList is not a list")
+        }else{
+            if((length(cdb$dataList) < 1)){
+                cdb$error <- paste(cdb$error,
+                                   ";cdb$dataList has length zero")
+            }else{
+                if(!is.list(cdb$dataList[[1]])){
+                    cdb$error <- paste(cdb$error,
+                                       ";cdb$dataList is not a list of lists")
+                    
+                }
+            }
+        }
+        
         return(cdb)
     }
 
