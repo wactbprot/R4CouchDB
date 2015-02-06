@@ -24,7 +24,6 @@
 #'}
 #'
 #' @seealso \code{cdbMakeDB}
-#' @references \url{ http://couchdb.apache.org/ }
 #' @keywords misc
 
 cdbRemoveDB <- function(cdb){

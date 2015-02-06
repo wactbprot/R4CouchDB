@@ -25,8 +25,8 @@
 #' }
 #' @author wactbprot
 #' @export
-#'@examples
-#'\dontrun{
+#' @examples
+#' \dontrun{
 #' ccc               <- cdbIni()
 #' # I assume a database at localhost:5984 already exists
 #' ccc$DBName        <- "r4couchdb_db"
@@ -37,9 +37,7 @@
 #' ccc               <- cdbUpdateDoc(ccc)
 #'}
 #'
-#'  @seealso \code{cdbInit()}
-#' @references \url{ http://www.omegahat.org/RCurl/ } \url{
-#' http://www.omegahat.org/RJSONIO/ } \url{ http://couchdb.apache.org/ }
+#' @seealso \code{cdbInit()}
 #' @keywords misc
 #'
 

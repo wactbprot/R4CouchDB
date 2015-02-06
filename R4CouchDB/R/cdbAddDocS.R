@@ -20,8 +20,8 @@
 #' @return \item{cdb}{The couchdb response is stored in \code{cdb$res} }
 #' @author parisni, wactbprot
 #' @export
-#'@examples
-#'\dontrun{
+#' @examples
+#' \dontrun{
 #' ccc               <- cdbIni()
 #' # I assume a database at localhost:5984 already exists
 #' ccc$DBName        <- "r4couchdb_db"

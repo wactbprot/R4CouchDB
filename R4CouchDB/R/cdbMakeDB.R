@@ -27,7 +27,6 @@
 #'}
 #'
 #' @seealso \code{cdbUpdateDoc}
-#' @references \url{ http://couchdb.apache.org/ }
 #' @keywords misc
 
 cdbMakeDB <- function(cdb){

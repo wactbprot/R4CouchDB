@@ -18,9 +18,6 @@
 #' }
 #' @author wactbprot
 #' @export
-#' @references \url{ http://www.omegahat.org/RCurl } \url{
-#' http://www.omegahat.org/RJSONIO } \url{ http://couchdb.apache.org } \url{
-#' http://www.omegahat.org/RJavaScript }
 #' @keywords misc
 #'
 

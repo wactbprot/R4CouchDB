@@ -2,8 +2,7 @@
 #' 
 #' Gives a list of all databases available at \code{cdb$serverName}.
 #' 
-#' The function uses the CouchDB API end point:
-#' \url{http://localhost:5984/_all_dbs} 
+#' The function uses the \code{_all_dbs}  API end point . 
 #' 
 #' @usage cdbListDB(cdb)
 #' @param cdb Only the connection settings \code{cdb$port} and
@@ -19,9 +18,6 @@
 #' cdbListDB(cdbIni())$res
 #'}
 #' @seealso \code{cdbMakeDB}
-#' @references
-#' \url{ http://www.omegahat.org/RCurl/ } \url{
-#' http://www.omegahat.org/RJSONIO/ } \url{ http://couchdb.apache.org/ }
 #' @keywords misc
 
 cdbListDB <- function(cdb){
