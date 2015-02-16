@@ -15,7 +15,7 @@ delete.
 **Note:** Check out [*sofa*](https://github.com/SChamberlain/sofa), from
 @recology_  another R package to interact with CouchDB.
 
-**Note** I added a example of
+**Note:** I added a example of
   [R4CouchDB usage to the (new) CouchDB wiki](https://cwiki.apache.org/confluence/display/COUCHDB/R)
   
 ## Literature
@@ -67,9 +67,11 @@ lists the databases.
 R> install.packages("R4CouchDB")
 ```
 
- be aware of the fact that beside ```R-base-devel``` must be installed RCurl needs ```libcurl-devel```.
- The package name may differ e.g.: **openSuse** people say ```zypper in libcurl-devel```
- **ubuntu** useRs run ```sudo apt-get install libcurl4-openssl-dev ```
+**Note:**
+ Be aware of the fact that beside ```R-base-devel``` must be installed RCurl needs ```libcurl-devel```.
+ The package name may differ e.g.:
+* **openSuse** people say ```$> zypper in libcurl-devel```
+* **ubuntu** useRs run ```$> sudo apt-get install libcurl4-openssl-dev ```
 
 * an further way for those who have _devtools_ installed is
 ```
@@ -93,7 +95,7 @@ R> cdbGetUuidS(foo)$res
 ```
 * see test session in the example folder
 
-* get angry and write a [issue](https://github.com/wactbprot/R4CouchDB/issues)
+* become angry and write a [issue](https://github.com/wactbprot/R4CouchDB/issues)
 
 ## Tests
 
