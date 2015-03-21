@@ -17,6 +17,7 @@ fileName = "",
 design = "",
 view = "",
 list = "",
+show = "",
 queryParam = "",
 encSub = "?",
 count = 10,
@@ -47,9 +48,11 @@ digits = 7)
 
 \item{design}{the name of the design used when asking a view or list}
 
-\item{view}{the name of the view to query}
+\item{view}{the name of a view to query}
 
-\item{list}{the name of the list to query}
+\item{list}{the name of a list to query}
+
+\item{show}{the name of a show to query}
 
 \item{queryParam}{additional query params}
 

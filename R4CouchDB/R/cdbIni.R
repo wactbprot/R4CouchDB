@@ -22,6 +22,7 @@
 #' design = "",
 #' view = "",
 #' list = "",
+#' show = "",
 #' queryParam = "",
 #' encSub = "?",
 #' count = 10,
@@ -39,8 +40,9 @@
 #' @param id the document id to get, put, post or delete
 #' @param fileName for use in cdbAddAttachment
 #' @param design the name of the design used when asking a view or list
-#' @param view the name of the view to query
-#' @param list the name of the list to query
+#' @param view the name of a view to query
+#' @param list the name of a list to query
+#' @param show the name of a show to query
 #' @param queryParam additional query params
 #' @param encSub a character which is used as a replacement for chars who can not be converted by iconv
 #' @param count how many uuids should be returned by cdbGetUuidS()
@@ -73,6 +75,7 @@ cdbIni <- function(serverName   = "localhost",
                    design       = "",
                    view         = "",
                    list         = "",
+                   show         = "",
                    queryParam   = "",
                    encSub       = "?",
                    count        = 10,
@@ -96,6 +99,7 @@ cdbIni <- function(serverName   = "localhost",
         design       = design,
         view         = view,
         list         = list,
+        show         = show,
         queryParam   = queryParam,
         count        = count,
         encSub       = encSub,
@@ -228,7 +232,14 @@ cdbIni <- function(serverName   = "localhost",
 			   cdb <- chk.list.name(cdb)
 			   cdb <- chk.view.name(cdb)
 		   },
-		   cdbGetUuid = {
+		   cdbGetShow = {
+			   cdb <- chk.server.name(cdb)
+			   cdb <- chk.db.name(cdb)
+			   cdb <- chk.id(cdb)
+			   cdb <- chk.design.name(cdb)
+			   cdb <- chk.show.name(cdb)
+		   },
+       cdbGetUuid = {
 			   cdb <- chk.server.name(cdb)
 		   },
 		   cdbGetUuidS = {
@@ -332,6 +343,14 @@ cdbIni <- function(serverName   = "localhost",
         if(cdb$list == "") {
             cdb$error <- paste(cdb$error,
                                ";no cdb$list given")
+        }
+        return(cdb)
+    }
+
+    chk.show.name <- function(cdb){
+        if(cdb$show == "") {
+            cdb$error <- paste(cdb$error,
+                               ";no cdb$show given")
         }
         return(cdb)
     }
