@@ -170,15 +170,15 @@ cdbIni <- function(serverName   = "localhost",
     }
 
     cdb$getDocRev <- function(cdb){
-        adrString <- paste(cdb$baseUrl(cdb),
-                           cdb$DBName,"/",
-                           cdb$id,
-                           sep="")
-        res <- url.exists(adrString, .header=TRUE)["ETag"]
+        adrString <- paste0(cdb$baseUrl(cdb),
+                            cdb$DBName,"/",
+                            cdb$id)
+        res <- url.exists(utils::URLencode(adrString)
+                        , .header=TRUE)["ETag"]
         if(is.na(res)){
             return(NA)
         }else{
-            return(paste("", gsub("\\\"", "", res), sep = ""))
+            return(paste0("", gsub("\\\"", "", res)))
         }
     }
 
