@@ -85,7 +85,8 @@ cdbAddAttachment <- function( cdb){
                              postfields    = data,
                              .opts         = cdb$opts(cdb),
                              curl          = cdb$curl,
-                             httpheader    = c("Content-Type" = ctp))
+                             httpheader    = c("Content-Type" = ctp),
+                             .encoding     = cdb$serverEnc)
         
         return(cdb$checkRes(cdb,res))
         

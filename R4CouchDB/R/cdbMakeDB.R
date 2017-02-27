@@ -42,7 +42,9 @@ cdbMakeDB <- function(cdb){
     res <- getURL(utils::URLencode(adrString),
                   customrequest = "PUT",
                   curl          = cdb$curl,
-                  .opts         = cdb$opts(cdb))
+                  .opts         = cdb$opts(cdb),
+                  .encoding       = cdb$serverEnc
+                  )
 
     cdb$DBName    <- cdb$newDBName
     cdb$newDBName <- ""

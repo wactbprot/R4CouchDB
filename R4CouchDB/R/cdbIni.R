@@ -140,6 +140,7 @@ cdbIni <- function(serverName   = "localhost",
     }
 
     cdb$fromJSON <- function(jsn){
+        jsn <- gsub("\\u0000","",jsn)
         jsn <- iconv(jsn,
                      cdb$serverEnc,
                      cdb$localEnc,

@@ -47,7 +47,8 @@ cdbGetView <- function( cdb ){
     res <- getURL(utils::URLencode(adrString),
                   customrequest = "GET",
                   curl          = cdb$curl,
-                  .opts         = cdb$opts(cdb))
+                  .opts         = cdb$opts(cdb),
+                  .encoding     = cdb$serverEnc)
     
     return(cdb$checkRes(cdb,res))
     

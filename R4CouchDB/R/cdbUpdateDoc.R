@@ -64,8 +64,9 @@ cdbUpdateDoc <- function( cdb){
                       postfields    = cdb$toJSON(cdb$dataList),
                       httpheader    = c('Content-Type: application/json;charset=utf-8'),
                       curl          = cdb$curl,
-                      .opts         = cdb$opts(cdb))
-
+                      .opts         = cdb$opts(cdb)
+                      )
+        
         cdb <-  cdb$checkRes(cdb,res)
 
         if((length(cdb$res$ok)) > 0 ){

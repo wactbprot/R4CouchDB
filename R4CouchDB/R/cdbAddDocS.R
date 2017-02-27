@@ -55,7 +55,9 @@ cdbAddDocS <- function( cdb){
                         postfields      = cdb$toJSON(docs),
                         httpheader      = c('Content-Type: application/json;charset=utf-8'),
                         .opts           = cdb$opts(cdb),
-                        curl            = cdb$curl)
+                        curl            = cdb$curl
+                        )
+        
         res <- cdb$fromJSON( res )
         if(length(res$error) == 0){
             cdb$res <- res

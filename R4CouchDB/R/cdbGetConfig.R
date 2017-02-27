@@ -32,7 +32,9 @@ cdbGetConfig <- function(cdb){
     res       <- getURL(utils::URLencode(adrString),
                         customrequest = "GET",
                         .opts         = cdb$opts(cdb),
-                        curl          = cdb$curl)
+                        curl          = cdb$curl,
+                        .encoding       = cdb$serverEnc
+                        )
     
     return(cdb$checkRes(cdb,res))
   }else{

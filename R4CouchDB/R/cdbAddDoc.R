@@ -49,9 +49,10 @@ cdbAddDoc <- function( cdb){
     res <- getURL(utils::URLencode(adrString),
                   customrequest   = 'PUT',
                   postfields      = pf,
-                  httpheader      = c('Content-Type: application/json;charset=utf-8'),
                   .opts           = cdb$opts(cdb),
-                  curl            = cdb$curl)
+                  curl            = cdb$curl,
+                  httpheader      = c('Content-Type: application/json;charset=utf-8')
+                  )
 
     res <- cdb$fromJSON( res )
 
